@@ -1211,58 +1211,6 @@
     document
       .querySelectorAll("#studentNewForm [data-combobox], #studentEditForm [data-combobox]")
       .forEach(setupCombobox);
-
-    const bindOldStudentForm = (pageId, formId, errId, requireYear) => {
-      const page = document.getElementById(pageId);
-      const form = document.getElementById(formId);
-      if (!page || !form) {
-        return;
-      }
-      const clientErr = document.getElementById(errId);
-      form.querySelectorAll("[data-combobox]").forEach(setupCombobox);
-      if (window.initIngazgatePageSelects) {
-        window.initIngazgatePageSelects(page, {
-          noResultsText: page.dataset.msgNoMatch || "No matches",
-        });
-      }
-      form.addEventListener("submit", (e) => {
-        const name = (form.querySelector('[name="name"]')?.value || "").trim();
-        const passport = (form.querySelector('[name="passport"]')?.value || "").trim();
-        const university = (form.querySelector('[name="university"]')?.value || "").trim();
-        const department = (form.querySelector('[name="department"]')?.value || "").trim();
-        const nationality = (form.querySelector('[name="nationality"]')?.value || "").trim();
-        const year = requireYear
-          ? (document.getElementById("oldStudentYearNative")?.value || "").trim()
-          : "";
-        let msg = "";
-        if (!name) {
-          msg = page.dataset.msgNameRequired || "";
-        } else if (!passport) {
-          msg = page.dataset.msgPassportRequired || "";
-        } else if (requireYear && !year) {
-          msg = page.dataset.msgYearRequired || "";
-        } else if (!university) {
-          msg = page.dataset.msgUniversityRequired || "";
-        } else if (!department) {
-          msg = page.dataset.msgDepartmentRequired || "";
-        } else if (!nationality) {
-          msg = page.dataset.msgNationalityRequired || "";
-        }
-        if (msg) {
-          e.preventDefault();
-          if (clientErr) {
-            clientErr.textContent = msg;
-            clientErr.hidden = false;
-          }
-          return;
-        }
-        if (clientErr) {
-          clientErr.hidden = true;
-        }
-      });
-    };
-    bindOldStudentForm("oldStudentNewPage", "oldStudentNewForm", "oldStudentNewClientError", true);
-    bindOldStudentForm("oldStudentEditPage", "oldStudentEditForm", "oldStudentEditClientError", false);
   });
 })();
 

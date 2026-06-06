@@ -57,14 +57,6 @@
         </svg>
         <span th:text="#{nav.students}">Students</span>
       </a>
-      <a th:if="${currentUserCanManageAgents}" th:href="@{/old-students}" th:classappend="${activeNav}=='oldStudents' ? 'active' : ''">
-        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 6h16"></path>
-          <path d="M4 12h16"></path>
-          <path d="M4 18h16"></path>
-        </svg>
-        <span th:text="#{nav.oldStudents}">Old Students</span>
-      </a>
       <a th:href="@{/applications}" th:classappend="${activeNav}=='applications' ? 'active' : ''">
         <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3 7h18v13H3z"></path>

@@ -3,7 +3,6 @@ package com.ingazgate.crm.web;
 import com.ingazgate.crm.user.AppUser;
 import com.ingazgate.crm.user.AppUserRepository;
 import java.security.Principal;
-import java.util.Base64;
 import java.util.regex.Pattern;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class ProfileController {
   static final String STAFF_EMAIL_DOMAIN = "local";
-  private static final Pattern EMAIL_LOCAL =
+  private static final Pattern USERNAME =
       Pattern.compile("^[a-zA-Z0-9]([a-zA-Z0-9._-]{0,62}[a-zA-Z0-9])$");
 
   private final AppUserRepository appUserRepository;
@@ -45,26 +44,24 @@ public class ProfileController {
   @GetMapping("/profile")
   String profile(Model model, Principal principal) {
     AppUser user = requireCurrentUser(principal);
+    boolean agent = isAgentAccount(user);
     model.addAttribute("pageTitleKey", "nav.account.editProfile");
     model.addAttribute("activeNav", "profile");
     model.addAttribute("contentTemplate", "pages/profile");
     model.addAttribute("profileName", user.getDisplayName());
     model.addAttribute("profileInitials", initialsFromName(user.getDisplayName()));
+    model.addAttribute("profileUsername", usernameForDisplay(user));
     model.addAttribute("profileEmailLocal", localPartFromEmail(user.getEmail()));
     model.addAttribute("profileEmailDomain", "@" + emailDomain(user));
-    model.addAttribute(
-        "profileLegacyEmail",
-        isCompanyEmail(user.getEmail(), emailDomain(user)) ? null : user.getEmail().trim());
     model.addAttribute("profileRole", user.getRole());
     model.addAttribute("profileOfficeName", user.getOfficeName());
     model.addAttribute("profilePhone", user.getPhone());
-    model.addAttribute("profileIsAgent", isAgentAccount(user));
+    model.addAttribute("profileIsAgent", agent);
     String logoUrl = user.getLogoUrl();
     boolean hasPhoto = logoUrl != null && !logoUrl.isBlank();
     model.addAttribute("profileLogoUrl", logoUrl);
     model.addAttribute("profileHasPhoto", hasPhoto);
     model.addAttribute("profileUserId", user.getId());
-    /* Personal avatar for all users; admins use canManageAgents for elevated features. */
     model.addAttribute("profileCanEditPhoto", true);
     return "layout/shell";
   }
@@ -85,36 +82,38 @@ public class ProfileController {
       RedirectAttributes redirectAttributes) {
     AppUser user = requireCurrentUser(principal);
     String normalizedName = displayName == null ? "" : displayName.trim();
-    String local = emailLocal == null ? "" : emailLocal.trim().toLowerCase();
+    String username = emailLocal == null ? "" : emailLocal.trim().toLowerCase();
 
     if (normalizedName.isEmpty()) {
       redirectAttributes.addFlashAttribute("profileError", "Display name is required.");
       return "redirect:/profile";
     }
-    if (local.isEmpty()) {
+    if (username.isEmpty()) {
       redirectAttributes.addFlashAttribute("profileError", "Username is required.");
       return "redirect:/profile";
     }
-    if (local.length() < 2
-        || local.length() > 64
-        || !EMAIL_LOCAL.matcher(local).matches()) {
+    if (username.length() < 2
+        || username.length() > 64
+        || !USERNAME.matcher(username).matches()) {
       redirectAttributes.addFlashAttribute(
           "profileError",
           "Username may use letters, numbers, dots, underscores, and hyphens (2–64 characters).");
       return "redirect:/profile";
     }
 
-    String domain = emailDomain(user);
-    String newEmail = local + "@" + domain;
+    String newEmail = isAgentAccount(user) ? username + "@" + emailDomain(user) : username;
     String oldEmail = user.getEmail().trim().toLowerCase();
     if (!newEmail.equalsIgnoreCase(oldEmail)
         && appUserRepository.existsByEmailIgnoreCase(newEmail)) {
-      redirectAttributes.addFlashAttribute("profileError", "That email address is already in use.");
+      redirectAttributes.addFlashAttribute("profileError", "That username is already in use.");
       return "redirect:/profile";
     }
 
     user.setDisplayName(normalizedName);
     user.setEmail(newEmail);
+    if (!isAgentAccount(user)) {
+      user.setEmailDomain(STAFF_EMAIL_DOMAIN);
+    }
     if (officeName != null) {
       user.setOfficeName(emptyToNull(officeName.trim()));
     }
@@ -213,6 +212,24 @@ public class ProfileController {
     SecurityContextHolder.getContext().setAuthentication(auth);
   }
 
+  private static String usernameForDisplay(AppUser user) {
+    if (user == null || user.getEmail() == null) {
+      return "";
+    }
+    String email = user.getEmail().trim().toLowerCase();
+    if (isAgentAccount(user)) {
+      return localPartFromEmail(email);
+    }
+    if (email.endsWith("@local")) {
+      return email.substring(0, email.length() - "@local".length());
+    }
+    int at = email.indexOf('@');
+    if (at > 0) {
+      return email.substring(0, at);
+    }
+    return email;
+  }
+
   private static String localPartFromEmail(String email) {
     if (email == null) {
       return "";
@@ -223,10 +240,6 @@ public class ProfileController {
       return e.substring(0, at);
     }
     return e;
-  }
-
-  private static boolean isCompanyEmail(String email, String domain) {
-    return email != null && email.trim().toLowerCase().endsWith("@" + domain);
   }
 
   private static String emailDomain(AppUser user) {

@@ -77,19 +77,18 @@
         </div>
         <div class="field">
           <label for="emailLocal" th:text="#{profile.label.username}">Username</label>
-          <div class="profile-email-row">
+          <div th:if="${profileIsAgent}" class="profile-email-row">
             <input id="emailLocal" name="emailLocal" type="text" th:value="${profileEmailLocal}"
                    required minlength="2" maxlength="64" spellcheck="false" autocomplete="username"
                    pattern="[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])"
                    th:title="#{profile.input.title}">
-            <span class="profile-email-domain" aria-hidden="true" th:text="${profileEmailDomain}">@local</span>
+            <span class="profile-email-domain" aria-hidden="true" th:text="${profileEmailDomain}">@office</span>
           </div>
+          <input th:unless="${profileIsAgent}" id="emailLocal" name="emailLocal" type="text"
+                 th:value="${profileUsername}" required minlength="2" maxlength="64" spellcheck="false"
+                 autocomplete="username" pattern="[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])"
+                 th:title="#{profile.input.title}">
         </div>
-        <p class="subtle profile-legacy-email" th:if="${profileLegacyEmail != null}"
-           th:utext="#{profile.legacy(__${profileLegacyEmail}__)}">
-          You currently sign in with <strong>external@email.com</strong>.
-          Saving will switch your account to the @local address above.
-        </p>
         <div class="field" th:if="${profileIsAgent}">
           <label for="phone" th:text="#{common.phone}">Phone</label>
           <input id="phone" name="phone" type="tel" maxlength="80" autocomplete="tel" th:value="${profilePhone}">

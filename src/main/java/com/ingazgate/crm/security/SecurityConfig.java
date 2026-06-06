@@ -110,7 +110,6 @@ public class SecurityConfig {
                     .permitAll()
                     .requestMatchers(
                         "/agents/**",
-                        "/old-students/**",
                         "/services/**")
                     .hasRole("ADMIN")
                     .requestMatchers(HttpMethod.POST, "/news")
