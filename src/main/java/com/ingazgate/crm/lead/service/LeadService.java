@@ -7,6 +7,7 @@ import com.ingazgate.crm.lead.entity.Employee;
 import com.ingazgate.crm.lead.entity.Lead;
 import com.ingazgate.crm.lead.entity.LeadStatus;
 import com.ingazgate.crm.lead.exception.ResourceNotFoundException;
+import com.ingazgate.crm.lead.exception.TelegramDeliveryException;
 import com.ingazgate.crm.lead.mapper.LeadMapper;
 import com.ingazgate.crm.lead.repository.LeadAssignmentHistoryRepository;
 import com.ingazgate.crm.lead.repository.LeadRepository;
@@ -112,7 +113,11 @@ public class LeadService {
     }
 
     String message = notificationFormatter.formatNewLead(lead, assignedAt);
-    telegramService.sendMessage(employee.getTelegramChatId(), message);
+    try {
+      telegramService.sendMessage(employee.getTelegramChatId(), message);
+    } catch (TelegramDeliveryException ex) {
+      log.error("Lead {} assigned but Telegram notification failed", lead.getId(), ex);
+    }
   }
 
   private Lead requireLead(UUID id) {

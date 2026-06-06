@@ -10,6 +10,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,8 +30,8 @@ public class AssignmentService {
   @Transactional
   public Employee assignLead(Lead lead) {
     Employee employee =
-        employeeRepository
-            .findNextForRoundRobin()
+        employeeRepository.findActiveForRoundRobin(PageRequest.of(0, 1)).stream()
+            .findFirst()
             .orElseThrow(NoActiveEmployeeException::new);
 
     OffsetDateTime assignedAt = OffsetDateTime.now();
