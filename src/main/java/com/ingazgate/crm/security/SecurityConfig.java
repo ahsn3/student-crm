@@ -122,6 +122,8 @@ public class SecurityConfig {
                         "/departments/*/update",
                         "/departments/*/delete")
                     .hasRole("ADMIN")
+                    .requestMatchers("/api/employees/**", "/api/test-telegram", "/api/test-lead")
+                    .hasRole("ADMIN")
                     .anyRequest()
                     .authenticated())
         .formLogin(
