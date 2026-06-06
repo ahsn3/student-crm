@@ -46,6 +46,13 @@ Optional environment variables:
 | `APP_BOOTSTRAP_ADMIN_EMAIL` | First admin username (default: `admin`) |
 | `APP_BOOTSTRAP_ADMIN_PASSWORD` | First admin password (default: `admin123`) |
 | `SPRING_FLYWAY_ENABLED` | Set to `false` after schema is migrated for faster boots |
+| `TELEGRAM_BOT_TOKEN` | Telegram bot token for lead assignment notifications |
+| `WHATSAPP_ACCESS_TOKEN` | Meta WhatsApp Cloud API access token |
+| `WHATSAPP_PHONE_NUMBER_ID` | WhatsApp phone number ID from Meta Business |
+| `WHATSAPP_BUSINESS_ACCOUNT_ID` | WhatsApp Business Account ID |
+| `WHATSAPP_DISPLAY_PHONE` | Display phone number (e.g. `+15556518995`) |
+| `WHATSAPP_WEBHOOK_VERIFY_TOKEN` | Verify token for Meta webhook subscription |
+| `WHATSAPP_TEST_PHONE` | Recipient phone for `/api/test-whatsapp/send` (E.164, digits only) |
 
 ## Authentication
 

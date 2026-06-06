@@ -93,7 +93,8 @@ public class SecurityConfig {
         .authenticationProvider(authenticationProvider)
         .csrf(
             csrf ->
-                csrf.csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler()))
+                csrf.csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
+                    .ignoringRequestMatchers("/api/whatsapp/webhook"))
         .authorizeHttpRequests(
             auth ->
                 auth.requestMatchers(
@@ -108,7 +109,9 @@ public class SecurityConfig {
                         "/locale",
                         "/health",
                         "/actuator/health",
-                        "/actuator/health/**")
+                        "/actuator/health/**",
+                        "/api/whatsapp/webhook",
+                        "/api/whatsapp/webhook/**")
                     .permitAll()
                     .requestMatchers(
                         "/agents/**",
@@ -124,7 +127,13 @@ public class SecurityConfig {
                         "/departments/*/update",
                         "/departments/*/delete")
                     .hasRole("ADMIN")
-                    .requestMatchers("/api/employees/**", "/api/test-telegram", "/api/test-lead", "/api/reports/**")
+                    .requestMatchers(
+                        "/api/employees/**",
+                        "/api/test-telegram",
+                        "/api/test-lead",
+                        "/api/test-whatsapp",
+                        "/api/test-whatsapp/**",
+                        "/api/reports/**")
                     .hasRole("ADMIN")
                     .anyRequest()
                     .authenticated())
