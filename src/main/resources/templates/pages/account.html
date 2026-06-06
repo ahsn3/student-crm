@@ -1,0 +1,61 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="title" th:text="#{account.title}">Edit account</div>
+        <div class="subtle" th:text="#{account.subtitle}">Company profile settings</div>
+      </div>
+      <button class="btn primary" type="button" th:text="#{account.update}">Update</button>
+    </div>
+
+    <div class="filters" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+      <div class="field">
+        <label th:text="#{account.label.name}">Name</label>
+        <input placeholder="Company name">
+      </div>
+      <div class="field">
+        <label th:text="#{account.label.type}">Type</label>
+        <select>
+          <option th:text="#{account.type.company}">Company</option>
+          <option th:text="#{account.type.individual}">Individual</option>
+        </select>
+      </div>
+      <div class="field">
+        <label th:text="#{account.label.legalName}">Legal Name</label>
+        <input placeholder="Company name">
+      </div>
+      <div class="field">
+        <label th:text="#{auth.label.email}">Email</label>
+        <input placeholder="info@example.com">
+      </div>
+      <div class="field">
+        <label th:text="#{account.label.phone}">Phone</label>
+        <input placeholder="+90 ...">
+      </div>
+      <div class="field">
+        <label th:text="#{account.label.foundationYear}">Foundation Year</label>
+        <input placeholder="2020">
+      </div>
+      <div class="field">
+        <label th:text="#{account.label.taxId}">Tax ID</label>
+        <input>
+      </div>
+      <div class="field">
+        <label th:text="#{account.label.taxOffice}">Tax Office</label>
+        <input>
+      </div>
+      <div class="field">
+        <label th:text="#{account.label.employeesCount}">Employees Count</label>
+        <input>
+      </div>
+      <div class="field">
+        <label th:text="#{common.website}">Website</label>
+        <input placeholder="https://example.com">
+      </div>
+      <div class="field" style="grid-column: 1 / -1;">
+        <label th:text="#{account.label.address}">Address</label>
+        <input>
+      </div>
+    </div>
+  </div>
+</div>

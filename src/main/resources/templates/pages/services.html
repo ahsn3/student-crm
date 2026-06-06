@@ -1,0 +1,39 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content" class="dashboard-page services-hub-page" id="servicesPage">
+  <div class="services-hub-heading">
+    <h1 class="page-heading-title" th:text="#{page.services.title}">Services</h1>
+    <p class="page-heading-sub subtle" th:text="#{services.hub.intro}">Choose a service to add or manage.</p>
+  </div>
+
+  <div class="service-page-flash" th:if="${serviceSuccessKey != null or serviceErrorKey != null}">
+    <div class="uni-flash uni-flash--ok" th:if="${serviceSuccessKey != null}" th:text="${#messages.msg(serviceSuccessKey)}">Saved.</div>
+    <div class="uni-flash uni-flash--err" th:if="${serviceErrorKey != null}" th:text="${#messages.msg(serviceErrorKey)}">Error.</div>
+  </div>
+
+  <div class="services-dashboard-grid">
+    <a
+      th:each="card : ${serviceCards}"
+      class="card services-dashboard-card services-dashboard-card--enhanced"
+      th:classappend="${card.key == 'residency-renewal' ? ' action-residency' : (card.key == 'airport-transfer' ? ' action-student' : (card.key == 'bank-account' ? ' action-programs' : (card.key == 'equivalency' ? ' action-equivalency' : ' action-universities')))}"
+      th:href="@{/services/{serviceKey}(serviceKey=${card.key})}">
+      <span class="services-card-icon" aria-hidden="true"
+            th:switch="${card.key}">
+        <span th:case="'residency-renewal'">🪪</span>
+        <span th:case="'airport-transfer'">✈️</span>
+        <span th:case="'bank-account'">🏦</span>
+        <span th:case="'equivalency'">📜</span>
+        <span th:case="*">🏠</span>
+      </span>
+      <div class="services-card-body">
+        <div class="services-card-title" th:text="${#messages.msg(card.titleKey)}">Service title</div>
+        <p class="subtle services-card-desc" th:text="${#messages.msg(card.detailsKey)}">Service details</p>
+        <span class="services-card-cta">
+          <span th:text="#{services.hub.open}">Open service</span>
+          <span class="services-card-cta-sep" aria-hidden="true">•</span>
+          <span class="services-card-cta-count"
+                th:text="${recordsByService != null and recordsByService[card.key] != null ? #lists.size(recordsByService[card.key]) : 0}">0</span>
+          <span th:text="#{services.records.count}">entries</span>
+        </span>
+      </div>
+    </a>
+  </div>
+</div>

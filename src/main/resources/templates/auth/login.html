@@ -1,0 +1,77 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" data-rama-theme-eligible="false"
+      th:lang="${#locale.language}"
+      dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <th:block th:replace="~{partials/theme-head :: themeHead}"></th:block>
+  <title th:text="|${pageTitle} • ${metaSiteName}|">Login • Student CRM</title>
+  <th:block th:replace="~{partials/social-meta :: socialMeta}"></th:block>
+  <link rel="icon" type="image/jpeg" href="/images/logo.jpg">
+  <link rel="stylesheet" th:href="@{/css/app.css(v=132)}">
+</head>
+<body class="auth-body">
+<div class="auth-chrome-fabs">
+  <th:block th:replace="~{partials/language-menu :: languageMenu ('languageMenuBtnLogin', 'languagePickerPanelLogin')}"></th:block>
+  <div class="auth-theme-fab theme-menu-wrap">
+    <button type="button" class="notification-btn theme-menu-btn" id="themeMenuBtnLogin"
+            aria-expanded="false" aria-haspopup="dialog" aria-controls="themePickerPanelLogin"
+            th:title="#{topbar.theme}">
+      <svg class="theme-menu-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      </svg>
+    </button>
+    <div class="notification-panel theme-picker-panel" id="themePickerPanelLogin" role="dialog" th:attr="aria-label=#{topbar.theme}" hidden>
+      <div class="notification-panel-header" th:text="#{topbar.theme}">Theme</div>
+      <div class="theme-picker-panel-body">
+        <div id="themePickerLogin"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="auth-shell">
+  <div class="card auth-card">
+    <div class="card-header auth-header">
+      <div>
+        <div class="auth-brand">
+          <img src="/images/logo.jpg" alt="Logo" class="auth-logo" width="56" height="56" loading="eager" decoding="async" fetchpriority="high">
+          <div>
+            <div class="auth-name" th:text="${metaSiteName}">Student CRM</div>
+            <div class="subtle" th:text="#{brand.subtitle}">Student CRM Platform</div>
+          </div>
+        </div>
+        <div class="title auth-title" th:text="#{auth.title.login}">Sign in</div>
+        <div class="subtle" th:text="#{auth.subtitle.login}">Use your email and password.</div>
+      </div>
+    </div>
+
+    <form th:action="@{/login}" method="post" class="auth-form">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <div class="field">
+        <label for="username" th:text="#{auth.label.username}">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <label class="remember-check">
+        <input id="remember-me" name="remember-me" type="checkbox">
+        <span>Remember me</span>
+      </label>
+      <div class="auth-actions auth-actions--login">
+        <div class="auth-error" th:if="${param.error}" th:text="#{auth.error.credentials}">Invalid credentials.</div>
+        <div class="auth-success" th:if="${success}" th:text="${success}">Account created.</div>
+        <div class="auth-login-btn-wrap">
+          <button class="btn primary auth-btn auth-btn-login" type="submit" th:text="#{auth.submit.login}">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script th:src="@{/js/theme.js(v=7)}"></script>
+</body>
+</html>

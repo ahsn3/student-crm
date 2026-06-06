@@ -1,0 +1,122 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div id="universityDetailPage" class="university-detail-page">
+    <a class="uni-detail-back" th:href="@{/universities}">
+      <span class="uni-detail-back-icon" aria-hidden="true">←</span>
+      <span th:text="#{page.universities.title}">Universities</span>
+    </a>
+
+    <header class="uni-detail-hero">
+      <img th:if="${university.logoUrl != null && !#strings.isEmpty(university.logoUrl)}"
+           class="uni-detail-logo" th:src="${university.logoUrl}" width="64" height="64" alt="" loading="lazy" referrerpolicy="no-referrer">
+      <div class="uni-detail-hero-text">
+        <h1 class="uni-detail-name" th:text="${university.name}">University</h1>
+        <p class="subtle" th:if="${university.country != null && !#strings.isEmpty(university.country)}" th:text="${university.country}">Turkey</p>
+      </div>
+    </header>
+
+    <div class="uni-detail-layout">
+      <div class="uni-detail-main">
+        <section class="card uni-detail-programs-card">
+          <div class="uni-detail-section-head">
+            <div>
+              <h2 class="uni-detail-section-title" th:text="#{nav.programs}">Programs</h2>
+              <p class="subtle uni-detail-section-sub">
+                <span th:text="#{totalPrograms}">Total programs:</span>
+                <span th:text="${#lists.size(uniPrograms)}">0</span>
+              </p>
+            </div>
+          </div>
+          <div class="field uni-program-search-wrap">
+            <label for="uniProgramSearch" th:text="#{common.search}">Search</label>
+            <input type="search" id="uniProgramSearch" th:attr="placeholder=#{filterPrograms}" autocomplete="off">
+          </div>
+          <div class="uni-program-list" id="uniProgramList">
+            <div th:if="${#lists.isEmpty(uniPrograms)}" class="uni-program-empty subtle" th:text="#{uni.emptyPrograms}">
+              No programs listed for this university yet.
+            </div>
+            <div th:each="p : ${uniPrograms}"
+                 class="uni-program-row"
+                 th:with="sym=${university.currency == 'EUR' ? '€' : '$'}"
+                 th:data-search="${#strings.toLowerCase((p.degree != null ? p.degree : '') + ' ' + p.name + ' ' + (p.nameAr != null ? p.nameAr : '') + ' ' + (p.language != null ? p.language : ''))}">
+              <div class="uni-program-main">
+                <div class="uni-program-title">
+                  <span class="uni-program-degree" th:text="${p.degree != null && !#strings.isEmpty(p.degree) ? '[' + p.degree + ']' : '[—]'}">[Bachelor]</span>
+                  <span th:text="${p.name}">Program name</span>
+                </div>
+                <div th:if="${p.nameAr != null && !#strings.isEmpty(p.nameAr)}" class="uni-program-name-ar subtle" dir="auto" th:text="${p.nameAr}">Arabic</div>
+                <div class="uni-program-price-stack subtle">
+                  <span th:if="${p.beforeDiscount != null}"><span th:text="#{uni.price.before}">Before</span> <span th:text="|${sym}${#numbers.formatDecimal(p.beforeDiscount, 1, 0)}|"></span></span>
+                  <span th:if="${p.cost != null}"><span th:text="#{uni.price.cost}">Cost</span> <span th:text="|${sym}${#numbers.formatDecimal(p.cost, 1, 0)}|"></span></span>
+                  <span th:if="${p.cashPrice != null}"><span th:text="#{uni.price.cash}">Cash</span> <span th:text="|${sym}${#numbers.formatDecimal(p.cashPrice, 1, 0)}|"></span></span>
+                  <span th:if="${p.beforeDiscount == null && p.cost == null && p.cashPrice == null}">—</span>
+                </div>
+              </div>
+              <div class="uni-program-meta">
+                <span class="prog-meta-item" th:classappend="${p.available} ? '' : ' prog-meta-item--bad'">
+                  <svg th:if="${p.available}" class="prog-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6L9 17l-5-5"/></svg>
+                  <svg th:unless="${p.available}" class="prog-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9 9l6 6m0-6l-6 6"/></svg>
+                  <span th:if="${p.available}" th:text="#{uni.program.available}">Available</span>
+                  <span th:unless="${p.available}" th:text="#{uni.program.notAvailable}">Not available</span>
+                </span>
+                <span class="prog-meta-item">
+                  <svg class="prog-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 5h10M4 12h16M4 19h8"/><path fill="none" stroke="currentColor" stroke-width="1.6" d="M16 5l3 3-3 3"/></svg>
+                  <span th:text="${p.language != null && !#strings.isEmpty(p.language) ? p.language : '—'}">Turkish</span>
+                </span>
+                <span class="prog-meta-item">
+                  <span th:if="${p.years != null}" th:text="|${p.years} #{common.years}|">4 Years</span>
+                  <span th:if="${p.years == null}">—</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section th:if="${university.description != null && !#strings.isEmpty(university.description)}"
+                 class="card uni-detail-description-card">
+          <h2 class="uni-detail-section-title" th:text="#{about}">About</h2>
+          <div class="uni-detail-description subtle" dir="auto" th:text="${university.description}">Description</div>
+        </section>
+      </div>
+
+      <aside class="uni-detail-aside">
+        <section th:if="${currentUserCanManageAgents}" class="card uni-side-card">
+          <h2 class="uni-side-card-title" th:text="#{universities.modal.logoFile}">University logo</h2>
+          <p class="subtle uni-side-card-sub" th:text="#{universities.modal.logoFileHint}">PNG, JPG, or WEBP up to 1 MB.</p>
+          <form th:action="@{|/universities/${university.id}/logo|}" method="post" enctype="multipart/form-data" class="profile-form" style="margin-top:10px;">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <div class="field">
+              <input type="file" name="logoFile" accept="image/png,image/jpeg,image/webp">
+            </div>
+            <div class="field">
+              <label class="subtle" th:text="#{universities.modal.logoUrl}">Logo URL</label>
+              <input name="logoUrl" th:value="${university.logoUrl}" th:attr="placeholder=#{universities.modal.logoHint}">
+            </div>
+            <button type="submit" class="btn primary" th:text="#{common.save}">Save</button>
+          </form>
+        </section>
+        <section class="card uni-side-card">
+          <h2 class="uni-side-card-title" th:text="#{campuses}">Campuses</h2>
+          <p class="subtle uni-side-card-sub" th:text="#{uni.campuses.subtitle}">All the campuses of the university</p>
+          <p class="subtle uni-side-card-empty" th:text="#{uni.campuses.empty}">No campus addresses on file yet.</p>
+        </section>
+        <section class="card uni-side-card">
+          <h2 class="uni-side-card-title" th:text="#{information}">Information</h2>
+          <dl class="uni-info-dl">
+            <dt th:text="#{common.currency}">Currency</dt>
+            <dd th:text="${university.currency != null && !#strings.isEmpty(university.currency) ? university.currency : '—'}">USD</dd>
+            <dt th:text="#{common.programs}">Programs</dt>
+            <dd th:text="${#lists.size(uniPrograms)}">0</dd>
+            <dt th:text="#{campuses}">Campuses</dt>
+            <dd th:text="${university.campusesCount != null ? university.campusesCount : '—'}">0</dd>
+            <dt th:text="#{common.website}">Website</dt>
+            <dd>
+              <a th:if="${university.website != null && !#strings.isEmpty(university.website)}"
+                 class="uni-info-link" th:href="${university.website}" target="_blank" rel="noopener noreferrer" th:text="${university.website}">https://</a>
+              <span th:if="${university.website == null || #strings.isEmpty(university.website)}">—</span>
+            </dd>
+          </dl>
+        </section>
+      </aside>
+    </div>
+  </div>
+</div>

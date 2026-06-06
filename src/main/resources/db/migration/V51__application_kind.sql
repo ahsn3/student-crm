@@ -1,0 +1,3 @@
+ALTER TABLE application ADD COLUMN IF NOT EXISTS kind TEXT NOT NULL DEFAULT 'NEW';
+
+UPDATE application SET kind = 'NEW' WHERE kind IS NULL OR TRIM(kind) = '';

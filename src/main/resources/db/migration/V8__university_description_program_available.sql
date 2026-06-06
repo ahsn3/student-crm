@@ -1,0 +1,5 @@
+ALTER TABLE university
+  ADD COLUMN IF NOT EXISTS description TEXT;
+
+ALTER TABLE program
+  ADD COLUMN IF NOT EXISTS available BOOLEAN NOT NULL DEFAULT true;

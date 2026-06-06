@@ -1,0 +1,88 @@
+spring:
+  application:
+    name: student-crm
+  jackson:
+    time-zone: Europe/Istanbul
+  messages:
+    basename: messages
+    encoding: UTF-8
+  thymeleaf:
+    cache: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+      file-size-threshold: 2MB
+      location: /tmp
+  jpa:
+    hibernate:
+      # Flyway owns schema; validate on every boot was slowing Railway deploys by minutes.
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+    # true: Hibernate session stays open through view render (avoids LazyInitializationException on service pages, etc.)
+    open-in-view: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+    validate-on-migrate: false
+    repair-on-migrate: false
+    ignore-missing-migrations: true
+    connect-retries: 3
+    lock-retry-count: 10
+    out-of-order: true
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+      connection-timeout: 30000
+      initialization-fail-timeout: 60000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: false
+  health:
+    db:
+      enabled: false
+    livenessstate:
+      enabled: false
+    readinessstate:
+      enabled: false
+
+server:
+  port: ${PORT:8080}
+  forward-headers-strategy: framework
+  tomcat:
+    max-swallow-size: -1
+  compression:
+    enabled: true
+    mime-types: text/html,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml,text/xml,image/svg+xml
+    min-response-size: 1024
+
+app:
+  display-timezone: Europe/Istanbul
+  pdf:
+    company-name: ${APP_PDF_COMPANY_NAME:Student CRM}
+    contact-phone: ${APP_PDF_PHONE:}
+    contact-email: ${APP_PDF_EMAIL:}
+    display-timezone: ${APP_PDF_TIMEZONE:Europe/Istanbul}
+  security:
+    bootstrap-admin-email: ${APP_BOOTSTRAP_ADMIN_EMAIL:admin}
+    bootstrap-admin-password: ${APP_BOOTSTRAP_ADMIN_PASSWORD:admin123}
+  meta:
+    site-url: ${APP_SITE_URL:}
+    site-name: ${APP_META_SITE_NAME:Student CRM}
+    description: ${APP_META_DESCRIPTION:Manage students, applications, partner universities, and programs in one secure CRM.}
+  theme:
+    rama-emails: ${APP_RAMA_THEME_EMAILS:}
+

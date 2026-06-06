@@ -1,0 +1,29 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="languageMenu (menuBtnId, menuPanelId)">
+  <div class="theme-menu-wrap language-menu-wrap">
+    <button type="button" class="notification-btn theme-menu-btn" th:id="${menuBtnId}"
+            aria-expanded="false" aria-haspopup="dialog" th:attr="aria-controls=${menuPanelId}"
+            th:title="#{nav.language}">
+      <svg class="theme-menu-icon language-menu-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.75"></circle>
+        <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></line>
+        <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></line>
+        <path d="M12 3c-3.5 4.25-3.5 13.75 0 18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+        <path d="M12 3c3.5 4.25 3.5 13.75 0 18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+        <path d="M3.5 9.25C7.5 7.4 16.5 7.4 20.5 9.25" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+        <path d="M3.5 14.75C7.5 16.6 16.5 16.6 20.5 14.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+      </svg>
+    </button>
+    <div class="notification-panel theme-picker-panel" th:id="${menuPanelId}" role="dialog"
+         th:attr="aria-label=#{nav.language}" hidden>
+      <div class="notification-panel-header" th:text="#{nav.language}">Language</div>
+      <div class="theme-picker-panel-body">
+        <div class="theme-picker theme-picker--menu language-picker" role="group">
+          <a th:href="@{/locale(lang=en)}" class="theme-chip lang-chip"
+             th:classappend="${#locale.language == 'en'} ? ' is-active'">English</a>
+          <a th:href="@{/locale(lang=ar)}" class="theme-chip lang-chip"
+             th:classappend="${#locale.language == 'ar'} ? ' is-active'">العربية</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</th:block>

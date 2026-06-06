@@ -1,0 +1,91 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:lang="${#locale.language}"
+      dir="ltr"
+      th:attr="data-rama-theme-eligible=${ramaThemeEligible}">
+<head>
+  <meta charset="utf-8">
+  <meta th:if="${_csrf != null}" name="csrf-token" th:content="${_csrf.token}">
+  <meta th:if="${_csrf != null}" name="csrf-header" th:content="${_csrf.headerName}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <th:block th:replace="~{partials/theme-head :: themeHead}"></th:block>
+  <title th:text="|${pageTitle} • ${metaSiteName}|">Student CRM</title>
+  <meta name="description" th:content="${metaDescription}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" th:content="${metaSiteName}">
+  <meta property="og:title" th:content="|${pageTitle} • ${metaSiteName}|">
+  <meta property="og:description" th:content="${metaDescription}">
+  <meta property="og:url" th:content="${metaUrl}">
+  <meta property="og:image" th:content="${metaImageUrl}">
+  <meta property="og:image:alt" th:content="|${metaSiteName} logo|">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" th:content="|${pageTitle} • ${metaSiteName}|">
+  <meta name="twitter:description" th:content="${metaDescription}">
+  <meta name="twitter:image" th:content="${metaImageUrl}">
+  <link rel="icon" type="image/jpeg" href="/images/logo.jpg">
+  <link th:if="${currentUserHasAvatar and currentUserId != null}"
+        rel="preload"
+        as="image"
+        th:href="@{/users/{id}/avatar(id=${currentUserId})}">
+  <link rel="stylesheet" th:href="@{/css/app.css(v=182)}">
+</head>
+<body th:classappend="${bodyPageClass}">
+<script>
+  /* Ensure shell UI is usable even if bundled app.js fails to load or throws before markReady. */
+  (function () {
+    function markReady() {
+      if (document.body) {
+        document.body.classList.add("is-ready");
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", markReady, { once: true });
+    } else {
+      markReady();
+    }
+  })();
+</script>
+<div class="app">
+  <aside th:replace="~{partials/sidebar :: sidebar(activeNav=${activeNav})}"></aside>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="content">
+    <header th:replace="~{partials/topbar :: topbar}"></header>
+    <main class="main" th:classappend="${bodyPageClass}">
+      <div th:replace="~{${contentTemplate} :: content}"></div>
+    </main>
+  </div>
+</div>
+
+<div id="logoutConfirmModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="logoutConfirmTitle">
+  <div class="modal-backdrop" data-logout-cancel tabindex="-1"></div>
+  <div class="modal-dialog modal-dialog--logout">
+    <div class="modal-dialog-header">
+      <h2 id="logoutConfirmTitle" class="modal-dialog-title" th:text="#{shell.logout.title}">Sign out</h2>
+      <button type="button" class="modal-close" data-logout-cancel th:attr="aria-label=#{shell.logout.close}">×</button>
+    </div>
+    <div class="modal-form modal-form--stack logout-confirm-body">
+      <p class="logout-confirm-msg" th:text="#{shell.logout.message}">Are you sure you want to sign out?</p>
+      <div class="modal-actions">
+        <button type="button" class="btn" data-logout-cancel th:text="#{shell.logout.cancel}">Cancel</button>
+        <button type="button" class="btn btn-logout-confirm" id="logoutConfirmBtn" th:text="#{shell.logout.confirm}">Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script th:src="@{/js/theme.js(v=9)}"></script>
+<script th:src="@{/js/app.js(v=66)}"></script>
+<th:block th:if="${contentTemplate == 'pages/notifications'}">
+  <script th:src="@{/js/notifications-page.js(v=1)}"></script>
+</th:block>
+<th:block th:if="${contentTemplate == 'pages/programs'}">
+  <script th:src="@{/js/programs-page.js(v=43)}"></script>
+</th:block>
+<th:block th:if="${contentTemplate == 'pages/profile'}">
+  <script th:src="@{/js/profile-page.js(v=2)}"></script>
+</th:block>
+<th:block th:if="${bodyPageClass == 'page-application-detail'}">
+  <script th:src="@{/js/application-detail-page.js(v=15)}"></script>
+</th:block>
+</body>
+</html>

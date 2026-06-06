@@ -1,0 +1,51 @@
+{
+  "screenshots": 21,
+  "total_unique_programs": 168,
+  "by_university": {
+    "Bahçeşehir University": 101,
+    "Istanbul Health and Technology University": 22,
+    "KSTU University": 45
+  },
+  "availability_by_university": {
+    "Bahçeşehir University": {
+      "available": 100,
+      "quota_full": 1
+    },
+    "Istanbul Health and Technology University": {
+      "available": 22,
+      "quota_full": 0
+    },
+    "KSTU University": {
+      "available": 43,
+      "quota_full": 2
+    }
+  },
+  "expected_from_portal": {
+    "Bahçeşehir University": 118,
+    "KSTU University": 50,
+    "Istanbul Health and Technology University": 26
+  },
+  "per_image_row_counts": {
+    "Screenshot_2026-05-17_at_15.20.53-0de14cf9-902b-42b2-86e3-6de36b6bcfd2.png": 10,
+    "Screenshot_2026-05-17_at_15.20.55-11214434-3447-45de-bd67-4408bb8293ab.png": 8,
+    "Screenshot_2026-05-17_at_15.20.59-d9d2d8ad-3df3-47eb-a828-0babd95c489b.png": 10,
+    "Screenshot_2026-05-17_at_15.21.01-78f842d7-41ff-4679-9c2b-7eae93a15d85.png": 8,
+    "Screenshot_2026-05-17_at_15.21.05-9fe4441e-4c30-449b-b624-0d001aeb0952.png": 8,
+    "Screenshot_2026-05-17_at_15.21.07-5d547ffd-dc7f-4f30-a33c-ba023820273a.png": 8,
+    "Screenshot_2026-05-17_at_15.21.18-e69f18d1-23f3-4d6a-ab31-ce715c25097f.png": 10,
+    "Screenshot_2026-05-17_at_15.21.19-e007b14c-525b-46bc-9345-9f7975cc25fd.png": 8,
+    "Screenshot_2026-05-17_at_15.21.24-58c0d890-eea7-41f9-aa01-78f1497b6a48.png": 8,
+    "Screenshot_2026-05-17_at_15.21.25-a954ef3c-7435-45a8-81f4-51d31a902bc0.png": 8,
+    "Screenshot_2026-05-17_at_15.21.29-2e8ade68-219c-48ee-aa71-ceb5ce26f695.png": 10,
+    "Screenshot_2026-05-17_at_15.21.30-09940432-efa6-46dd-98de-219013ef7d59.png": 7,
+    "Screenshot_2026-05-17_at_15.21.34-31f81b16-539a-4607-a2d3-541ba42c8845.png": 10,
+    "Screenshot_2026-05-17_at_15.21.35-67e73b5d-7dd2-4242-86c4-bf46afba9d30.png": 7,
+    "Screenshot_2026-05-17_at_15.21.39-6192caaa-f529-4e58-a824-7e710bef2c75.png": 8,
+    "Screenshot_2026-05-17_at_15.21.41-328fe329-d1c4-47d1-97c9-2537ed50f00c.png": 9,
+    "Screenshot_2026-05-17_at_15.21.45-fab0a00b-f3d6-46bd-98e7-d4cf60c73617.png": 8,
+    "Screenshot_2026-05-17_at_15.21.46-8e9b3f91-b028-47c6-9310-f5189f86c1d3.png": 8,
+    "Screenshot_2026-05-17_at_15.22.03-99ac5b86-bcc5-4c9e-89b4-a3242679e5f1.png": 8,
+    "Screenshot_2026-05-17_at_15.22.04-93fe692c-3e74-4454-ab7a-7a66e68b2390.png": 8,
+    "Screenshot_2026-05-17_at_15.22.09-a6b32614-0d46-47b4-8bce-7567a09a5bcc.png": 6
+  }
+}

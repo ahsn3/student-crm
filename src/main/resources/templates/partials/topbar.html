@@ -1,0 +1,92 @@
+<header xmlns:th="http://www.thymeleaf.org" class="topbar" th:fragment="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-start">
+      <button class="hamburger-btn" id="hamburgerBtn" type="button" th:attr="aria-label=#{topbar.menu.toggle}">
+        ☰
+      </button>
+      <div class="topbar-search-slot" id="topbarSearchSlot"
+           th:attr="data-msg-search-empty=#{topbar.search.empty},
+                    data-msg-search-no-results=#{topbar.search.noResults}">
+        <button type="button" class="search-icon-btn" id="topbarSearchToggle"
+                aria-expanded="false" aria-controls="topbarSearchPanel" th:attr="aria-label=#{topbar.search.open}">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <div class="search" id="topbarSearchPanel" role="search">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+          <input type="search" id="topbarSearchInput" th:placeholder="#{topbar.search.placeholder}" th:attr="aria-label=#{topbar.search.placeholder}" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="topbarSearchResults" aria-autocomplete="list">
+        </div>
+        <div class="topbar-search-results" id="topbarSearchResults" role="listbox" hidden></div>
+      </div>
+    </div>
+    <div class="topbar-end">
+      <div class="notifications-wrap"
+           th:attr="data-notifications-live=${true},
+                    data-user-id=${currentUserId != null ? currentUserId : ''},
+                    data-show-all-url=@{/notifications},
+                    data-msg-empty=#{topbar.notifications.empty},
+                    data-msg-clear-all=#{topbar.notifications.clearAll},
+                    data-msg-show-all=#{topbar.notifications.showAll},
+                    data-msg-dismiss=#{topbar.notifications.dismiss}">
+        <button type="button" class="notification-btn" id="notificationBtn"
+                aria-expanded="false" aria-haspopup="dialog" aria-controls="notificationPanel"
+                th:title="#{topbar.notifications}">
+          <span class="notification-badge" id="notificationUnreadBadge"
+                th:classappend="${topbarUnreadNotificationCount > 0} ? ' notification-badge--visible' : ''"
+                th:text="${topbarUnreadNotificationCount > 99 ? '99+' : topbarUnreadNotificationCount}">0</span>
+          <svg class="notification-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+          </svg>
+        </button>
+        <div class="notification-panel" id="notificationPanel" role="dialog" th:attr="aria-label=#{topbar.notifications.title}" hidden>
+          <div class="notification-panel-header" th:text="#{topbar.notifications.title}">Notifications</div>
+          <div class="notification-panel-body">
+            <div class="notification-card-list" id="notificationListHost">
+              <p class="subtle notification-panel-empty" th:if="${#lists.isEmpty(topbarNotifications)}"
+                 th:text="#{topbar.notifications.empty}">No notifications yet.</p>
+              <button type="button" class="notification-card"
+                      th:each="n : ${topbarNotifications}"
+                      th:classappend="${!n.read} ? ' notification-card--unread' : ''"
+                      th:attr="data-notification-id=${n.id},
+                               data-link-url=${n.linkUrl != null ? n.linkUrl : ''}">
+                <div class="notification-card-message" th:text="${n.message}">Notification</div>
+                <div class="notification-card-meta subtle"
+                     th:text="${n.createdAt != null ? @displayTime.format(n.createdAt, 'yyyy-MM-dd HH:mm') : ''}">—</div>
+              </button>
+            </div>
+          </div>
+          <div class="notification-panel-footer">
+            <button type="button" class="notification-panel-action" id="notificationClearAll"
+                    th:text="#{topbar.notifications.clearAll}">Clear all</button>
+            <a class="notification-panel-action notification-panel-action--primary" id="notificationShowAll"
+               th:href="@{/notifications}" th:text="#{topbar.notifications.showAll}">Show all</a>
+          </div>
+        </div>
+      </div>
+      <th:block th:replace="~{partials/language-menu :: languageMenu ('languageMenuBtn', 'languagePickerPanel')}"></th:block>
+      <div class="theme-menu-wrap">
+        <button type="button" class="notification-btn theme-menu-btn" id="themeMenuBtn"
+                aria-expanded="false" aria-haspopup="dialog" aria-controls="themePickerPanel"
+                th:title="#{topbar.theme}">
+          <svg class="theme-menu-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </button>
+        <div class="notification-panel theme-picker-panel" id="themePickerPanel" role="dialog" th:attr="aria-label=#{topbar.theme}" hidden>
+          <div class="notification-panel-header" th:text="#{topbar.theme}">Theme</div>
+          <div class="theme-picker-panel-body">
+            <div id="themePicker"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,69 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content" id="notificationsPage"
+     th:attr="data-msg-mark-all-error=#{notifications.markAllRead.error}">
+  <div class="card notifications-page-card">
+    <div class="card-header">
+      <div>
+        <div class="title" th:text="#{page.notifications.title}">Notifications</div>
+        <div class="subtle" th:text="#{notifications.subtitle}">All alerts for your account</div>
+      </div>
+    </div>
+
+    <section class="notifications-section" th:if="${!#lists.isEmpty(unreadNotifications)}">
+      <div class="notifications-section-header">
+        <h2 class="notifications-section-title" th:text="#{notifications.unread.title}">Unread Notifications</h2>
+        <button type="button" class="btn notifications-mark-all-btn" id="notificationsMarkAllRead"
+                th:text="#{notifications.markAllRead}">Mark all as read</button>
+      </div>
+      <div class="notifications-list">
+        <article th:each="n : ${unreadNotifications}" class="notification-page-item notification-page-item--unread"
+                 th:attr="data-notification-id=${n.id},
+                          data-link-url=${n.linkUrl != null ? n.linkUrl : ''}">
+          <div class="notification-page-item-main">
+            <span class="notification-page-tag" th:if="${n.linkUrl != null and #strings.startsWith(n.linkUrl, '/applications')}"
+                  th:text="#{nav.applications}">Applications</span>
+            <span class="notification-page-tag" th:if="${n.linkUrl != null and #strings.startsWith(n.linkUrl, '/students')}"
+                  th:text="#{nav.students}">Students</span>
+            <span class="notification-page-tag" th:if="${n.linkUrl != null and (#strings.startsWith(n.linkUrl, '/news') or #strings.startsWith(n.linkUrl, '/complaints'))}"
+                  th:text="#{notifications.tag.updates}">Updates</span>
+            <p class="notification-page-message" th:text="${n.message}">Message</p>
+            <p class="notification-page-meta subtle">
+              <span th:text="${n.createdAt != null ? @displayTime.format(n.createdAt, 'yyyy-MM-dd HH:mm:ss') : ''}">—</span>
+              <span class="notification-page-relative" th:attr="data-created-at=${n.createdAt != null ? n.createdAt.toString() : ''}"></span>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="notifications-section notifications-section--past">
+      <div class="notifications-section-header">
+        <h2 class="notifications-section-title" th:text="#{notifications.past.title}">Past Notifications</h2>
+      </div>
+      <p class="subtle notifications-empty" th:if="${#lists.isEmpty(pastNotifications)}"
+         th:text="#{notifications.emptyPast}">No past notifications.</p>
+      <div class="notifications-list" th:if="${!#lists.isEmpty(pastNotifications)}">
+        <article th:each="n : ${pastNotifications}" class="notification-page-item"
+                 th:attr="data-notification-id=${n.id},
+                          data-link-url=${n.linkUrl != null ? n.linkUrl : ''}">
+          <div class="notification-page-item-main">
+            <span class="notification-page-tag" th:if="${n.linkUrl != null and #strings.startsWith(n.linkUrl, '/applications')}"
+                  th:text="#{nav.applications}">Applications</span>
+            <span class="notification-page-tag" th:if="${n.linkUrl != null and #strings.startsWith(n.linkUrl, '/students')}"
+                  th:text="#{nav.students}">Students</span>
+            <span class="notification-page-tag" th:if="${n.linkUrl != null and (#strings.startsWith(n.linkUrl, '/news') or #strings.startsWith(n.linkUrl, '/complaints'))}"
+                  th:text="#{notifications.tag.updates}">Updates</span>
+            <p class="notification-page-message" th:text="${n.message}">Message</p>
+            <p class="notification-page-meta subtle">
+              <span th:text="${n.createdAt != null ? @displayTime.format(n.createdAt, 'yyyy-MM-dd HH:mm:ss') : ''}">—</span>
+              <span class="notification-page-relative" th:attr="data-created-at=${n.createdAt != null ? n.createdAt.toString() : ''}"></span>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <p class="subtle notifications-empty notifications-empty--all"
+       th:if="${#lists.isEmpty(unreadNotifications) and #lists.isEmpty(pastNotifications)}"
+       th:text="#{topbar.notifications.empty}">No notifications yet.</p>
+  </div>
+</div>

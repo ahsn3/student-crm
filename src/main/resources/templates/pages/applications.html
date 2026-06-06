@@ -1,0 +1,221 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content" id="applicationsPage"
+     th:attr="data-open-edit-id=${openEditApplicationId != null ? openEditApplicationId : ''},data-msg-load-error=#{applications.edit.loadError}">
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="title" th:text="#{page.applications.title}">Applications</div>
+        <div class="subtle" th:text="#{applications.title}">Track student applications</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap: wrap;">
+        <a class="btn primary" th:href="@{/applications/new}" th:text="#{applications.create}">+ Create new application</a>
+      </div>
+    </div>
+
+    <div class="subtle uni-flash uni-flash--ok" th:if="${applicationSuccessKey}" th:text="#{__${applicationSuccessKey}__}">Saved.</div>
+    <div class="subtle uni-flash uni-flash--err" th:if="${applicationErrorKey}" th:text="#{__${applicationErrorKey}__}">Error</div>
+    <div id="applicationEditFetchError" class="subtle uni-flash uni-flash--err" hidden role="alert"></div>
+
+      <div class="card applications-filters-card" style="background: rgba(255,255,255,.01); margin-bottom: 12px;">
+        <div style="font-weight:800; margin-bottom: 10px;" th:text="#{applications.filters.title}">Advanced Filters</div>
+        <div class="crm-scroll-area applications-filters-scroll">
+        <form class="filters crm-app-form" method="get" th:action="@{/applications}">
+          <div class="field programs-filter-select programs-filter-select--uni">
+            <label for="appFilterSemester" th:text="#{applications.filter.semester}">Semester</label>
+            <select id="appFilterSemester" name="semester" class="prog-uni-native"
+                    th:attr="data-placeholder=#{applications.filter.semester}">
+              <option value="" th:text="#{applications.filter.all}">All</option>
+              <option th:each="sem : ${semesterOptions}" th:value="${sem}" th:text="${sem}"
+                      th:selected="${sem == filterSemester}">Sem</option>
+            </select>
+          </div>
+          <div class="field programs-filter-select programs-filter-select--uni">
+            <label for="appFilterStatus" th:text="#{common.status}">Status</label>
+            <select id="appFilterStatus" name="status" class="prog-uni-native"
+                    th:attr="data-placeholder=#{common.status}">
+              <option value="" th:text="#{applications.filter.all}">All</option>
+              <option th:each="st : ${applicationStatuses}" th:value="${st}"
+                      th:text="${#strings.replace(st, '_', ' ')}"
+                      th:selected="${st == filterStatus}">Status</option>
+            </select>
+          </div>
+          <div class="field programs-filter-select programs-filter-select--uni">
+            <label for="appFilterUniversity" th:text="#{applications.filter.universities}">Universities</label>
+            <select id="appFilterUniversity" name="universityId" class="prog-uni-native"
+                    th:attr="data-placeholder=#{applications.filter.universities}">
+              <option value="" th:text="#{applications.filter.all}">All</option>
+              <option th:each="u : ${universities}" th:value="${u.id}" th:text="${u.name}"
+                      th:selected="${filterUniversityId != null && filterUniversityId == u.id}">Uni</option>
+            </select>
+          </div>
+          <div class="field app-program-filter-field">
+            <label for="appProgramFilterInput" th:text="#{nav.programs}">Programs</label>
+            <div class="app-program-filter">
+              <input type="search"
+                     id="appProgramFilterInput"
+                     class="app-program-filter-input"
+                     autocomplete="off"
+                     th:attr="placeholder=#{applications.filter.programSearch}"
+                     th:value="${filterProgramLabel}">
+              <input type="hidden" name="programId" id="appProgramFilterId"
+                     th:value="${filterProgramId}">
+              <div id="appProgramFilterMenu" class="app-program-filter-menu" hidden role="listbox"></div>
+            </div>
+          </div>
+          <div class="field" style="align-self: end;">
+            <button type="submit" class="btn primary" th:text="#{programs.applyFilters}">Apply</button>
+          </div>
+        </form>
+        </div>
+      </div>
+
+    <div class="crm-scroll-area table-scroll-wrap">
+      <table class="table">
+        <thead>
+        <tr>
+          <th th:text="#{applications.col.number}">Number</th>
+          <th th:text="#{applications.col.type}">Type</th>
+          <th th:text="#{common.status}">Status</th>
+          <th th:text="#{applications.col.student}">Student</th>
+          <th th:text="#{applications.col.program}">Program</th>
+          <th th:text="#{applications.col.notes}">Notes</th>
+          <th th:text="#{applications.filter.semester}">Semester</th>
+          <th th:text="#{students.col.created}">Created At</th>
+          <th th:text="#{applications.col.lastUpdate}">Last Update</th>
+          <th th:text="#{common.actions}">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(applications)}">
+          <td colspan="10" class="empty" th:text="#{applications.empty}">No applications found.</td>
+        </tr>
+        <tr th:each="a : ${applications}" th:attr="data-application-id=${a.id}">
+          <td>
+            <a class="tag" th:href="@{/applications/{id}(id=${a.id})}" th:text="${a.applicationNumber}">IN-000001</a>
+          </td>
+          <td>
+            <span th:if="${a.applicationType == null}" class="tag">—</span>
+            <span th:if="${a.applicationType != null}"
+                  class="tag app-type"
+                  th:classappend="${'app-type--' + #strings.toLowerCase(a.applicationType)}"
+                  th:text="${#strings.capitalize(#strings.toLowerCase(a.applicationType))}">New</span>
+          </td>
+          <td>
+            <span th:if="${a.status == null}" class="tag">—</span>
+            <span th:if="${a.status != null}"
+                  class="tag app-status"
+                  th:classappend="${'app-status--' + #strings.toLowerCase(#strings.replace(a.status, '_', '-'))}"
+                  th:text="${#strings.replace(a.status, '_', ' ')}">NEW</span>
+          </td>
+          <td>
+            <a th:if="${a.student != null}" class="table-student-name" th:href="@{/students/{id}(id=${a.student.id})}" th:text="${a.student.fullName}">Student</a>
+            <span th:if="${a.student == null}">—</span>
+          </td>
+          <td th:text="${a.department != null ? (a.department.university != null ? a.department.university.name + ' — ' + a.department.name : a.department.name) : '—'}">—</td>
+          <td class="table-notes-cell">
+            <span th:if="${#strings.isEmpty(a.notes)}" th:text="'—'">—</span>
+            <span th:if="${!#strings.isEmpty(a.notes)}" th:text="${#strings.abbreviate(a.notes, 96)}">…</span>
+          </td>
+          <td th:text="${a.semester}">—</td>
+          <td th:text="${a.createdAt != null ? @displayTime.format(a.createdAt, 'yyyy-MM-dd HH:mm') : '—'}">—</td>
+          <td th:text="${a.updatedAt != null ? @displayTime.format(a.updatedAt, 'yyyy-MM-dd HH:mm') : '—'}">—</td>
+          <td class="table-actions-cell">
+            <div class="table-actions-group">
+              <a class="btn-view-pill"
+                 th:href="@{/applications/{id}(id=${a.id})}"
+                 th:attr="aria-label=#{applications.actions.view}">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                <span th:text="#{common.view}">View</span>
+              </a>
+              <button th:if="${currentUserCanManageAgents}" type="button"
+                      class="btn btn--compact application-change-status-open"
+                      th:attr="data-app-id=${a.id},data-app-status=${a.status}"
+                      th:text="#{applications.actions.changeStatus}">Change status</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="applicationEditModal" class="modal-overlay" role="dialog" aria-modal="true"
+       aria-labelledby="applicationEditModalTitle">
+    <div class="modal-backdrop" data-app-edit-close tabindex="-1"></div>
+    <div class="modal-dialog modal-dialog--application-edit">
+      <div class="modal-dialog-header">
+        <h2 id="applicationEditModalTitle" class="modal-dialog-title" th:text="#{page.applicationsEdit.title}">Edit application</h2>
+        <button type="button" class="modal-close" data-app-edit-close-btn
+                th:attr="aria-label=#{common.close}">×</button>
+      </div>
+      <div class="subtle uni-flash uni-flash--err" id="applicationEditModalError" hidden role="alert"></div>
+      <form id="applicationEditModalForm" method="post" class="modal-form modal-form--stack crm-app-form">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <div class="field">
+          <label th:text="#{applications.col.number}">Number</label>
+          <input type="text" id="applicationEditModalNumber" readonly class="profile-readonly" tabindex="-1">
+        </div>
+        <div class="field">
+          <label th:text="#{applications.col.student}">Student</label>
+          <input type="text" id="applicationEditModalStudent" readonly class="profile-readonly" tabindex="-1">
+        </div>
+        <div class="field programs-filter-select programs-filter-select--uni">
+          <label for="applicationEditModalProgramId" th:text="#{nav.programs}">Program</label>
+          <select id="applicationEditModalProgramId" name="programId" class="prog-uni-native" required
+                  th:attr="data-placeholder=#{applications.modal.selectProgram}">
+            <option value="" th:text="#{applications.modal.selectProgram}">Select program…</option>
+            <option th:each="p : ${programs}" th:value="${p.id}"
+                    th:text="${p.university != null && p.university.name != null && !#strings.isEmpty(p.university.name) ? p.university.name + ' — ' + p.name : p.name}">Program</option>
+          </select>
+        </div>
+        <div class="field programs-filter-select programs-filter-select--uni">
+          <label for="applicationEditModalSemester" th:text="#{applications.filter.semester}">Semester</label>
+          <select id="applicationEditModalSemester" name="semester" class="prog-uni-native"
+                  th:attr="data-placeholder=#{applications.filter.semester}">
+            <option th:each="sem : ${semesterOptions}" th:value="${sem}" th:text="${sem}">Fall 2026</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="applicationEditModalNotes" th:text="#{applications.col.notes}">Notes</label>
+          <textarea id="applicationEditModalNotes" name="notes" rows="4" maxlength="4000"
+                    th:placeholder="#{applications.notes.placeholder}"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn" data-app-edit-close-btn th:text="#{common.cancel}">Cancel</button>
+          <button type="submit" class="btn primary" th:text="#{applications.edit.submit}">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div th:if="${currentUserCanManageAgents}" id="applicationStatusModal" class="modal-overlay" role="dialog" aria-modal="true"
+       aria-labelledby="applicationStatusModalTitle">
+    <div class="modal-backdrop" data-app-status-close tabindex="-1"></div>
+    <div class="modal-dialog modal-dialog--application-edit">
+      <div class="modal-dialog-header">
+        <h2 id="applicationStatusModalTitle" class="modal-dialog-title" th:text="#{applications.actions.changeStatus}">Change status</h2>
+        <button type="button" class="modal-close" data-app-status-close-btn
+                th:attr="aria-label=#{common.close}">×</button>
+      </div>
+      <div class="subtle uni-flash uni-flash--err" id="applicationStatusModalError" hidden role="alert"></div>
+      <form id="applicationStatusModalForm" method="post" class="modal-form modal-form--stack crm-app-form">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <div class="field">
+          <label th:text="#{applications.col.number}">Number</label>
+          <input type="text" id="applicationStatusModalNumber" readonly class="profile-readonly" tabindex="-1">
+        </div>
+        <div class="field programs-filter-select programs-filter-select--uni">
+          <label for="applicationStatusModalSelect" th:text="#{common.status}">Status</label>
+          <select id="applicationStatusModalSelect" name="status" class="prog-uni-native" required
+                  th:attr="data-placeholder=#{common.status}">
+            <option th:each="st : ${applicationStatuses}" th:value="${st}"
+                    th:text="${#strings.replace(st, '_', ' ')}">NEW</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn" data-app-status-close-btn th:text="#{common.cancel}">Cancel</button>
+          <button type="submit" class="btn primary" th:text="#{applications.status.submit}">Update status</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

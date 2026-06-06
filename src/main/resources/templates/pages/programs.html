@@ -1,0 +1,255 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div id="programsPage" class="programs-page page-fade-up is-ready"
+       th:attr="data-csrf=${_csrf.token},data-csrf-header=${_csrf.headerName},
+                data-can-manage=${currentUserCanManageAgents},
+                data-msg-pager-none=#{js.pager.showingNone},
+                data-msg-pager-range=#{js.pager.showingRange},
+                data-msg-remove=#{js.programs.removeSelection},
+                data-msg-alert-name=#{js.programs.alertName},
+                data-msg-status-full=#{programs.status.full},
+                data-msg-status-available=#{programs.status.available},
+                data-msg-err-403=#{js.programs.err403},
+                data-msg-err-415=#{js.programs.err415},
+                data-msg-err-500=#{js.programs.err500},
+                data-msg-err-http=#{js.programs.errHttp},
+                data-msg-err-download=#{js.programs.errDownload},
+                data-msg-no-match=#{programs.noMatch},
+                data-msg-export-too-many=#{programs.export.tooMany},
+                data-msg-export-filtered-pdf=#{programs.exportFilteredPdf},
+                data-msg-catalog-export-busy=#{programs.pdf.catalogPreparing},
+                data-msg-pdf-filtered-title=#{programs.pdf.filteredTitle},
+                data-msg-pdf-filtered-hint=#{programs.pdf.filteredHint}">
+    <div class="card programs-main-card">
+      <div class="card-header programs-card-header">
+        <div>
+          <div class="title" th:text="#{page.programs.title}">Programs</div>
+          <div class="subtle" th:text="#{programs.subtitle}">Compare and export selections for students</div>
+        </div>
+        <div class="programs-header-actions">
+          <button th:if="${currentUserCanManageAgents}" type="button" class="btn primary btn--compact" id="openAddProgramModal" th:text="#{programs.add}">+ Add program</button>
+        </div>
+      </div>
+
+      <div class="subtle uni-flash uni-flash--ok" th:if="${departmentSuccess}" th:text="${departmentSuccess}"></div>
+      <div class="subtle uni-flash uni-flash--err" th:if="${departmentError}" th:text="${departmentError}"></div>
+
+      <details class="programs-filters-details" open>
+        <summary class="programs-filters-summary">
+          <div class="programs-filters-summary-text">
+            <span class="programs-filters-heading" th:text="#{programs.filters}">Filters</span>
+            <span class="subtle programs-filters-hint" th:text="#{programs.filters.hint}">Search and narrow by university, country, degree, or language</span>
+          </div>
+          <span class="programs-filters-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="programs-filters-body">
+          <div class="programs-filters-grid">
+            <div class="field programs-filter-search">
+              <label for="progSearch" th:text="#{programs.filter.program}">Program</label>
+              <input type="search" id="progSearch" th:attr="placeholder=#{programs.filter.program}" autocomplete="off">
+            </div>
+            <div class="field programs-filter-field--university">
+              <label for="progUniFilter" th:text="#{programs.filter.university}">University</label>
+              <div class="programs-filter-select programs-filter-select--uni">
+              <select id="progUniFilter" multiple size="1" th:attr="data-placeholder=#{programs.filter.university}">
+                <option value="" th:text="#{common.all}">All</option>
+                <option th:each="u : ${universities}" th:value="${u.name}" th:text="${u.name}">University</option>
+              </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="progDegreeFilter" th:text="#{programs.filter.degree}">Degree</label>
+              <div class="programs-filter-select programs-filter-select--uni">
+                <select id="progDegreeFilter" class="prog-uni-native" data-programs-page-filter
+                        th:attr="data-placeholder=#{programs.filter.degree}">
+                  <option value="" th:text="#{common.all}">All</option>
+                  <option th:each="deg : ${programDegreeOptions}" th:value="${deg}" th:text="${deg}">PhD</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="progLangFilter" th:text="#{programs.filter.language}">Language</label>
+              <div class="programs-filter-select programs-filter-select--uni">
+                <select id="progLangFilter" class="prog-uni-native" data-programs-page-filter
+                        th:attr="data-placeholder=#{programs.filter.language}">
+                  <option value="" th:text="#{common.all}">All</option>
+                  <option th:each="lang : ${programLanguageOptions}" th:value="${lang}" th:text="${lang}">English</option>
+                </select>
+              </div>
+            </div>
+            <div class="field programs-filter-field--country">
+              <label for="progCountryFilter" th:text="#{common.country}">Country</label>
+              <div class="programs-filter-select programs-filter-select--uni">
+                <select id="progCountryFilter" class="prog-uni-native" data-programs-page-filter
+                        th:attr="data-placeholder=#{common.country}">
+                  <option value="" th:text="#{common.all}">All</option>
+                  <option th:each="c : ${programCountryOptions}" th:value="${c}" th:text="${c}">Turkey</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <div class="programs-table-wrap">
+        <table class="table programs-table" id="programsMainTable">
+          <thead>
+          <tr>
+            <th class="prog-col-check"></th>
+            <th class="prog-th-nowrap" th:text="#{programs.filter.university}">University</th>
+            <th class="prog-th-nowrap" th:text="#{programs.filter.program}">Program</th>
+            <th class="prog-th-nowrap" th:text="#{programs.filter.degree}">Degree</th>
+            <th class="prog-th-nowrap" th:text="#{common.country}">Country</th>
+            <th class="prog-th-nowrap" th:text="#{programs.filter.language}">Language</th>
+            <th class="prog-th-phrase" th:text="#{programs.col.beforeDiscount}">Before discount</th>
+            <th class="prog-th-phrase" th:text="#{programs.col.afterDiscount}">After discount</th>
+            <th class="prog-th-phrase" th:text="#{programs.col.cashPrice}">Cash price</th>
+            <th class="prog-th-nowrap prog-col-years" th:text="#{common.years}">Years</th>
+            <th class="prog-th-nowrap prog-col-status" th:text="#{programs.col.status}">Status</th>
+          </tr>
+          </thead>
+          <tbody id="programsTbody">
+          <tr id="programsNoResults" class="prog-no-results" hidden>
+            <td colspan="11" class="empty" th:text="#{programs.noMatch}">No programs match your filters.</td>
+          </tr>
+          <tr id="programsEmptyRow" class="prog-row-empty" hidden>
+            <td colspan="11" class="empty" th:text="#{programs.none}">No programs found.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="programs-table-footer">
+        <div class="programs-footer-start">
+          <span id="programsFooterMeta" class="subtle programs-footer-meta num-latin" lang="en" dir="ltr"></span>
+          <button th:if="${currentUserCanManageAgents}" type="button" class="btn btn--compact programs-export-pdf-btn" id="exportFilteredProgramsPdf" disabled
+                  th:text="#{programs.exportFilteredPdf}">Download PDF</button>
+        </div>
+        <nav class="programs-pager num-latin" id="programsPager" lang="en" dir="ltr" th:attr="aria-label=#{pagination.label}"></nav>
+      </div>
+    </div>
+
+    <section class="card programs-selected-card" id="programsSelectedCard">
+      <div class="programs-selected-head">
+        <h2 class="programs-selected-title" th:text="#{programs.selected.title}">Selected programs</h2>
+        <button type="button" class="btn primary" id="openPdfModal" disabled th:text="#{common.download}">Download</button>
+      </div>
+      <p class="subtle programs-selected-empty" id="programsSelectedEmpty" th:text="#{programs.selected.empty}">Select one or more programs using the checkboxes above.</p>
+      <div class="programs-selected-table-wrap" id="programsSelectedWrap" hidden>
+        <table class="table programs-selected-table">
+          <thead>
+          <tr>
+            <th class="prog-col-remove"></th>
+            <th th:text="#{programs.filter.program}">Program</th>
+            <th th:text="#{programs.filter.university}">University</th>
+            <th th:text="#{programs.filter.language}">Language</th>
+            <th th:text="#{programs.filter.degree}">Degree</th>
+            <th th:text="#{programs.col.beforeDiscount}">Before discount</th>
+            <th th:text="#{programs.col.afterDiscount}">After discount</th>
+            <th th:text="#{common.years}">Years</th>
+          </tr>
+          </thead>
+          <tbody id="programsSelectedTbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div th:if="${currentUserCanManageAgents}" id="addProgramModal"
+         class="modal-overlay"
+         th:classappend="${departmentError != null} ? ' is-open' : ''"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="addProgramModalTitle">
+      <div class="modal-backdrop" data-close-modal tabindex="-1"></div>
+      <div class="modal-dialog modal-dialog--wide">
+        <div class="modal-dialog-header">
+          <h2 id="addProgramModalTitle" class="modal-dialog-title" th:text="#{programs.modal.addTitle}">Add program</h2>
+          <button type="button" class="modal-close" data-close-modal th:attr="aria-label=#{common.close}">×</button>
+        </div>
+        <form th:action="@{/departments}" method="post" class="modal-form dept-add-form" id="programUpsertForm">
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+          <div class="field">
+            <label th:text="#{programs.modal.programEn}">Program (English)</label>
+            <input name="name" placeholder="Computer Engineering" required>
+          </div>
+          <div class="field">
+            <label th:text="#{programs.modal.programAr}">Program (Arabic)</label>
+            <input name="nameAr" placeholder="هندسة كمبيوتر">
+          </div>
+          <div class="field programs-filter-select programs-filter-select--uni">
+            <label for="programModalUniversity" th:text="#{programs.modal.university}">University</label>
+            <select id="programModalUniversity" name="universityId" class="prog-uni-native" required
+                    th:attr="data-placeholder=#{programs.modal.selectUni}">
+              <option value="" th:text="#{programs.modal.selectUni}">Select university</option>
+              <option th:each="u : ${universities}" th:value="${u.id}" th:text="${u.name}">University</option>
+            </select>
+          </div>
+          <div class="field">
+            <label th:text="#{programs.filter.language}">Language</label>
+            <input name="language" placeholder="English">
+          </div>
+          <div class="field">
+            <label th:text="#{programs.filter.degree}">Degree</label>
+            <input name="degree" placeholder="PhD">
+          </div>
+          <div class="field">
+            <label th:text="#{programs.modal.beforeDiscount}">Before discount</label>
+            <input name="beforeDiscount" type="number" step="0.01" placeholder="15000" lang="en" dir="ltr">
+          </div>
+          <div class="field">
+            <label th:text="#{programs.col.cost}">Cost</label>
+            <input name="cost" type="number" step="0.01" placeholder="15000" lang="en" dir="ltr">
+          </div>
+          <div class="field">
+            <label th:text="#{programs.modal.cashPrice}">Cash price</label>
+            <input name="cashPrice" type="number" step="0.01" placeholder="14250" lang="en" dir="ltr">
+          </div>
+          <div class="field">
+            <label th:text="#{common.years}">Years</label>
+            <input name="years" type="number" min="1" placeholder="4" lang="en" dir="ltr">
+          </div>
+          <div class="field dept-available-field">
+            <label class="remember-check" style="margin-top:22px;">
+              <input type="checkbox" name="available" checked>
+              <span th:text="#{programs.modal.available}">Available</span>
+            </label>
+          </div>
+          <div class="modal-actions dept-add-modal-actions">
+            <button type="button" class="btn" data-close-modal th:text="#{common.cancel}">Cancel</button>
+            <button class="btn danger" id="programDeleteBtn" type="submit" formaction="#" hidden th:text="#{common.delete}">Delete</button>
+            <button class="btn primary" id="programSaveBtn" type="submit" th:text="#{programs.modal.save}">Save program</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="pdfExportModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pdfExportTitle" aria-busy="false">
+      <div class="modal-backdrop" data-close-pdf-modal tabindex="-1"></div>
+      <div class="modal-dialog modal-dialog--pdf">
+        <div class="modal-dialog-pdf-inner">
+          <div class="modal-dialog-header">
+            <h2 id="pdfExportTitle" class="modal-dialog-title" th:text="#{programs.pdf.title}">Download as PDF</h2>
+            <button type="button" class="modal-close" data-close-pdf-modal th:attr="aria-label=#{common.close}">×</button>
+          </div>
+          <div class="modal-form modal-form--stack">
+            <p class="subtle pdf-export-filtered-hint" id="pdfFilteredHint" hidden th:text="#{programs.pdf.filteredHint}">Filtered export hint</p>
+            <div class="field">
+              <label for="pdfStudentName" th:text="#{programs.pdf.studentName}">Student name</label>
+              <input type="text" id="pdfStudentName" th:attr="placeholder=#{programs.pdf.placeholder}" autocomplete="name">
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn" data-close-pdf-modal th:text="#{common.cancel}">Cancel</button>
+              <button type="button" class="btn primary" id="confirmPdfDownload" th:text="#{common.download}">Download</button>
+            </div>
+          </div>
+          <div id="pdfExportBusy" class="pdf-export-busy" hidden>
+            <div class="pdf-export-busy-inner">
+              <div class="pdf-export-spinner" role="status" aria-live="polite"></div>
+              <p class="pdf-export-busy-text" th:text="#{programs.pdf.preparing}">Preparing PDF…</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="application/json" id="programsInitialData" th:utext="${programsInitialJson}"></script>
+</div>

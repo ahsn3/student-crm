@@ -1,0 +1,13 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="title" th:text="${errorTitle}">Could not load this page</div>
+        <div class="subtle" th:text="${errorSubtitle}">Something went wrong. Try again in a moment.</div>
+      </div>
+    </div>
+    <p class="subtle">
+      <a class="btn primary" th:href="@{/}" th:text="#{nav.dashboard}">Dashboard</a>
+    </p>
+  </div>
+</div>

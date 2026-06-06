@@ -1,0 +1,85 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div class="card application-new-card">
+    <div class="card-header application-new-header">
+      <div>
+        <div class="title" th:text="#{page.studentsEdit.title}">Edit student</div>
+        <div class="subtle" th:text="#{students.edit.subtitle}">Update details and save.</div>
+      </div>
+      <a class="btn application-new-back-btn" th:href="@{/students/{id}(id=${student.id})}"
+         th:text="#{students.detail.backProfile}">Back to profile</a>
+    </div>
+
+    <div class="subtle uni-flash uni-flash--err" th:if="${studentErrorKey}" th:text="#{__${studentErrorKey}__}">Error</div>
+
+    <form id="studentEditForm" th:action="@{/students/{id}(id=${student.id})}" method="post"
+          class="profile-form crm-app-form application-new-form" style="max-width: 720px;">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <div class="field">
+        <label for="fullName">
+          <span th:text="#{students.form.fullName}">Full name</span>
+          <span class="field-required" aria-hidden="true"> *</span>
+        </label>
+        <input id="fullName" name="fullName" type="text" required maxlength="200" autocomplete="name"
+               th:value="${student.fullName}">
+      </div>
+      <div class="field">
+        <label for="passportNo">
+          <span th:text="#{students.col.passport}">Passport</span>
+          <span class="field-required" aria-hidden="true"> *</span>
+        </label>
+        <input id="passportNo" name="passportNo" type="text" required maxlength="80" autocomplete="off"
+               th:value="${student.passportNo}">
+      </div>
+      <div class="field">
+        <label for="fatherName" th:text="#{students.col.father}">Father name</label>
+        <input id="fatherName" name="fatherName" type="text" maxlength="200" th:value="${student.fatherName}">
+      </div>
+      <div class="field">
+        <label for="motherName" th:text="#{students.col.mother}">Mother name</label>
+        <input id="motherName" name="motherName" type="text" maxlength="200" th:value="${student.motherName}">
+      </div>
+      <div class="field">
+        <label for="gender" th:text="#{students.col.gender}">Gender</label>
+        <select id="gender" name="gender">
+          <option value="" th:text="#{students.form.gender.unspecified}"
+                  th:selected="${student.gender == null || #strings.isEmpty(student.gender)}">—</option>
+          <option value="M" th:text="#{students.form.gender.m}" th:selected="${student.gender == 'M'}">Male</option>
+          <option value="F" th:text="#{students.form.gender.f}" th:selected="${student.gender == 'F'}">Female</option>
+          <option value="OTHER" th:text="#{students.form.gender.other}"
+                  th:selected="${student.gender == 'OTHER'}">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="email" th:text="#{common.email}">Email</label>
+        <input id="email" name="email" type="email" maxlength="200" autocomplete="email" th:value="${student.email}">
+      </div>
+      <div class="field">
+        <label for="phone">
+          <span th:text="#{common.phone}">Phone</span>
+          <span class="field-required" aria-hidden="true"> *</span>
+        </label>
+        <input id="phone" name="phone" type="tel" required maxlength="80" autocomplete="tel" th:value="${student.phone}">
+      </div>
+      <div class="field">
+        <label for="nationalityComboInputEdit">
+          <span th:text="#{common.nationality}">Nationality</span>
+          <span class="field-required" aria-hidden="true"> *</span>
+        </label>
+        <div class="crm-combobox" data-combobox>
+          <input type="hidden" name="nationality" id="nationalityHiddenEdit"
+                 th:value="${student.nationality != null ? student.nationality : ''}">
+          <input type="text" id="nationalityComboInputEdit" class="crm-combobox-input crm-combobox-input--nat" autocomplete="off" spellcheck="false"
+                 role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="nationalityComboListEdit"
+                 th:placeholder="#{applications.combobox.searchNationality}">
+          <ul class="crm-combobox-panel crm-combobox-panel--scroll" id="nationalityComboListEdit" role="listbox" hidden>
+            <li th:each="nat : ${nationalityOptions}" role="option" tabindex="-1" class="crm-combobox-option"
+                th:data-value="${nat}" th:data-label="${nat}" th:text="${nat}">Country</li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-actions application-new-actions">
+        <button class="btn primary" type="submit" th:text="#{common.update}">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="title" th:text="#{page.agents.title}">Agents</div>
+        <div class="subtle" th:text="#{agents.title}">Manage sub-agents</div>
+      </div>
+    </div>
+
+    <div class="subtle uni-flash uni-flash--ok" th:if="${agentSuccess}" th:text="${agentSuccess}">Saved.</div>
+    <div class="subtle uni-flash uni-flash--err" th:if="${agentError}" th:text="${agentError}">Error.</div>
+
+    <form class="agent-create-form crm-app-form" th:action="@{/agents}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <div class="agent-create-bar">
+        <div class="field agent-create-field">
+          <label th:text="#{agents.username}">Username</label>
+          <input name="username" type="email" autocomplete="username"
+                 th:placeholder="#{agents.usernamePlaceholder}" placeholder="person@office.com" required>
+        </div>
+        <div class="field agent-create-field">
+          <label th:text="#{agents.password}">Password</label>
+          <input name="password" type="password" minlength="8" autocomplete="new-password" required>
+        </div>
+        <button class="btn primary agent-create-submit" type="submit" th:text="#{agents.create}">+ Create new agent</button>
+      </div>
+    </form>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th th:text="#{common.name}">Name</th>
+          <th th:text="#{common.type}">Type</th>
+          <th>Office</th>
+          <th th:text="#{common.email}">Email</th>
+          <th>Students</th>
+          <th>Applications</th>
+          <th th:text="#{agents.col.activity}">Activity</th>
+          <th th:text="#{agents.col.created}">Created At</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(managedAgents)}">
+          <td colspan="8" class="empty" th:text="#{agents.empty}">No results found!</td>
+        </tr>
+        <tr th:each="a : ${managedAgents}"
+            class="crm-clickable-row"
+            th:classappend="${agentUnreadCounts != null and agentUnreadCounts[a.id] != null and agentUnreadCounts[a.id] > 0} ? ' crm-clickable-row--has-update' : ''"
+            th:attr="data-href=@{/agents/{id}(id=${a.id})}">
+          <td>
+            <div class="uni-logo-cell">
+              <img th:if="${a.logoUrl != null && !#strings.isEmpty(a.logoUrl)}"
+                   class="uni-logo agent-list-logo"
+                   th:src="${a.logoUrl}"
+                   width="36"
+                   height="36"
+                   alt=""
+                   loading="lazy"
+                   decoding="async"
+                   referrerpolicy="no-referrer">
+              <span class="crm-row-primary" th:text="${a.displayName}">Agent</span>
+            </div>
+          </td>
+          <td><span class="tag">AGENT</span></td>
+          <td th:text="${a.officeName != null && !#strings.isEmpty(a.officeName) ? a.officeName : '—'}">Office</td>
+          <td th:text="${a.email}">email</td>
+          <td th:text="${agentStudentCounts[a.id]}">0</td>
+          <td th:text="${agentApplicationCounts[a.id]}">0</td>
+          <td>
+            <span class="tag agent-activity-tag agent-activity-tag--new"
+                  th:if="${agentUnreadCounts != null and agentUnreadCounts[a.id] != null and agentUnreadCounts[a.id] > 0}"
+                  th:text="#{agents.activity.new}">New</span>
+            <span class="subtle" th:if="${agentUnreadCounts == null or agentUnreadCounts[a.id] == null or agentUnreadCounts[a.id] == 0}">—</span>
+          </td>
+          <td th:text="${a.createdAt != null ? @displayTime.format(a.createdAt, 'yyyy-MM-dd HH:mm') : '—'}">—</td>
+        </tr>
+        </tbody>
+      </table>
+  </div>
+</div>

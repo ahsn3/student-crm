@@ -1,0 +1,66 @@
+{
+  "screenshots": 36,
+  "total_unique_programs": 194,
+  "by_university": {
+    "European University of Lefke": 95,
+    "Fatih Sultan Mehmet University": 73,
+    "Türk Hava Kurumu University": 26
+  },
+  "availability_by_university": {
+    "European University of Lefke": {
+      "available": 95,
+      "quota_full": 0
+    },
+    "Fatih Sultan Mehmet University": {
+      "available": 73,
+      "quota_full": 0
+    },
+    "Türk Hava Kurumu University": {
+      "available": 23,
+      "quota_full": 3
+    }
+  },
+  "expected_from_portal": {
+    "Türk Hava Kurumu University": 27,
+    "European University of Lefke": 115,
+    "Fatih Sultan Mehmet University": 84
+  },
+  "per_image_row_counts": {
+    "Screenshot_2026-05-17_at_17.21.43-cb68b6ce-69d8-431b-a6b4-f6e5e861ec34.png": 8,
+    "Screenshot_2026-05-17_at_17.21.45-601f5cdf-97cf-4c8b-9def-e10d70f7236e.png": 9,
+    "Screenshot_2026-05-17_at_17.21.52-c6889d60-88ff-41a5-ae7b-350c1738c7d3.png": 7,
+    "Screenshot_2026-05-17_at_17.21.54-0468fdd1-de64-49e8-87aa-79fd1b501f12.png": 8,
+    "Screenshot_2026-05-17_at_17.22.01-9b4215b7-dbff-4f2a-bb35-2e4391946b02.png": 7,
+    "Screenshot_2026-05-17_at_17.22.03-e657ca23-ffb8-4300-8e4d-2e542a838005.png": 9,
+    "Screenshot_2026-05-17_at_17.22.08-398b7b70-b3a2-49e5-8305-9c00ac28c691.png": 7,
+    "Screenshot_2026-05-17_at_17.22.10-bdb4c734-fd3d-4e74-b519-d7bea2b9b1c9.png": 9,
+    "Screenshot_2026-05-17_at_17.22.15-fc0d777a-0938-41fd-b32b-2b74c2035b5b.png": 7,
+    "Screenshot_2026-05-17_at_17.22.17-7faa2141-222a-4677-ad04-0e1d25a680b1.png": 9,
+    "Screenshot_2026-05-17_at_17.22.21-d232973b-bcaf-4a34-9fdc-f66be97837b4.png": 8,
+    "Screenshot_2026-05-17_at_17.22.23-35758c87-d1e4-417a-9cd1-e99459e7dc19.png": 9,
+    "Screenshot_2026-05-17_at_17.22.42-5de1520e-6f40-4bcb-bbc7-defdc5ff49f5.png": 8,
+    "Screenshot_2026-05-17_at_17.22.44-9c1cb755-8111-476c-bd91-b965772ea6e0.png": 9,
+    "Screenshot_2026-05-17_at_17.22.51-a987a543-2af4-4d69-bf77-c2ec79fed9ec.png": 9,
+    "Screenshot_2026-05-17_at_17.22.53-983572b4-fa77-4eb0-b6e7-2ea721c6d774.png": 9,
+    "Screenshot_2026-05-17_at_17.22.57-62b7f4bf-7a5e-4cf9-a354-02d2e8c95983.png": 9,
+    "Screenshot_2026-05-17_at_17.22.59-94e57efc-f2bd-432f-811b-080fc2fa55a8.png": 9,
+    "Screenshot_2026-05-17_at_17.23.03-f2a2c4c3-0a39-42c7-afc5-2196a14dfa61.png": 7,
+    "Screenshot_2026-05-17_at_17.23.05-31d2232b-2686-4026-aaee-3d6936bcbe42.png": 9,
+    "Screenshot_2026-05-17_at_17.23.09-0d83200e-9050-40fc-885a-d2dfb68f4d1f.png": 4,
+    "Screenshot_2026-05-17_at_17.23.20-aa03eebc-90a7-499a-8457-b7be8704cfa3.png": 0,
+    "Screenshot_2026-05-17_at_17.23.22-653276c5-7c08-4bf5-8111-e3a14648e09f.png": 0,
+    "Screenshot_2026-05-17_at_17.23.26-d99cefe7-7d28-44e0-8e31-3241852fc74d.png": 0,
+    "Screenshot_2026-05-17_at_17.23.28-ce702aeb-01f4-468f-87e8-cd5851fb27fc.png": 0,
+    "Screenshot_2026-05-17_at_17.23.59-825ef1d5-b400-405c-b982-d291083009ae.png": 0,
+    "Screenshot_2026-05-17_at_17.24.03-6ed14243-6152-4a6f-87dd-aad56a48c522.png": 0,
+    "Screenshot_2026-05-17_at_17.24.08-381ac5fe-4b36-4497-84b6-a004d8203ea8.png": 0,
+    "Screenshot_2026-05-17_at_17.24.09-3afd7f2b-ebb2-41e4-8e1d-7670716c169f.png": 0,
+    "Screenshot_2026-05-17_at_17.24.14-333802a7-ad37-4380-a4e0-a8249a2abdac.png": 0,
+    "Screenshot_2026-05-17_at_17.24.15-74f91c40-873b-4e99-931a-43a263f2ad96.png": 0,
+    "Screenshot_2026-05-17_at_17.24.19-4b703243-1e58-4f2b-84cb-37ad8e586baf.png": 0,
+    "Screenshot_2026-05-17_at_17.24.21-33364100-567c-42a0-a1ef-75aeca4ea537.png": 0,
+    "Screenshot_2026-05-17_at_17.24.35-281d88f2-936a-405b-b93f-fa8af5ebe150.png": 10,
+    "Screenshot_2026-05-17_at_17.24.38-89809bd8-1f39-4030-929f-13b28e6bb3a0.png": 9,
+    "Screenshot_2026-05-17_at_17.24.42-ed1b1082-f06d-4aeb-82c8-c272b675e446.png": 7
+  }
+}

@@ -1,0 +1,1521 @@
+[
+  {
+    "university": "European University of Lefke",
+    "name": "Agricultural Management",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الإدارة الزراعية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Architecture",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "هندسة معمارية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Banking And Finance",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "بنوك وتمويل"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Business Administration",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "إدارة الأعمال"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Civil Engineering",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الهندسة المدنية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Clinical Pharmacy",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الصيدلة السريرية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Computer Engineering",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "هندسة كمبيوتر"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Computer Information Systems",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "أنظمة المعلومات الحاسوبية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Digital Game Design",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "تصميم الألعاب الرقمية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Economics",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الاقتصاد"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Electrical And Electronic Engineering",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "هندسة كهرباء والكترون"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Electronics And Communication Engineering",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "هندسة الالكترونيات والاتصالات"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "English Language Teaching",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "تدريس اللغة الانجليزية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Environmental Engineering",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "هندسة بيئية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Gastronomy And Culinary Arts",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "فنون الطهي والمطبخ"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Human Resources Management",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "إدارة الموارد البشرية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Industrial Product Design",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "تصميم المنتجات الصناعية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Information System And Technologies",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "نظم وتقنيات المعلومات"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Interior Architecture And Environmental Design",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "العمارة الداخلية والتصميم البيئي"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "International Law",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "القانون الدولي"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "International Relations",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "علاقات دولية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Journalism",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "صحافة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Logistics Management",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "إدارة اللوجستية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Management Information Systems",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "نظم المعلومات الادارية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Marketing",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "تسويق"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Media And Communications",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الاعلام والاتصالات"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Molecular Biology And Genetics",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "البيولوجيا الجزيئية وعلم الوراثة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "New Media And Communication",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الإعلام الجديد والاتصالات"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "New Media And Journalism",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الإعلام الجديد والصحافة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Nursing",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "تمريض"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Nutrition And Dietetics",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "التغذية والحمية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Pharmacy",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الصيدلة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Physiotherapy And Rehabilitation",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "العلاج الطبيعي وإعادة التأهيل"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Political Science And Public Administration",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "العلوم السياسية والإدارة العامة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Psychology",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "علم النفس"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Public Relations And Advertising",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "العلاقات العامة والدعاية والاعلان"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Software Engineering",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "هندسة البرمجيات"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Tourism Management",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "إدارة السياحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Visual Communication Design",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "تصميم الاتصالات البصرية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "horticulture",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "البستنة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "international business commerce",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "التجارة الدولية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "international logistics transportation",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "النقل اللوجستي الدولي"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Agricultural Machinery",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "الآلات الزراعية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Agricultural Technology",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "التكنولوجيا الزراعية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Alternative Energy And Sources Technology",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "تكنولوجيا الطاقة البديلة والمصادر"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Architectural Restoration",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "الترميم المعماري"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Banking And Insurance",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "الخدمات المصرفية والتأمين"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Business Administration",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "إدارة الأعمال"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Computer Aided Design And Animation",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "التصميم بمساعدة الكمبيوتر والرسوم المتحركة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Computer Programming",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "برمجة الكمبيوتر"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Construction Technology",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "تكنولوجيا البناء"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Digital Media And Marketing",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "الوسائط الرقمية والتسويق"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Environmental Protection And Control",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "حماية البيئة والتحكم فيها"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Information Security Technologies",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "تقنيات أمن المعلومات"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Interior Design",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "تصميم داخلي"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Oral And Dental Health",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "صحة الفم والأسنان"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Public Relations And Advertising",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "العلاقات العامة والدعاية والاعلان"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Tourism And Hotel Management",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "إدارة السياحة والفنادق"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Agricultural Management With Thesis",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "الإدارة الزراعية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Banking And Finance With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "بنوك وتمويل مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Business Administration With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "إدارة الأعمال مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Civil Engineering With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الهندسة المدنية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Computer Information Systems With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "أنظمة المعلومات الحاسوبية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Data Science With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "علوم البيانات مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Digital Media Marketing With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "التسويق عبر الوسائط الرقمية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Economics With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الاقتصاد مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Electrical And Electronic Engineering",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الهندسة الكهربائية والإلكترونية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "English Language Teaching With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "تدريس اللغة الانجليزية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Environmental Sciences With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "العلوم البيئية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Health Management With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الإدارة الصحية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Horticultural Production With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الإنتاج البستاني مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Interior Architecture With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "عمارة داخلية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "International Economics And Finance With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الاقتصاد الدولي والمالية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "International Law With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "القانون الدولي مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "International Relations With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "علاقات دولية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Management Information Systems With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "نظم المعلومات الادارية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Marketing Management With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "إدارة التسويق مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Nursing With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "تمريض مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Nutrition And Dietetics With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "التغذية وعلم التغذية مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Physiotherapy And Rehabilitation With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "العلاج الطبيعي وإعادة التأهيل مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Plant Sciences And Technologies With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "علوم النبات والتقنيات مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Psychology With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "علم نفس مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Public Administration With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الإدارة العامة مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Public Relations And Advertising With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "العلاقات العامة والإعلان مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Tourism And Hotel Management With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "إدارة السياحة والفنادق مع أطروحة"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Architecture",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "هندسة معمارية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Business Administration",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "إدارة الأعمال"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Civil Engineering",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "الهندسة المدنية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Clinical Pharmacy",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "الصيدلة السريرية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Communication Studies",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "دراسات الاتصال"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Computer Engineering",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "هندسة كمبيوتر"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Electrical and Electronic Engineering",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "هندسة كهرباء وإلكترون"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "English Language Teaching",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "تدريس اللغة الانجليزية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Environmental Sciences",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "العلوم البيئية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Health Management",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "الإدارة الصحية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Horticultural Production",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "الإنتاج البستاني"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "International Law",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "القانون الدولي"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "International Relations",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "علاقات دولية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Management Information Systems",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "نظم المعلومات الادارية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Nursing",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "تمريض"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Nutrition And Dietetics",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "التغذية والحمية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Oral Maxillofacial Surgery",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "جراحة الفم والوجه والفكين"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Orthodontics",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "تقويم الأسنان"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Pedodontics",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "طب أسنان الأطفال"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Pharmaceutical Sciences",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "العلوم الصيدلانية"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Physiotherapy And Rehabilitation",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "العلاج الطبيعي وإعادة التأهيل"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Prosthetic Dentistry",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "طب الأسنان الاصطناعي"
+  },
+  {
+    "university": "European University of Lefke",
+    "name": "Restorative Dentistry",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "طب الأسنان الترميمي"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Arabic Language Teaching",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "تدريس اللغة العربية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Architecture",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "هندسة معمارية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Aviation Management",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "إدارة الطيران"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Business Administration",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "إدارة الأعمال"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Civil Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "الهندسة المدنية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Civil Engineering",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الهندسة المدنية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Computer Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "هندسة كمبيوتر"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Computer Engineering",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "هندسة كمبيوتر"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Conservation And Restoration Of Cultural Assets",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "حفظ وترميم الأصول الثقافية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Conservation And Restoration Of Cultural Assets",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "حفظ وترميم الأصول الثقافية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Electrical And Electronic Engineering",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "هندسة كهرباء والكترون"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "English Translation And Interpretation",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "الترجمة التحريرية ( تركي - إنجليزي )"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "English Translation And Interpretation",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الترجمة التحريرية ( تركي - إنجليزي )"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Graphic Design",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "تصميم جرافيك"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Historical Sciences",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "العلوم التاريخية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "History",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "التاريخ"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Information System And Technologies",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "نظم وتقنيات المعلومات"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Interior Architecture",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "عمارة داخلية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Interior Architecture",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "عمارة داخلية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Islamic Sciences",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "العلوم الإسلامية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Law",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "حقوق"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Physiotherapy And Rehabilitation",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "العلاج الطبيعي وإعادة التأهيل"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Political Science And International Relations",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "العلوم السياسية والعلاقات الدولية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Preschool Education",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "التعليم ما قبل المدرسي"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Psychology",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "علم النفس"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Psychology",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "علم النفس"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Software Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "هندسة البرمجيات"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Special Education",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "التربية الخاصة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Traditional Turkish Arts",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "الفنون التركية التقليدية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Turkish Language And Literature",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "اللغة والأدب التركي"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Turkish Language Teaching",
+    "degree": "Bachelor",
+    "language": "Turkish",
+    "name_ar": "تدريس اللغة التركية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Architectural Restoration",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "الترميم المعماري"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Child Development (Evening Class)",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "تنمية الطفل (فصل مسائي)"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Civil Aviation Cabin Services",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "خدمات مقصورة الطيران المدني"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Court And Office Management",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "إدارة المحاكم والمكاتب"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Information Security Technologies",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "تقنيات أمن المعلومات"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Packaging Design Program",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "برنامج تصميم التعبئة والتغليف"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Shadow Teaching For Disabled Individuals",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "التعليم الظل للأفراد ذوي الإعاقة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Arabic Language And Education With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "اللغة العربية والتعليم مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Architectural Conservation Restoration With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الحفاظ المعماري والترميم مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Architecture With Thesis",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "هندسة معمارية مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Architecture With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "هندسة معمارية مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Artificial Intelligence And Data Science",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الذكاء الاصطناعي وعلوم البيانات"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Artificial Intelligence And Data Science With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الذكاء الاصطناعي وعلوم البيانات مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Basic Islamic Sciences With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "العلوم الإسلامية الأساسية مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Business Administration",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "إدارة الأعمال"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Business Administration With Thesis",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "إدارة الأعمال مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Civil Engineering With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الهندسة المدنية مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Clinical Psychology",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "علم النفس السريري"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Computer Engineering With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "هندسة كمبيوتر مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Educational Administration",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الإدارة التربوية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Educational Administration With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الإدارة التربوية مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Electrical And Electronic Engineering With The",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "هندسة كهرباء والكترون مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Graphic Design With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "تصميم جرافيك مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "History Of Science With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "تاريخ العلوم مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "History With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "التاريخ مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Interior Architecture With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "عمارة داخلية مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Political Science And International Relations",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "العلوم السياسية والعلاقات الدولية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Political Science And International Relations W",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "العلوم السياسية والعلاقات الدولية مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Pre-School Education With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "التعليم ما قبل المدرسي مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Preservation And Management Of Cultural Heritage With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الحفاظ على التراث الثقافي وإدارته مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Private Law With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "القانون الخاص مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Psychological Counselling And Guidance",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الإرشاد والتوجيه النفسي"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Psychological Counselling And Guidance With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الاستشارة والتوجيه النفسي مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Public Law With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "قانون عام مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Public Law With Thesis",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "قانون عام مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Teaching Turkish To Foreigners With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "تدريس اللغة التركية للأجانب مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Traditional Turkish Arts With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "الفنون التركية التقليدية مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Turkish Language And Literature With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "اللغة والأدب التركي مع أطروحة"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Architecture",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "هندسة معمارية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Basic Islamic Sciences",
+    "degree": "PhD",
+    "language": "Arabic",
+    "name_ar": "العلوم الإسلامية الأساسية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Clinical Psychology",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "علم النفس السريري"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Computer Engineering",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "هندسة كمبيوتر"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Educational Administration",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "الإدارة التربوية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Graphic Design",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "تصميم جرافيك"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "History",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "التاريخ"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "History Of Islamic Science",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "تاريخ العلوم الإسلامية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Interior Architecture",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "عمارة داخلية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Preschool Education",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "التعليم ما قبل المدرسي"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Psychological Counselling And Guidance",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "الإرشاد والتوجيه النفسي"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Traditional Turkish Arts",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "الفنون التركية التقليدية"
+  },
+  {
+    "university": "Fatih Sultan Mehmet University",
+    "name": "Turkish Language And Literature",
+    "degree": "PhD",
+    "language": "Turkish",
+    "name_ar": "اللغة والأدب التركي"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Aerospace Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "هندسة الطيران"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Astronautical Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "هندسة الملاحة الفضائية"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Aviation Management",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "إدارة الطيران"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Computer Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "هندسة كمبيوتر"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Electrical And Electronic Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "هندسة كهرباء والكترون"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Flight Training",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "التدريب على الطيران"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Industrial Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "هندسة صناعية"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Logistics Management",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "إدارة اللوجستية"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Management",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "الإدارة"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Management Information Systems",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "نظم المعلومات الادارية"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Mechanical Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "هندسة ميكانيك"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Software Engineering",
+    "degree": "Bachelor",
+    "language": "English",
+    "name_ar": "هندسة البرمجيات"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Air Logistics",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "اللوجستيات الجوية"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Aircraft Electronics",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "إلكترونيات الطائرات"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Civil Air Transportation Management",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "إدارة النقل الجوي المدني"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Civil Aviation And Cabin Services",
+    "degree": "Diploma",
+    "language": "Turkish",
+    "name_ar": "الطيران المدني وخدمات المقصورة"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Aerospace Engineering",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "هندسة الطيران"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Aerospace Engineering",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "هندسة الطيران"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Aerospace Engineering With Thesis",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "هندسة الطيران مع أطروحة"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Aviation Management",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "إدارة الطيران"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Aviation Management With Thesis",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "إدارة الطيران مع أطروحة"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Aviation Management With Thesis",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "إدارة الطيران مع أطروحة"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Business Management With Thesis",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "إدارة الأعمال مع أطروحة"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Electrical And Computer Engineering With Thesis",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "الهندسة الكهربائية والحاسوبية مع أطروحة"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Flight Training",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "التدريب على الطيران"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Mechanical and Aeronautical Engineering With Thesis",
+    "degree": "Master",
+    "language": "English",
+    "name_ar": "هندسة الميكانيكا والطيران مع أطروحة"
+  },
+  {
+    "university": "Türk Hava Kurumu University",
+    "name": "Unmanned and Autonomous Systems Enginee",
+    "degree": "Master",
+    "language": "Turkish",
+    "name_ar": "هندسة الأنظمة غير المأهولة والمستقلة مع أطروحة"
+  }
+]

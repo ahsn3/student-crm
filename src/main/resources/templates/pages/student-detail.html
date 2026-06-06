@@ -1,0 +1,173 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="title" th:text="${student.fullName}">Student</div>
+        <div class="subtle" th:text="#{students.detail.subtitle}">Profile and applications</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap: wrap;">
+        <a class="btn" th:href="@{/students}" th:text="#{students.detail.backList}">Back to students</a>
+        <a class="btn primary" th:href="@{/applications/new(studentId=${student.id})}" th:text="#{applications.short.create}">+ Application</a>
+      </div>
+    </div>
+
+    <div class="subtle uni-flash uni-flash--ok" th:if="${studentSuccessKey}" th:text="#{__${studentSuccessKey}__}">Saved.</div>
+    <div class="subtle uni-flash uni-flash--err" th:if="${studentErrorKey}" th:text="#{__${studentErrorKey}__}">Error</div>
+
+    <div class="student-detail-info-actions" th:if="${currentUserCanManageAgents}">
+      <a class="btn primary" th:href="@{/students/{id}/edit(id=${student.id})}" th:text="#{common.edit}">Edit</a>
+    </div>
+
+    <div class="student-detail-fields" style="display:grid; gap:10px 24px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); margin-bottom: 20px;">
+      <div class="field">
+        <label class="subtle" th:text="#{students.col.passport}">Passport</label>
+        <div th:text="${#strings.isEmpty(student.passportNo)} ? '—' : ${student.passportNo}">—</div>
+      </div>
+      <div class="field">
+        <label class="subtle" th:text="#{students.col.father}">Father</label>
+        <div th:text="${#strings.isEmpty(student.fatherName)} ? '—' : ${student.fatherName}">—</div>
+      </div>
+      <div class="field">
+        <label class="subtle" th:text="#{students.col.mother}">Mother</label>
+        <div th:text="${#strings.isEmpty(student.motherName)} ? '—' : ${student.motherName}">—</div>
+      </div>
+      <div class="field">
+        <label class="subtle" th:text="#{students.col.gender}">Gender</label>
+        <div th:text="${#strings.isEmpty(student.gender)} ? '—' : ${student.gender}">—</div>
+      </div>
+      <div class="field">
+        <label class="subtle" th:text="#{common.email}">Email</label>
+        <div th:text="${#strings.isEmpty(student.email)} ? '—' : ${student.email}">—</div>
+      </div>
+      <div class="field">
+        <label class="subtle" th:text="#{common.phone}">Phone</label>
+        <div th:text="${#strings.isEmpty(student.phone)} ? '—' : ${student.phone}">—</div>
+      </div>
+      <div class="field">
+        <label class="subtle" th:text="#{common.nationality}">Nationality</label>
+        <div th:text="${#strings.isEmpty(student.nationality)} ? '—' : ${student.nationality}">—</div>
+      </div>
+      <div class="field">
+        <label class="subtle" th:text="#{students.col.created}">Created</label>
+        <div th:text="${student.createdAt != null ? @displayTime.format(student.createdAt, 'yyyy-MM-dd HH:mm') : '—'}">—</div>
+      </div>
+      <div class="field">
+        <label class="subtle" th:text="#{students.col.updated}">Updated</label>
+        <div th:text="${student.updatedAt != null ? @displayTime.format(student.updatedAt, 'yyyy-MM-dd HH:mm') : '—'}">—</div>
+      </div>
+    </div>
+
+    <div style="font-weight:800; margin-bottom: 10px;" th:text="#{students.detail.applicationsTitle}">Applications</div>
+    <div class="crm-scroll-area table-scroll-wrap">
+    <table class="table">
+      <thead>
+      <tr>
+        <th th:text="#{applications.col.number}">Number</th>
+        <th th:text="#{common.status}">Status</th>
+        <th th:text="#{applications.col.program}">Program</th>
+        <th th:text="#{applications.col.notes}">Notes</th>
+        <th th:text="#{applications.filter.semester}">Semester</th>
+        <th th:text="#{students.col.created}">Created</th>
+        <th th:text="#{applications.col.lastUpdate}">Updated</th>
+        <th th:text="#{common.actions}">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${#lists.isEmpty(studentApplications)}">
+        <td colspan="8" class="empty" th:text="#{students.detail.noApplications}">No applications yet.</td>
+      </tr>
+      <tr th:each="a : ${studentApplications}">
+        <td><span class="tag" th:text="${a.applicationNumber}">IN-</span></td>
+        <td>
+          <span th:if="${a.status == null}" class="tag">—</span>
+          <span th:if="${a.status != null}"
+                class="tag app-status"
+                th:classappend="${'app-status--' + #strings.toLowerCase(#strings.replace(a.status, '_', '-'))}"
+                th:text="${#strings.replace(a.status, '_', ' ')}">NEW</span>
+        </td>
+        <td th:text="${a.department != null ? (a.department.university != null ? a.department.university.name + ' — ' + a.department.name : a.department.name) : '—'}">—</td>
+        <td class="table-notes-cell">
+          <span th:if="${#strings.isEmpty(a.notes)}" th:text="'—'">—</span>
+          <span th:if="${!#strings.isEmpty(a.notes)}" th:text="${#strings.abbreviate(a.notes, 96)}">…</span>
+        </td>
+        <td th:text="${#strings.isEmpty(a.semester)} ? '—' : ${a.semester}">—</td>
+        <td th:text="${a.createdAt != null ? @displayTime.format(a.createdAt, 'yyyy-MM-dd HH:mm') : '—'}">—</td>
+        <td th:text="${a.updatedAt != null ? @displayTime.format(a.updatedAt, 'yyyy-MM-dd HH:mm') : '—'}">—</td>
+        <td>
+          <a class="tag info"
+             th:href="@{/applications/{id}(id=${a.id})}"
+             th:text="#{common.view}">View</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <th:block th:if="${currentUserCanManageAgents}">
+    <div style="font-weight:800; margin: 16px 0 10px;" th:text="#{students.detail.servicesTitle}">Services</div>
+    <div class="crm-scroll-area table-scroll-wrap">
+    <table class="table">
+      <thead>
+      <tr>
+        <th th:text="#{students.detail.serviceCol.name}">Service</th>
+        <th th:text="#{services.form.details}">Details</th>
+        <th th:text="#{services.form.endDate}">Date</th>
+        <th th:text="#{common.status}">Status</th>
+        <th th:text="#{students.col.updated}">Updated</th>
+        <th th:text="#{students.detail.serviceOpen}">Open</th>
+      </tr>
+      </thead>
+      <tbody th:with="latestService=${#lists.isEmpty(studentServices) ? null : studentServices[0]}">
+      <tr th:if="${#lists.isEmpty(studentServices)}">
+        <td colspan="6" class="empty" th:text="#{students.detail.noServices}">No service entries yet.</td>
+      </tr>
+      <tr th:if="${latestService != null}" th:with="s=${latestService}">
+        <td th:text="${
+          s.serviceKey == 'residency-renewal' ? #messages.msg('services.item.residencyRenewal.name') :
+          (s.serviceKey == 'airport-transfer' ? #messages.msg('services.item.airportTransfer.name') :
+          (s.serviceKey == 'bank-account' ? #messages.msg('services.item.bankAccount.name') :
+          (s.serviceKey == 'housing' ? #messages.msg('services.item.housing.name') : s.serviceKey)))
+        }">Service</td>
+        <td class="table-notes-cell">
+          <span th:if="${#strings.isEmpty(s.details)}">—</span>
+          <span th:if="${!#strings.isEmpty(s.details)}" th:text="${#strings.abbreviate(s.details, 96)}">Details</span>
+        </td>
+        <td th:text="${s.endDate != null ? @displayTime.format(s.endDate, 'yyyy-MM-dd') : '—'}">—</td>
+        <td>
+          <span th:if="${s.status == null}" class="tag">—</span>
+          <span th:if="${s.status != null}" class="tag" th:text="${#strings.replace(s.status, '_', ' ')}">NEW</span>
+        </td>
+        <td th:text="${s.updatedAt != null ? @displayTime.format(s.updatedAt, 'yyyy-MM-dd HH:mm') : '—'}">—</td>
+        <td>
+          <a class="tag info" th:href="@{/services/{serviceKey}(serviceKey=${s.serviceKey})}" th:text="#{students.detail.serviceOpen}">Open</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+    </th:block>
+
+    <div th:if="${currentUserCanManageAgents}" class="danger-zone-compact" style="margin-top:14px;">
+      <span class="subtle" th:text="#{students.delete.help}">Permanently remove this student record.</span>
+      <button type="button" class="btn btn--compact danger" id="openStudentDeleteModal" th:text="#{common.delete}">Delete</button>
+    </div>
+  </div>
+
+  <div th:if="${currentUserCanManageAgents}" id="studentDeleteModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="studentDeleteModalTitle">
+    <div class="modal-backdrop" data-close-student-delete-modal tabindex="-1"></div>
+    <div class="modal-dialog modal-dialog--logout">
+      <div class="modal-dialog-header">
+        <h2 id="studentDeleteModalTitle" class="modal-dialog-title" th:text="#{students.delete.title}">Delete student</h2>
+        <button type="button" class="modal-close" data-close-student-delete-modal th:attr="aria-label=#{common.close}">×</button>
+      </div>
+      <div class="modal-form modal-form--stack logout-confirm-body">
+        <p class="logout-confirm-msg" th:text="#{students.delete.confirm}">Are you sure?</p>
+        <form th:action="@{|/students/${student.id}/delete|}" method="post" class="modal-actions" style="display:flex;gap:10px;justify-content:flex-end;">
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+          <button type="button" class="btn" data-close-student-delete-modal th:text="#{common.cancel}">Cancel</button>
+          <button type="submit" class="btn danger" th:text="#{common.delete}">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

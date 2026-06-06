@@ -1,0 +1,12 @@
+# Railway / production — fast startup when DB is already migrated.
+# Set SPRING_FLYWAY_ENABLED=false in Railway variables after schema is up to date.
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: ${SPRING_FLYWAY_ENABLED:true}
+    validate-on-migrate: false
+    repair-on-migrate: false
+    connect-retries: 2
+    lock-retry-count: 5

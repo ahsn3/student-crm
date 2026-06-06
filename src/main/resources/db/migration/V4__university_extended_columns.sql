@@ -1,0 +1,5 @@
+ALTER TABLE university
+  ADD COLUMN IF NOT EXISTS currency TEXT,
+  ADD COLUMN IF NOT EXISTS programs_count INT,
+  ADD COLUMN IF NOT EXISTS campuses_count INT,
+  ADD COLUMN IF NOT EXISTS logo_url TEXT;

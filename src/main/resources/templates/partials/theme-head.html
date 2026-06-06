@@ -1,0 +1,21 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="themeHead">
+  <meta id="ingazgate-theme-color" name="theme-color" content="#131416">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="color-scheme" content="dark light">
+  <script>
+    (function () {
+      var el = document.documentElement;
+      var r = el.getAttribute("data-rama-theme-eligible") === "true";
+      var k = "ingazgate-theme";
+      try {
+        var t = localStorage.getItem(k) || "dark";
+        if (t === "rama" && !r) t = "dark";
+        if (t !== "dark" && t !== "light" && t !== "rama") t = "dark";
+        el.setAttribute("data-theme", t);
+      } catch (e) {
+        el.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" th:href="@{/css/themes.css(v=26)}">
+</th:block>

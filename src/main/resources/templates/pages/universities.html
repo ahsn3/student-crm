@@ -1,0 +1,148 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div id="universitiesPage" class="universities-page page-fade-up is-ready"
+       th:attr="data-msg-pager-none=#{js.pager.showingNone},
+                data-msg-pager-range=#{js.pager.showingRange}">
+    <div class="card uni-card">
+      <div class="card-header uni-card-header">
+        <div>
+          <div class="title" th:text="#{page.universities.title}">Universities</div>
+          <div class="subtle" th:text="#{universities.subtitle}">Manage universities</div>
+        </div>
+        <button th:if="${currentUserCanManageAgents}" type="button" class="btn primary" id="openAddUniversityModal" th:text="#{universities.add}">+ Add University</button>
+      </div>
+
+      <div class="subtle uni-flash uni-flash--ok" th:if="${universitySuccess}" th:text="${universitySuccess}"></div>
+      <div class="subtle uni-flash uni-flash--err" th:if="${universityError}" th:text="${universityError}"></div>
+
+      <div class="uni-toolbar">
+        <div class="field uni-toolbar-search">
+          <label for="uniSearch" th:text="#{common.search}">Search</label>
+          <input type="search" id="uniSearch" th:attr="placeholder=#{universities.search.placeholder}" autocomplete="off">
+        </div>
+        <div class="field uni-toolbar-country">
+          <label for="uniCountryFilter" th:text="#{common.country}">Country</label>
+          <select id="uniCountryFilter">
+            <option value="" th:text="#{common.all}">All</option>
+            <option th:each="c : ${uniCountries}" th:value="${c}" th:text="${c}">Turkey</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="uni-table-wrap" id="uniTableWrap">
+        <table class="table uni-table">
+          <thead>
+          <tr>
+            <th th:text="#{universities.label.name}">Name</th>
+            <th th:text="#{common.currency}">Currency</th>
+            <th th:text="#{universities.col.programs}">Programs</th>
+            <th th:text="#{common.country}">Country</th>
+            <th th:text="#{common.website}">Website</th>
+            <th th:text="#{campuses}">Campuses</th>
+          </tr>
+          </thead>
+          <tbody id="uniTbody">
+          <tr th:each="u : ${universityRows}"
+              class="uni-row uni-data-row"
+              th:attr="data-search=${#strings.toLowerCase((u.name != null ? u.name : '') + ' ' + (u.website != null ? u.website : ''))},
+                       data-country=${u.country != null ? u.country : ''}">
+            <td>
+              <a class="uni-table-link" th:href="@{/universities/{id}(id=${u.id})}">
+                <div class="uni-logo-cell">
+                  <img th:if="${u.logoUrl != null && !#strings.isEmpty(u.logoUrl)}"
+                       class="uni-logo"
+                       th:src="${u.logoUrl}"
+                       width="36"
+                       height="36"
+                       alt=""
+                       loading="lazy"
+                       decoding="async"
+                       referrerpolicy="no-referrer">
+                  <span th:text="${u.name}">University</span>
+                </div>
+              </a>
+            </td>
+            <td th:text="${u.currency != null && !#strings.isEmpty(u.currency)} ? ${u.currency} : '—'">—</td>
+            <td th:text="${u.programsCount != null} ? ${u.programsCount} : '—'">—</td>
+            <td th:text="${u.country != null && !#strings.isEmpty(u.country)} ? ${u.country} : '—'">—</td>
+            <td>
+              <a th:if="${u.website != null && !#strings.isEmpty(u.website)}"
+                 th:href="${u.website}"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 th:text="${u.website}">https://</a>
+              <span th:unless="${u.website != null && !#strings.isEmpty(u.website)}">—</span>
+            </td>
+            <td th:text="${u.campusesCount != null} ? ${u.campusesCount} : '—'">—</td>
+          </tr>
+          <tr id="uniNoResults" class="uni-no-results" hidden>
+            <td colspan="6" class="empty" th:text="#{universities.noMatch}">No universities match your filters.</td>
+          </tr>
+          <tr id="uniEmptyRow" class="uni-row-empty" th:if="${#lists.isEmpty(universityRows)}">
+            <td colspan="6" class="empty" th:text="#{universities.none}">No universities found.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="uni-table-footer">
+        <span id="uniFooterMeta" class="subtle uni-footer-meta"></span>
+        <nav class="uni-pager" id="uniPager" th:attr="aria-label=#{pagination.label}"></nav>
+      </div>
+    </div>
+
+    <div th:if="${currentUserCanManageAgents}" id="addUniversityModal"
+         class="modal-overlay"
+         th:classappend="${universityError != null} ? ' is-open' : ''"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="addUniversityModalTitle">
+      <div class="modal-backdrop" data-close-modal tabindex="-1"></div>
+      <div class="modal-dialog">
+        <div class="modal-dialog-header">
+          <h2 id="addUniversityModalTitle" class="modal-dialog-title" th:text="#{universities.modal.title}">Add university</h2>
+          <button type="button" class="modal-close" data-close-modal th:attr="aria-label=#{common.close}">×</button>
+        </div>
+        <form th:action="@{/universities}" method="post" enctype="multipart/form-data" class="modal-form">
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+          <div class="field">
+            <label th:text="#{universities.label.name}">Name</label>
+            <input name="name" th:attr="placeholder=#{universities.modal.namePlaceholder}" required>
+          </div>
+          <div class="field">
+            <label th:text="#{common.country}">Country</label>
+            <input name="country" th:attr="placeholder=#{universities.modal.ph.country}">
+          </div>
+          <div class="field">
+            <label th:text="#{common.website}">Website</label>
+            <input name="website" th:attr="placeholder=#{universities.modal.ph.website}">
+          </div>
+          <div class="field">
+            <label th:text="#{common.currency}">Currency</label>
+            <input name="currency" th:attr="placeholder=#{universities.modal.ph.currency}">
+          </div>
+          <div class="field">
+            <label th:text="#{universities.col.programs}">Programs</label>
+            <input name="programsCount" type="number" min="0" th:attr="placeholder=#{universities.modal.ph.programs}">
+          </div>
+          <div class="field">
+            <label th:text="#{campuses}">Campuses</label>
+            <input name="campusesCount" type="number" min="0" th:attr="placeholder=#{universities.modal.ph.campuses}">
+          </div>
+          <div class="field">
+            <label th:text="#{universities.modal.logoFile}">University logo</label>
+            <input name="logoFile" type="file" accept="image/png,image/jpeg,image/webp">
+            <div class="subtle" th:text="#{universities.modal.logoFileHint}">PNG, JPG, or WEBP up to 1 MB.</div>
+          </div>
+          <div class="field">
+            <label><span th:text="#{universities.modal.logoUrl}">Logo URL</span> <span class="subtle" th:text="#{universities.modal.logoOptional}">(optional)</span></label>
+            <input name="logoUrl" th:attr="placeholder=#{universities.modal.logoHint}">
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn" data-close-modal th:text="#{common.cancel}">Cancel</button>
+            <button type="submit" class="btn primary" th:text="#{universities.modal.save}">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

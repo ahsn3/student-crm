@@ -1,0 +1,702 @@
+/* Theme tokens — default dark; set via <html data-theme="dark|light|rama"> */
+/* Design system: blue (#2563EB / #0F172A) for light+dark; blush pink (#D81B60 / #4A0E2E) for rama */
+
+html[data-theme="dark"],
+html[data-theme="light"] {
+  --ds-primary: #2563eb;
+  --ds-secondary: #0f172a;
+  --ds-tertiary: #64748b;
+  --ds-neutral: #757681;
+  --sb-bg: #0f172a;
+  --sb-border: rgba(255, 255, 255, 0.08);
+  --sb-text: #ffffff;
+  --sb-muted: #94a3b8;
+  --sb-link: rgba(255, 255, 255, 0.78);
+  --sb-hover: rgba(255, 255, 255, 0.06);
+  --sb-active: #2563eb;
+  --sb-active-text: #ffffff;
+  --sb-menu-bg: #1e293b;
+  --sb-menu-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --sb-avatar-a: #2563eb;
+  --sb-avatar-b: #1d4ed8;
+  --sb-active-shadow: rgba(37, 99, 235, 0.45);
+}
+
+html[data-theme="rama"] {
+  --ds-primary: #d81b60;
+  --ds-secondary: #4a0e2e;
+  --ds-tertiary: #fff0f3;
+  --ds-neutral: #fdf7f8;
+  --sb-bg: linear-gradient(180deg, #d81b60 0%, #4a0e2e 100%);
+  --sb-border: rgba(255, 255, 255, 0.12);
+  --sb-text: #ffffff;
+  --sb-muted: rgba(255, 240, 243, 0.78);
+  --sb-link: rgba(255, 255, 255, 0.82);
+  --sb-hover: rgba(255, 255, 255, 0.1);
+  --sb-active: #ffffff;
+  --sb-active-text: #4a0e2e;
+  --sb-menu-bg: #5c1839;
+  --sb-menu-shadow: 0 16px 40px rgba(74, 14, 46, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  --sb-avatar-a: #ffffff;
+  --sb-avatar-b: #fff0f3;
+  --sb-active-shadow: rgba(216, 27, 96, 0.4);
+}
+
+html[data-theme="rama"] .sidebar .nav a.active {
+  color: var(--sb-active-text) !important;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
+}
+
+html[data-theme="rama"] .sidebar .nav a.active .nav-svg {
+  stroke: var(--sb-active-text);
+}
+
+html[data-theme="rama"] .sidebar-account-avatar {
+  color: #4a0e2e;
+}
+
+html[data-theme="dark"] .sidebar,
+html[data-theme="light"] .sidebar {
+  background: #0f172a !important;
+  border-inline-end-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="rama"] .sidebar {
+  background: linear-gradient(180deg, #d81b60 0%, #4a0e2e 100%) !important;
+  border-inline-end-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .btn.primary {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-grad-top: #131a2b;
+  --bg-grad-bot: #0f172a;
+  --sidebar-grad-top: #0f172a;
+  --sidebar-grad-bot: #0f172a;
+  --card-grad-top: #26292e;
+  --card-grad-bot: #21242a;
+  --kpi-grad-top: #2a2d33;
+  --kpi-grad-bot: #24272d;
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --panel-2: #172033;
+  --border: rgba(255, 255, 255, 0.12);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: #94a3b8;
+  --accent: #2563eb;
+  --accent-warm: #c2410c;
+  --danger: #ff4d4f;
+  --search-bg: rgba(255, 255, 255, 0.08);
+  --search-icon-stroke: rgba(255, 255, 255, 0.72);
+  --nav-link: rgba(255, 255, 255, 0.75);
+  --nav-hover-bg: rgba(255, 255, 255, 0.06);
+  --nav-active-bg: rgba(130, 134, 142, 0.25);
+  --nav-active-border: rgba(160, 166, 176, 0.35);
+  --nav-active-text: rgba(255, 255, 255, 0.92);
+  --nav-svg: rgba(255, 255, 255, 0.78);
+  --nav-svg-active: rgba(255, 255, 255, 0.95);
+  --table-th-bg: rgba(255, 255, 255, 0.06);
+  --table-row-hover: rgba(255, 255, 255, 0.05);
+  --input-bg: rgba(255, 255, 255, 0.07);
+  --input-text: rgba(255, 255, 255, 0.88);
+  --btn-bg: rgba(255, 255, 255, 0.07);
+  --btn-text: rgba(255, 255, 255, 0.88);
+  --btn-primary-bg: #2563eb;
+  --btn-primary-border: rgba(37, 99, 235, 0.55);
+  --pill-bg: rgba(255, 255, 255, 0.02);
+  --pill-text: rgba(255, 255, 255, 0.8);
+  --pill-border: var(--border);
+  --hamburger-bg: rgba(255, 255, 255, 0.04);
+  --hamburger-text: rgba(255, 255, 255, 0.85);
+  --hello-user: rgba(255, 255, 255, 0.78);
+  --auth-base: #07080a;
+  --auth-r1: rgba(120, 120, 140, 0.18);
+  --auth-r2: rgba(90, 90, 100, 0.15);
+  --shadow-card: 0 8px 22px rgba(0, 0, 0, 0.22);
+  --theme-picker-bg: rgba(255, 255, 255, 0.06);
+  --theme-picker-border: var(--border);
+  --theme-chip-active-bg: rgba(130, 134, 142, 0.35);
+  --theme-chip-text: var(--muted);
+  --theme-chip-active-text: rgba(255, 255, 255, 0.95);
+  --control-hover-bg: rgba(255, 255, 255, 0.1);
+  --pager-active-bg: rgba(37, 99, 235, 0.28);
+  --pager-active-border: rgba(37, 99, 235, 0.45);
+  --pager-active-text: rgba(255, 255, 255, 0.95);
+  --modal-shadow: 0 20px 56px rgba(0, 0, 0, 0.5);
+  --tag-bg: rgba(255, 255, 255, 0.07);
+  --tag-text: rgba(255, 255, 255, 0.8);
+  --tag-border: rgba(255, 255, 255, 0.14);
+  --tag-info-bg: rgba(59, 130, 246, 0.16);
+  --tag-info-text: #e0f2fe;
+  --tag-info-border: rgba(96, 165, 250, 0.42);
+  --tag-danger-bg: rgba(254, 202, 202, 0.14);
+  --tag-danger-text: #fecaca;
+  --tag-danger-border: rgba(248, 113, 113, 0.45);
+  --crm-scroll-track: rgba(255, 255, 255, 0.08);
+  --crm-scroll-thumb: rgba(148, 163, 184, 0.55);
+  --crm-scroll-thumb-hover: rgba(203, 213, 225, 0.78);
+  /* Dropdown lists sit on --input-bg; track reads as light gray if too bright */
+  --crm-combobox-scroll-track: rgba(0, 0, 0, 0.52);
+  --crm-combobox-scroll-thumb: rgba(255, 255, 255, 0.22);
+  --crm-combobox-scroll-thumb-hover: rgba(255, 255, 255, 0.34);
+  /* Opaque list surface (inputs use translucent --input-bg and look fine ghosted through) */
+  --crm-combobox-panel-bg: #2a2d34;
+  --view-btn-bg: rgba(255, 255, 255, 0.06);
+  --view-btn-text: rgba(255, 255, 255, 0.55);
+  --view-btn-active-bg: rgba(100, 140, 220, 0.22);
+  --view-btn-active-border: rgba(130, 170, 240, 0.35);
+  --view-btn-active-text: rgba(255, 255, 255, 0.9);
+  --auth-card-a: rgba(56, 59, 66, 0.72);
+  --auth-card-b: rgba(40, 43, 49, 0.75);
+  --auth-card-border: rgba(255, 255, 255, 0.16);
+  --auth-card-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+  --auth-name-color: rgba(255, 255, 255, 0.95);
+  --auth-link-color: #f0f0f3;
+  --remember-check-color: rgba(255, 255, 255, 0.78);
+  --checkbox-accent: #94a3b8;
+  --prog-check-border: #cbd5e1;
+  --prog-check-bg: rgba(15, 23, 42, 0.55);
+  --prog-check-checked-bg: #2563eb;
+  --prog-check-mark: #ffffff;
+  --prog-row-picked-bg: rgba(37, 99, 235, 0.16);
+  --selection-bg: rgba(96, 165, 250, 0.42);
+  --selection-text: #ffffff;
+  --uni-program-title: rgba(255, 255, 255, 0.92);
+  --uni-program-price: rgba(255, 255, 255, 0.78);
+  --dept-summary-color: rgba(255, 255, 255, 0.82);
+  --profile-domain: rgba(255, 255, 255, 0.55);
+  --uni-detail-back-hover: rgba(255, 255, 255, 0.88);
+  --surface-soft: rgba(255, 255, 255, 0.06);
+  --elev-shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.22);
+  --interactive-border: rgba(255, 255, 255, 0.16);
+  --interactive-border-strong: rgba(255, 255, 255, 0.34);
+  --focus-ring: #60a5fa;
+  /* Dashboard — EduCRM dark reference card colors */
+  --dash-card-top: #282e3a;
+  --dash-card-bot: #1e2430;
+  --dash-card-border: rgba(255, 255, 255, 0.07);
+  --dash-card-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --dash-kpi-top: #2c3342;
+  --dash-kpi-bot: #232936;
+  --dash-kpi-border: rgba(255, 255, 255, 0.08);
+  --dash-kpi-shadow: 0 12px 32px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --dash-qa-tile-bg: rgba(255, 255, 255, 0.04);
+  --dash-qa-tile-border: rgba(255, 255, 255, 0.1);
+  --dash-qa-tile-border-hover: rgba(37, 99, 235, 0.35);
+  --dash-qa-tile-hover-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  --dash-qa-tile-text: rgba(255, 255, 255, 0.95);
+  --dash-qa-icon-primary: #2563eb;
+  --dash-qa-icon-secondary: #475569;
+  --dash-qa-icon-shadow: rgba(37, 99, 235, 0.35);
+  --dash-kpi-num: rgba(255, 255, 255, 0.96);
+  --dash-kpi-students-chip-bg: rgba(59, 130, 246, 0.2);
+  --dash-kpi-students-chip-border: rgba(96, 165, 250, 0.5);
+  --dash-kpi-students-chip-text: #93c5fd;
+  /* Applications Today KPI — reference-style emerald pill + charcoal card */
+  --dash-kpi-apps-card-top: #383e4a;
+  --dash-kpi-apps-card-bot: #252a32;
+  --dash-kpi-apps-card-border: rgba(255, 255, 255, 0.075);
+  --dash-kpi-apps-card-shadow: 0 10px 32px rgba(0, 0, 0, 0.44),
+    inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  --dash-kpi-apps-title: rgba(255, 255, 255, 0.5);
+  --dash-kpi-apps-chip-bg: rgba(4, 55, 42, 0.78);
+  --dash-kpi-apps-chip-border: rgba(52, 211, 153, 0.38);
+  --dash-kpi-apps-chip-text: #b5f5df;
+  --dash-qa-student-a: rgba(59, 130, 246, 0.38);
+  --dash-qa-student-b: rgba(59, 130, 246, 0.14);
+  --dash-qa-programs-a: rgba(245, 158, 11, 0.38);
+  --dash-qa-programs-b: rgba(245, 158, 11, 0.14);
+  --dash-qa-uni-a: rgba(52, 211, 153, 0.36);
+  --dash-qa-uni-b: rgba(52, 211, 153, 0.12);
+  --dash-qa-agents-a: rgba(192, 132, 252, 0.38);
+  --dash-qa-agents-b: rgba(192, 132, 252, 0.14);
+  --dash-qa-services-a: rgba(45, 212, 191, 0.36);
+  --dash-qa-services-b: rgba(45, 212, 191, 0.12);
+  --dash-qa-tile-text: rgba(255, 255, 255, 0.96);
+  --dash-qa-tile-muted: rgba(255, 255, 255, 0.82);
+  --dash-qa-cta-bg: rgba(37, 99, 235, 0.35);
+  --dash-qa-cta-border: rgba(37, 99, 235, 0.55);
+  --dash-qa-cta-text: #ffffff;
+}
+
+/* Light: blue design system — navy sidebar via --sb-* tokens */
+html[data-theme="light"] {
+  --bg-grad-top: #f8fafc;
+  --bg-grad-bot: #f1f5f9;
+  --sidebar-grad-top: #0f172a;
+  --sidebar-grad-bot: #0f172a;
+  --card-grad-top: #ffffff;
+  --card-grad-bot: #ffffff;
+  --kpi-grad-top: #ffffff;
+  --kpi-grad-bot: #ffffff;
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --panel-2: #f1f5f9;
+  --border: rgba(15, 23, 42, 0.1);
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --accent-pink: #d81b60;
+  --accent-warm: #f59e0b;
+  --danger: #dc2626;
+  --page-title-color: #2563eb;
+  --kpi-num-color: #2563eb;
+  --brand-title-color: #ffffff;
+  --nav-section-label: rgba(255, 255, 255, 0.78);
+  --search-bg: #f1f5f9;
+  --search-icon-stroke: #2563eb;
+  --nav-link: #ffffff;
+  --nav-hover-bg: rgba(255, 255, 255, 0.1);
+  --nav-active-bg: rgba(255, 255, 255, 0.18);
+  --nav-active-border: transparent;
+  --nav-active-text: #ffffff;
+  --nav-svg: rgba(255, 255, 255, 0.9);
+  --nav-svg-active: #ffffff;
+  --table-th-bg: #2563eb;
+  --table-th-text: #ffffff;
+  --table-row-hover: rgba(44, 123, 229, 0.06);
+  --input-bg: #ffffff;
+  --input-text: #1e293b;
+  --btn-bg: #f1f5f9;
+  --btn-text: #334155;
+  --btn-primary-bg: #2563eb;
+  --btn-primary-border: rgba(245, 158, 11, 0.75);
+  --pill-bg: #ffffff;
+  --pill-text: #475569;
+  --pill-border: rgba(44, 123, 229, 0.18);
+  --hamburger-bg: rgba(44, 123, 229, 0.08);
+  --hamburger-text: #1e4a7a;
+  --hello-user: rgba(255, 255, 255, 0.88);
+  --auth-base: #e8eef5;
+  --auth-r1: rgba(44, 123, 229, 0.14);
+  --auth-r2: rgba(218, 40, 119, 0.08);
+  --shadow-card: 0 8px 24px rgba(15, 60, 120, 0.07);
+  --theme-picker-bg: #ffffff;
+  --theme-picker-border: rgba(44, 123, 229, 0.2);
+  --theme-chip-active-bg: rgba(44, 123, 229, 0.12);
+  --theme-chip-text: #64748b;
+  --theme-chip-active-text: #2563eb;
+  --control-hover-bg: rgba(44, 123, 229, 0.1);
+  --pager-active-bg: #2563eb;
+  --pager-active-border: rgba(245, 158, 11, 0.65);
+  --pager-active-text: #ffffff;
+  --modal-shadow: 0 24px 55px rgba(15, 60, 120, 0.14);
+  --tag-bg: rgba(245, 158, 11, 0.2);
+  --tag-text: #9a3412;
+  --tag-border: rgba(180, 83, 9, 0.28);
+  --tag-info-bg: rgba(44, 123, 229, 0.12);
+  --tag-info-text: #1e3a8a;
+  --tag-info-border: rgba(44, 123, 229, 0.38);
+  --tag-danger-bg: rgba(254, 226, 226, 0.98);
+  --tag-danger-text: #991b1b;
+  --tag-danger-border: rgba(220, 38, 38, 0.35);
+  --crm-scroll-track: rgba(15, 23, 42, 0.06);
+  --crm-scroll-thumb: rgba(71, 85, 105, 0.42);
+  --crm-scroll-thumb-hover: rgba(51, 65, 85, 0.62);
+  --crm-combobox-scroll-track: rgba(15, 23, 42, 0.08);
+  --crm-combobox-scroll-thumb: rgba(71, 85, 105, 0.4);
+  --crm-combobox-scroll-thumb-hover: rgba(51, 65, 85, 0.58);
+  --crm-combobox-panel-bg: #ffffff;
+  --view-btn-bg: #f1f5f9;
+  --view-btn-text: #64748b;
+  --view-btn-active-bg: rgba(44, 123, 229, 0.12);
+  --view-btn-active-border: rgba(245, 158, 11, 0.55);
+  --view-btn-active-text: #2563eb;
+  --auth-card-a: #ffffff;
+  --auth-card-b: #f8fafc;
+  --auth-card-border: rgba(44, 123, 229, 0.15);
+  --auth-card-shadow: 0 12px 36px rgba(15, 60, 120, 0.08);
+  --auth-name-color: #2563eb;
+  --auth-link-color: #d81b60;
+  --remember-check-color: #475569;
+  --checkbox-accent: #2563eb;
+  --prog-check-border: #475569;
+  --prog-check-bg: #ffffff;
+  --prog-check-checked-bg: #2563eb;
+  --prog-check-mark: #ffffff;
+  --prog-row-picked-bg: rgba(37, 99, 235, 0.1);
+  --selection-bg: rgba(37, 99, 235, 0.28);
+  --selection-text: #0f172a;
+  --uni-program-title: #0f172a;
+  --uni-program-price: #475569;
+  --dept-summary-color: #334155;
+  --profile-domain: #64748b;
+  --uni-detail-back-hover: #2563eb;
+  --surface-soft: #f8fafc;
+  --elev-shadow-soft: 0 10px 24px rgba(15, 60, 120, 0.09);
+  --interactive-border: rgba(44, 123, 229, 0.16);
+  --interactive-border-strong: rgba(44, 123, 229, 0.34);
+  --focus-ring: #2563eb;
+  --dash-card-top: #ffffff;
+  --dash-card-bot: #f1f5f9;
+  --dash-card-border: rgba(44, 123, 229, 0.12);
+  --dash-card-shadow: 0 10px 28px rgba(15, 60, 120, 0.08), inset 0 1px 0 #ffffff;
+  --dash-kpi-top: #ffffff;
+  --dash-kpi-bot: #f8fafc;
+  --dash-kpi-border: rgba(44, 123, 229, 0.14);
+  --dash-kpi-shadow: 0 8px 22px rgba(15, 60, 120, 0.07), inset 0 1px 0 #ffffff;
+  --dash-kpi-num: #1e293b;
+  --dash-kpi-students-chip-bg: rgba(44, 123, 229, 0.12);
+  --dash-kpi-students-chip-border: rgba(44, 123, 229, 0.35);
+  --dash-kpi-students-chip-text: #1d4ed8;
+  --dash-kpi-apps-chip-bg: rgba(16, 185, 129, 0.12);
+  --dash-kpi-apps-chip-border: rgba(5, 150, 105, 0.35);
+  --dash-kpi-apps-chip-text: #047857;
+  --dash-qa-tile-bg: rgba(37, 99, 235, 0.06);
+  --dash-qa-tile-border: rgba(148, 163, 184, 0.28);
+  --dash-qa-tile-border-hover: rgba(37, 99, 235, 0.28);
+  --dash-qa-tile-hover-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+  --dash-qa-icon-primary: #2563eb;
+  --dash-qa-icon-secondary: #475569;
+  --dash-qa-icon-shadow: rgba(37, 99, 235, 0.28);
+  --dash-qa-student-a: rgba(44, 123, 229, 0.22);
+  --dash-qa-student-b: rgba(44, 123, 229, 0.08);
+  --dash-qa-programs-a: rgba(245, 158, 11, 0.22);
+  --dash-qa-programs-b: rgba(245, 158, 11, 0.08);
+  --dash-qa-uni-a: rgba(16, 185, 129, 0.2);
+  --dash-qa-uni-b: rgba(16, 185, 129, 0.07);
+  --dash-qa-agents-a: rgba(168, 85, 247, 0.2);
+  --dash-qa-agents-b: rgba(168, 85, 247, 0.07);
+  --dash-qa-services-a: rgba(13, 148, 136, 0.22);
+  --dash-qa-services-b: rgba(13, 148, 136, 0.08);
+  --dash-qa-tile-text: #0f172a;
+  --dash-qa-tile-muted: #334155;
+  --dash-qa-cta-bg: #2563eb;
+  --dash-qa-cta-border: rgba(245, 158, 11, 0.75);
+  --dash-qa-cta-text: #ffffff;
+  /* Solid tile fills (light mode) — visible on white page background */
+  --dash-qa-student-a: #bfdbfe;
+  --dash-qa-student-b: #dbeafe;
+  --dash-qa-programs-a: #fde68a;
+  --dash-qa-programs-b: #fef3c7;
+  --dash-qa-uni-a: #a7f3d0;
+  --dash-qa-uni-b: #d1fae5;
+  --dash-qa-agents-a: #e9d5ff;
+  --dash-qa-agents-b: #f3e8ff;
+  --dash-qa-services-a: #5eead4;
+  --dash-qa-services-b: #99f6e4;
+}
+
+html[data-theme="light"] .btn.primary {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: rgba(245, 158, 11, 0.85);
+}
+
+html[data-theme="light"] .btn.primary:hover {
+  background: #1d4ed8;
+  filter: none;
+}
+
+html[data-theme="rama"] {
+  color-scheme: light;
+  --bg-grad-top: #fdf7f8;
+  --bg-grad-bot: #fff0f3;
+  --sidebar-grad-top: #d81b60;
+  --sidebar-grad-bot: #4a0e2e;
+  --card-grad-top: #ffffff;
+  --card-grad-bot: #ffffff;
+  --kpi-grad-top: #ffffff;
+  --kpi-grad-bot: #ffffff;
+  --bg: #fdf7f8;
+  --panel: #ffffff;
+  --panel-2: #fff0f3;
+  --border: rgba(216, 27, 96, 0.14);
+  --text: #4a0e2e;
+  --muted: #9d4b6f;
+  --accent: #d81b60;
+  --accent-warm: #e879a9;
+  --danger: #e11d48;
+  --page-title-color: #4a0e2e;
+  --kpi-num-color: #d81b60;
+  --brand-title-color: #ffffff;
+  --nav-section-label: rgba(255, 255, 255, 0.82);
+  --search-bg: #fff5fb;
+  --search-icon-stroke: #d81b60;
+  --nav-link: #ffffff;
+  --nav-hover-bg: rgba(255, 255, 255, 0.1);
+  --nav-active-bg: rgba(255, 255, 255, 0.18);
+  --nav-active-border: transparent;
+  --nav-active-text: #ffffff;
+  --nav-svg: rgba(255, 255, 255, 0.9);
+  --nav-svg-active: #ffffff;
+  --table-th-bg: #d81b60;
+  --table-th-text: #ffffff;
+  --table-row-hover: rgba(251, 207, 232, 0.55);
+  --input-bg: #ffffff;
+  --input-text: #3f1f38;
+  --btn-bg: #ffffff;
+  --btn-text: #9d174d;
+  --btn-primary-bg: #d81b60;
+  --btn-primary-border: rgba(130, 10, 60, 0.42);
+  --pill-bg: #ffffff;
+  --pill-text: #9d174d;
+  --pill-border: rgba(219, 39, 119, 0.22);
+  --hamburger-bg: rgba(219, 39, 119, 0.1);
+  --hamburger-text: #9d174d;
+  --hello-user: rgba(255, 255, 255, 0.9);
+  --auth-base: #fff5fb;
+  --auth-r1: rgba(44, 123, 229, 0.18);
+  --auth-r2: rgba(218, 40, 119, 0.14);
+  --shadow-card: 0 10px 32px rgba(157, 23, 77, 0.1);
+  --theme-picker-bg: #ffffff;
+  --theme-picker-border: rgba(219, 39, 119, 0.22);
+  --theme-chip-active-bg: rgba(251, 207, 232, 0.95);
+  --theme-chip-text: #a8558c;
+  --theme-chip-active-text: #831843;
+  --control-hover-bg: rgba(251, 207, 232, 0.85);
+  --pager-active-bg: rgba(251, 113, 133, 0.35);
+  --pager-active-border: rgba(219, 39, 119, 0.4);
+  --pager-active-text: #831843;
+  --modal-shadow: 0 22px 50px rgba(157, 23, 77, 0.14);
+  --tag-bg: rgba(251, 207, 232, 0.75);
+  --tag-text: #831843;
+  --tag-border: rgba(219, 39, 119, 0.22);
+  --tag-info-bg: rgba(251, 207, 232, 0.95);
+  --tag-info-text: #831843;
+  --tag-info-border: rgba(219, 39, 119, 0.32);
+  --tag-danger-bg: rgba(254, 205, 211, 0.92);
+  --tag-danger-text: #9f1239;
+  --tag-danger-border: rgba(225, 29, 72, 0.38);
+  --crm-scroll-track: rgba(157, 23, 77, 0.08);
+  --crm-scroll-thumb: rgba(131, 24, 67, 0.34);
+  --crm-scroll-thumb-hover: rgba(131, 24, 67, 0.52);
+  --crm-combobox-scroll-track: rgba(131, 24, 67, 0.1);
+  --crm-combobox-scroll-thumb: rgba(131, 24, 67, 0.36);
+  --crm-combobox-scroll-thumb-hover: rgba(131, 24, 67, 0.52);
+  --crm-combobox-panel-bg: #ffffff;
+  --view-btn-bg: #fff5fb;
+  --view-btn-text: #a8558c;
+  --view-btn-active-bg: rgba(251, 207, 232, 0.95);
+  --view-btn-active-border: rgba(219, 39, 119, 0.35);
+  --view-btn-active-text: #831843;
+  --auth-card-a: #ffffff;
+  --auth-card-b: #ffffff;
+  --auth-card-border: rgba(219, 39, 119, 0.2);
+  --auth-card-shadow: 0 14px 40px rgba(157, 23, 77, 0.1);
+  --auth-name-color: #831843;
+  --auth-link-color: #d81b60;
+  --remember-check-color: #9d174d;
+  --checkbox-accent: #d81b60;
+  --prog-check-border: #9d174d;
+  --prog-check-bg: #ffffff;
+  --prog-check-checked-bg: #d81b60;
+  --prog-check-mark: #ffffff;
+  --prog-row-picked-bg: rgba(216, 27, 96, 0.12);
+  --selection-bg: rgba(216, 27, 96, 0.22);
+  --selection-text: #4a0e2e;
+  --uni-program-title: #3f1f38;
+  --uni-program-price: #7c3a66;
+  --dept-summary-color: #6b2d52;
+  --profile-domain: #a8558c;
+  --uni-detail-back-hover: #831843;
+  --surface-soft: #fff8fc;
+  --elev-shadow-soft: 0 12px 26px rgba(157, 23, 77, 0.12);
+  --interactive-border: rgba(219, 39, 119, 0.2);
+  --interactive-border-strong: rgba(219, 39, 119, 0.38);
+  --focus-ring: #d81b60;
+  --dash-card-top: #ffffff;
+  --dash-card-bot: #fff5fb;
+  --dash-card-border: rgba(219, 39, 119, 0.14);
+  --dash-card-shadow: 0 12px 30px rgba(157, 23, 77, 0.09), inset 0 1px 0 #ffffff;
+  --dash-kpi-top: #ffffff;
+  --dash-kpi-bot: #fff8fc;
+  --dash-kpi-border: rgba(219, 39, 119, 0.16);
+  --dash-kpi-shadow: 0 10px 26px rgba(157, 23, 77, 0.08), inset 0 1px 0 #ffffff;
+  --dash-kpi-num: #831843;
+  --dash-kpi-students-chip-bg: rgba(44, 123, 229, 0.12);
+  --dash-kpi-students-chip-border: rgba(44, 123, 229, 0.32);
+  --dash-kpi-students-chip-text: #1d4ed8;
+  --dash-kpi-apps-chip-bg: rgba(16, 185, 129, 0.12);
+  --dash-kpi-apps-chip-border: rgba(5, 150, 105, 0.32);
+  --dash-kpi-apps-chip-text: #047857;
+  --dash-qa-tile-bg: rgba(216, 27, 96, 0.06);
+  --dash-qa-tile-border: rgba(216, 27, 96, 0.14);
+  --dash-qa-tile-border-hover: rgba(216, 27, 96, 0.28);
+  --dash-qa-tile-hover-shadow: 0 10px 24px rgba(74, 14, 46, 0.1);
+  --dash-qa-icon-primary: #d81b60;
+  --dash-qa-icon-secondary: #4a0e2e;
+  --dash-qa-icon-shadow: rgba(216, 27, 96, 0.3);
+  --dash-qa-student-a: rgba(44, 123, 229, 0.2);
+  --dash-qa-student-b: rgba(44, 123, 229, 0.07);
+  --dash-qa-programs-a: rgba(245, 158, 11, 0.2);
+  --dash-qa-programs-b: rgba(245, 158, 11, 0.07);
+  --dash-qa-uni-a: rgba(16, 185, 129, 0.18);
+  --dash-qa-uni-b: rgba(16, 185, 129, 0.06);
+  --dash-qa-agents-a: rgba(192, 132, 252, 0.2);
+  --dash-qa-agents-b: rgba(192, 132, 252, 0.07);
+  --dash-qa-services-a: rgba(218, 40, 119, 0.22);
+  --dash-qa-services-b: rgba(218, 40, 119, 0.08);
+  --dash-qa-tile-text: #4a0e2e;
+  --dash-qa-tile-muted: #701a75;
+  --dash-qa-cta-bg: #d81b60;
+  --dash-qa-cta-border: rgba(130, 10, 60, 0.45);
+  --dash-qa-cta-text: #ffffff;
+  --dash-qa-student-a: #fbcfe8;
+  --dash-qa-student-b: #fce7f3;
+  --dash-qa-programs-a: #fde68a;
+  --dash-qa-programs-b: #fef3c7;
+  --dash-qa-uni-a: #f9a8d4;
+  --dash-qa-uni-b: #fbcfe8;
+  --dash-qa-agents-a: #e9d5ff;
+  --dash-qa-agents-b: #f3e8ff;
+  --dash-qa-services-a: #f9a8d4;
+  --dash-qa-services-b: #fce7f3;
+}
+
+html[data-theme="rama"] .btn.primary {
+  background: #d81b60;
+  color: #ffffff;
+  border-color: rgba(130, 10, 60, 0.45);
+  text-shadow: none;
+  filter: none;
+}
+
+html[data-theme="rama"] .btn.primary:hover {
+  background: #b71750;
+  border-color: rgba(90, 8, 45, 0.55);
+  filter: none;
+}
+
+/* Top bar layout + theme chips */
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+}
+.topbar-start {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 10px;
+}
+.topbar-start .search {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  max-width: min(620px, 100%);
+}
+.topbar-end {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.theme-picker,
+.theme-picker-mount .theme-picker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border-radius: 12px;
+  border: 1px solid var(--theme-picker-border);
+  background: var(--theme-picker-bg);
+}
+.theme-chip {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--theme-chip-text);
+  font-size: 11px;
+  font-weight: 650;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.theme-chip:hover {
+  color: var(--text);
+  background: rgba(128, 128, 128, 0.12);
+}
+.theme-chip.is-active {
+  background: var(--theme-chip-active-bg);
+  color: var(--theme-chip-active-text);
+  border-color: var(--border);
+}
+.auth-theme-strip {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top, 0px));
+  right: max(16px, env(safe-area-inset-right, 0px));
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--theme-picker-border);
+  background: var(--theme-picker-bg);
+  backdrop-filter: blur(8px);
+}
+.auth-theme-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Combobox list scrollbars: native UI (esp. WebKit) follows color-scheme */
+html[data-theme="dark"] .crm-combobox-panel {
+  color-scheme: dark;
+}
+html[data-theme="light"] .crm-combobox-panel,
+html[data-theme="rama"] .crm-combobox-panel {
+  color-scheme: light;
+}
+
+/* Application status pills: readable on light / Rama table rows */
+html[data-theme="light"] .tag.app-status,
+html[data-theme="rama"] .tag.app-status {
+  border-color: rgba(71, 85, 105, 0.28);
+  background: #f1f5f9;
+  color: #334155;
+}
+html[data-theme="light"] .tag.app-status.app-status--new,
+html[data-theme="rama"] .tag.app-status.app-status--new {
+  border-color: rgba(59, 130, 246, 0.42);
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+html[data-theme="light"] .tag.app-status.app-status--in-progress,
+html[data-theme="rama"] .tag.app-status.app-status--in-progress {
+  border-color: rgba(245, 158, 11, 0.45);
+  background: #fef3c7;
+  color: #b45309;
+}
+html[data-theme="light"] .tag.app-status.app-status--submitted,
+html[data-theme="rama"] .tag.app-status.app-status--submitted {
+  border-color: rgba(14, 165, 233, 0.45);
+  background: #e0f2fe;
+  color: #0369a1;
+}
+html[data-theme="light"] .tag.app-status.app-status--accepted,
+html[data-theme="rama"] .tag.app-status.app-status--accepted {
+  border-color: rgba(16, 185, 129, 0.45);
+  background: #d1fae5;
+  color: #047857;
+}
+html[data-theme="light"] .tag.app-status.app-status--rejected,
+html[data-theme="rama"] .tag.app-status.app-status--rejected {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: #fee2e2;
+  color: #b91c1c;
+}
+html[data-theme="light"] .tag.app-status.app-status--withdrawn,
+html[data-theme="rama"] .tag.app-status.app-status--withdrawn {
+  border-color: rgba(100, 116, 139, 0.35);
+  background: #f1f5f9;
+  color: #475569;
+}
+
+::selection{
+  background: var(--selection-bg, rgba(37, 99, 235, 0.32));
+  color: var(--selection-text, inherit);
+}
+::-moz-selection{
+  background: var(--selection-bg, rgba(37, 99, 235, 0.32));
+  color: var(--selection-text, inherit);
+}

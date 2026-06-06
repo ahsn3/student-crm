@@ -1,0 +1,32 @@
+{
+  "total_unique_programs": 1345,
+  "by_university": {
+    "Acibadem University": 30,
+    "Altınbaş University": 80,
+    "Arel University": 124,
+    "Aydın University": 381,
+    "Beykent University": 183,
+    "Bezmialem Vakıf University": 6,
+    "Biruni University": 82,
+    "CIU University": 113,
+    "European University of Lefke": 97,
+    "Final International University": 26,
+    "Işık University": 54,
+    "Türk Hava Kurumu University": 24,
+    "İstinye University": 145
+  },
+  "expected_from_portal": {
+    "Aydın University": 357,
+    "Arel University": 127,
+    "Beykent University": 199
+  },
+  "gaps_vs_portal": {
+    "Aydın University": -24,
+    "Arel University": 3,
+    "Beykent University": 16
+  },
+  "sources": {
+    "all": 1303,
+    "targeted": 714
+  }
+}

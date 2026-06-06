@@ -1,0 +1,225 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content"
+     th:class="|application-detail-page-wrap application-detail-portal ${currentUserCanManageAgents ? 'application-detail-page-wrap--staff' : 'application-detail-page-wrap--agent'}|"
+     th:with="attCount=${#lists.size(applicationAttachments)},statusKey=${studentApplication.status != null ? #strings.toLowerCase(#strings.replace(studentApplication.status, '_', '-')) : 'new'},hasChatUnread=${applicationChatUnreadCount != null and applicationChatUnreadCount > 0}">
+
+  <div class="application-detail-portal-header">
+    <div>
+      <a class="btn application-detail-header-btn application-detail-portal-back" th:href="@{/applications}" th:text="#{applications.new.back}">Back</a>
+      <h1 class="application-detail-portal-title">
+        <span th:text="#{applications.detail.pageTitle}">Application</span>:
+        <span th:text="${studentApplication.applicationNumber}">IN-000001</span>
+      </h1>
+    </div>
+    <div class="application-detail-portal-header-actions">
+      <a class="btn primary application-detail-header-btn"
+         th:if="${currentUserCanManageAgents}"
+         th:href="@{|/applications/${studentApplication.id}/edit|}"
+         th:text="#{applications.detail.edit}">Edit</a>
+      <button type="button" class="btn application-detail-header-btn danger" id="openApplicationDeleteModal" th:text="#{common.delete}">Delete</button>
+    </div>
+  </div>
+
+  <div class="subtle uni-flash uni-flash--ok" th:if="${applicationSuccessKey != null}" th:text="#{${applicationSuccessKey}}"></div>
+  <div class="subtle uni-flash uni-flash--err" th:if="${applicationErrorKey != null}" th:text="#{${applicationErrorKey}}"></div>
+
+  <div class="application-detail-portal-alert" th:if="${attCount == 0}">
+    <span class="application-detail-portal-alert-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8"/><path d="M14 2v6h6M12 18v-6M9 15h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </span>
+    <span th:text="#{applications.detail.uploadAlert}">Please upload the needed papers to continue the application.</span>
+  </div>
+
+  <div class="application-detail-portal-grid">
+    <aside class="card application-detail-portal-info">
+      <div class="application-detail-info-hero">
+        <span class="tag app-type application-detail-type-pill"
+              th:classappend="${studentApplication.applicationType != null ? 'app-type--' + #strings.toLowerCase(studentApplication.applicationType) : ''}"
+              th:text="${studentApplication.applicationType != null ? #strings.capitalize(#strings.toLowerCase(studentApplication.applicationType)) : '—'}">—</span>
+        <span class="tag app-status application-detail-status-pill" th:classappend="${'app-status--' + statusKey}"
+              th:text="${studentApplication.status != null ? #strings.replace(studentApplication.status, '_', ' ') : '—'}">—</span>
+        <span class="application-detail-number" th:text="${studentApplication.applicationNumber}">IN-000001</span>
+      </div>
+
+      <section class="application-detail-program-block" th:if="${studentApplication.department != null}">
+        <h2 class="application-detail-program-block-title" th:text="#{applications.detail.programSection}">Program</h2>
+        <dl class="application-detail-info-list application-detail-info-list--compact">
+          <div class="application-detail-info-row" th:if="${studentApplication.department.university != null}">
+            <dt th:text="#{nav.universities}">University</dt>
+            <dd th:text="${studentApplication.department.university.name}">—</dd>
+          </div>
+          <div class="application-detail-info-row">
+            <dt th:text="#{nav.programs}">Program</dt>
+            <dd th:text="${studentApplication.department.name}">—</dd>
+          </div>
+          <div class="application-detail-info-row">
+            <dt th:text="#{applications.detail.level}">Level</dt>
+            <dd th:text="${studentApplication.department.degree != null ? studentApplication.department.degree : '—'}">—</dd>
+          </div>
+          <div class="application-detail-info-row">
+            <dt th:text="#{applications.form.programLanguage}">Language</dt>
+            <dd th:text="${studentApplication.department.language != null ? studentApplication.department.language : '—'}">—</dd>
+          </div>
+          <div class="application-detail-info-row">
+            <dt th:text="#{applications.filter.semester}">Semester</dt>
+            <dd th:text="${studentApplication.semester != null ? studentApplication.semester : '—'}">—</dd>
+          </div>
+        </dl>
+      </section>
+      <p class="subtle application-detail-program-missing" th:if="${studentApplication.department == null}" th:text="#{applications.flash.programRequired}">—</p>
+
+      <dl class="application-detail-info-list application-detail-info-list--grid">
+        <div class="application-detail-info-row">
+          <dt th:text="#{applications.col.student}">Student</dt>
+          <dd th:text="${studentApplication.student != null ? studentApplication.student.fullName : '—'}">—</dd>
+        </div>
+        <div class="application-detail-info-row" th:if="${studentApplication.student != null and studentApplication.student.passportNo != null and !studentApplication.student.passportNo.isBlank()}">
+          <dt th:text="#{applications.detail.passport}">Passport</dt>
+          <dd th:text="${studentApplication.student.passportNo}">—</dd>
+        </div>
+        <div class="application-detail-info-row" th:if="${studentApplication.student != null and studentApplication.student.email != null and !studentApplication.student.email.isBlank()}">
+          <dt th:text="#{applications.detail.email}">Email</dt>
+          <dd th:text="${studentApplication.student.email}">—</dd>
+        </div>
+        <div class="application-detail-info-row" th:if="${studentApplication.student != null and studentApplication.student.nationality != null and !studentApplication.student.nationality.isBlank()}">
+          <dt th:text="#{applications.detail.nationality}">Nationality</dt>
+          <dd th:text="${studentApplication.student.nationality}">—</dd>
+        </div>
+        <div class="application-detail-info-row application-detail-info-row--full" th:if="${studentApplication.notes != null and !studentApplication.notes.isBlank()}">
+          <dt th:text="#{applications.col.notes}">Notes</dt>
+          <dd class="application-detail-info-notes" th:text="${studentApplication.notes}">—</dd>
+        </div>
+        <div class="application-detail-info-row application-detail-info-row--full">
+          <dt th:text="#{applications.col.lastUpdate}">Last update</dt>
+          <dd th:text="${studentApplication.updatedAt != null ? @displayTime.format(studentApplication.updatedAt, 'yyyy-MM-dd HH:mm:ss') : '—'}">—</dd>
+        </div>
+      </dl>
+    </aside>
+
+    <div class="application-detail-portal-main card">
+      <div class="app-detail-tabs" role="tablist">
+        <a th:href="@{|/applications/${studentApplication.id}?tab=attachments|}"
+           class="app-detail-tab app-detail-tab--attachments"
+           th:classappend="${activeTab != 'chat' ? ' is-active' : ''}"
+           role="tab"
+           th:attr="aria-selected=${activeTab != 'chat'}"
+           id="appDetailTabAttachments">
+          <span class="app-detail-tab-icon-wrap app-detail-tab-icon-wrap--files" aria-hidden="true">
+            <svg class="app-detail-tab-svg" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.75"/><path d="M14 2v6h6M12 11v6M9 14h6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+          </span>
+          <span class="app-detail-tab-label" th:text="#{applications.detail.tab.attachments}">Attachments</span>
+          <span class="app-detail-tab-badge" th:text="${attCount}">0</span>
+        </a>
+        <a th:href="@{|/applications/${studentApplication.id}?tab=chat|}"
+           class="app-detail-tab app-detail-tab--chat"
+           th:classappend="${activeTab == 'chat' ? ' is-active' : ''}"
+           role="tab"
+           th:attr="aria-selected=${activeTab == 'chat'}"
+           id="appDetailTabChat">
+          <span class="app-detail-tab-icon-wrap app-detail-tab-icon-wrap--chat" aria-hidden="true">
+            <svg class="app-detail-tab-svg" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="app-detail-tab-label" th:text="#{applications.detail.tab.chat}">Chat</span>
+          <span class="app-detail-tab-badge app-detail-tab-badge--unread"
+                th:if="${hasChatUnread and activeTab != 'chat'}"
+                th:text="${applicationChatUnreadCount > 99 ? '99+' : applicationChatUnreadCount}">0</span>
+        </a>
+      </div>
+
+      <div class="app-detail-panels">
+        <section id="attachments" class="app-detail-panel is-active" th:if="${activeTab != 'chat'}">
+          <div class="app-detail-panel-head">
+            <h2 class="app-detail-panel-title" th:text="#{applications.attachments.title}">Attachments</h2>
+            <p class="subtle app-detail-panel-sub" th:text="#{applications.detail.attachmentsHint}">Upload passports, transcripts, and other documents.</p>
+          </div>
+          <form id="applicationAttachForm" th:action="@{|/applications/${studentApplication.id}/attachments|}" method="post" enctype="multipart/form-data" class="application-detail-dropzone-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <label id="applicationAttachDropzone" class="application-detail-dropzone" for="applicationAttachInput">
+                <input id="applicationAttachInput" class="application-detail-dropzone-input" name="files" type="file" multiple
+                       accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt">
+              <div id="applicationAttachPrompt" class="application-detail-dropzone-prompt">
+                <span class="application-detail-dropzone-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="40" height="40" fill="none"><path d="M12 16V4m0 0 4 4m-4-4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+                <span id="applicationAttachDropzoneText" class="application-detail-dropzone-text" th:text="#{applications.detail.dropzone}">Drop files here, or click to select</span>
+                <span class="subtle application-detail-dropzone-hint" th:text="#{applications.detail.addMoreFiles}">Select one or more files — you can add more before uploading</span>
+              </div>
+              <ul id="applicationAttachPreview" class="application-detail-attach-queue application-detail-attach-queue--inbox" aria-live="polite"></ul>
+            </label>
+            <button type="submit" id="applicationAttachSubmit" class="btn primary application-detail-upload-btn" th:text="#{applications.attachments.upload}">Upload attachment</button>
+          </form>
+          <div class="application-detail-attach-list" th:if="${!#lists.isEmpty(applicationAttachments)}" id="applicationAttachGrid">
+            <article class="application-detail-attach-row" th:each="att : ${applicationAttachments}">
+              <div class="application-detail-attach-row-main">
+                <div class="application-detail-attach-name" th:text="${att.fileName}">file.pdf</div>
+                <div class="application-detail-attach-meta subtle" th:text="${att.createdAt != null ? @displayTime.format(att.createdAt, 'yyyy-MM-dd HH:mm') : ''}">—</div>
+              </div>
+              <div class="application-detail-attach-actions">
+                <a class="tag info" th:href="@{|/applications/${studentApplication.id}/attachments/${att.id}/download|}" th:text="#{common.download}">Download</a>
+                <form th:action="@{|/applications/${studentApplication.id}/attachments/${att.id}/delete|}" method="post" class="application-delete-form">
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                  <button type="submit" class="tag danger" th:text="#{common.delete}">Delete</button>
+                </form>
+              </div>
+            </article>
+          </div>
+          <p class="subtle application-detail-attach-empty" th:if="${#lists.isEmpty(applicationAttachments)}" th:text="#{applications.detail.attachmentsEmptyFun}">No attachments yet</p>
+        </section>
+
+        <section id="chat" class="app-detail-panel application-detail-portal-chat is-active" th:if="${activeTab == 'chat'}">
+          <div class="subtle uni-flash uni-flash--ok" th:if="${applicationChatSuccessKey}" th:text="#{__${applicationChatSuccessKey}__}"></div>
+          <div class="subtle uni-flash uni-flash--err" th:if="${applicationChatErrorKey}" th:text="#{__${applicationChatErrorKey}__}"></div>
+          <div class="application-detail-chat-scroll application-chat-thread">
+            <p class="subtle application-chat-empty" th:if="${#lists.isEmpty(applicationChatMessages)}" th:text="#{applications.chat.empty}">No messages yet.</p>
+            <div th:each="m : ${applicationChatMessages}"
+                 th:class="${m.mine ? 'application-chat-row application-chat-row--me' : 'application-chat-row application-chat-row--them'}">
+              <span class="application-chat-avatar"
+                    th:classappend="${m.senderAdmin ? ' application-chat-avatar--admin' : ' application-chat-avatar--agent'}"
+                    th:text="${#strings.substring(m.senderName, 0, 1)}">?</span>
+              <div th:class="${m.mine ? 'application-chat-bubble application-chat-bubble--me' : 'application-chat-bubble application-chat-bubble--them'}">
+                <div class="application-chat-bubble-head">
+                  <span class="application-chat-sender" th:text="${m.senderName}">User</span>
+                  <span th:if="${m.senderAdmin}" class="application-chat-role application-chat-role--admin" th:text="#{applications.chat.roleAdmin}">IngazGate</span>
+                  <span th:if="${!m.senderAdmin}" class="application-chat-role application-chat-role--agent" th:text="#{applications.chat.roleAgent}">Agent</span>
+                </div>
+                <div th:if="${m.body != null and !#strings.isEmpty(m.body)}" th:text="${m.body}" style="white-space:pre-wrap;"></div>
+                <div class="application-chat-file" th:if="${m.hasFile}">
+                  <a class="tag info"
+                     th:href="@{|/applications/${studentApplication.id}/chat/${m.id}/download|}"
+                     th:text="${m.fileName != null ? m.fileName : 'Download'}">Download</a>
+                </div>
+                <div class="application-chat-meta subtle" th:text="${m.createdAt != null ? @displayTime.format(m.createdAt, 'yyyy-MM-dd HH:mm') : ''}">—</div>
+              </div>
+            </div>
+          </div>
+          <form th:action="@{|/applications/${studentApplication.id}/chat|}" method="post" class="application-detail-chat-compose profile-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <div class="field application-detail-chat-field">
+              <label class="sr-only" for="applicationChatBody" th:text="#{applications.chat.message}">Message</label>
+              <textarea id="applicationChatBody" name="body" rows="3" maxlength="4000" th:placeholder="#{applications.chat.placeholder}"></textarea>
+            </div>
+            <button type="submit" class="btn primary application-detail-chat-submit" th:text="#{applications.chat.send}">Send</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div id="applicationDeleteModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="applicationDeleteModalTitle">
+    <div class="modal-backdrop" data-close-app-delete-modal tabindex="-1"></div>
+    <div class="modal-dialog modal-dialog--logout">
+      <div class="modal-dialog-header">
+        <h2 id="applicationDeleteModalTitle" class="modal-dialog-title" th:text="#{applications.delete.title}">Delete application</h2>
+        <button type="button" class="modal-close" data-close-app-delete-modal th:attr="aria-label=#{common.close}">×</button>
+      </div>
+      <div class="modal-form modal-form--stack logout-confirm-body">
+        <p class="logout-confirm-msg" th:text="#{applications.delete.confirm}">Are you sure?</p>
+        <form th:action="@{|/applications/${studentApplication.id}/delete|}" method="post" class="modal-actions" style="display:flex;gap:10px;justify-content:flex-end;">
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+          <button type="button" class="btn" data-close-app-delete-modal th:text="#{common.cancel}">Cancel</button>
+          <button type="submit" class="btn danger" th:text="#{common.delete}">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

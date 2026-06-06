@@ -1,0 +1,67 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content" class="service-new-page" id="serviceDetailPage">
+  <div class="services-hub-heading">
+    <a class="subtle" th:href="@{/services}" th:text="#{services.detail.back}">Back to services</a>
+    <h1 class="page-heading-title" th:text="${#messages.msg(selectedService.titleKey)}">Service</h1>
+    <p class="page-heading-sub subtle" th:text="${#messages.msg(selectedService.detailsKey)}">Service details.</p>
+  </div>
+
+  <div class="service-page-flash" th:if="${serviceSuccessKey != null or serviceErrorKey != null}">
+    <div class="uni-flash uni-flash--ok" th:if="${serviceSuccessKey != null}" th:text="${#messages.msg(serviceSuccessKey)}">Saved.</div>
+    <div class="uni-flash uni-flash--err" th:if="${serviceErrorKey != null}" th:text="${#messages.msg(serviceErrorKey)}">Error.</div>
+    </div>
+
+  <section class="card dashboard-surface-card services-service-card">
+    <h2 class="services-service-title" th:text="#{services.detail.addTitle}">Add new entry</h2>
+    <form class="service-card-form service-detail-form" method="post" th:action="@{/services}" id="serviceDetailForm">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <input type="hidden" name="serviceKey" th:value="${selectedService.key}">
+      <div class="field">
+        <label th:text="#{services.form.student}">Student</label>
+        <div class="crm-combobox" data-combobox>
+          <input type="hidden" name="studentId" id="serviceStudentIdHidden" required>
+          <input
+            type="text"
+            id="serviceStudentComboInput"
+            class="crm-combobox-input"
+            autocomplete="off"
+            spellcheck="false"
+                 th:placeholder="#{services.form.student.placeholder}"
+            th:attr="aria-label=#{services.form.student}">
+          <ul class="crm-combobox-panel" role="listbox" hidden>
+            <li
+              th:each="s : ${students}"
+              role="option"
+              tabindex="-1"
+              class="crm-combobox-option"
+              th:data-value="${s.id}"
+              th:data-label="${s.fullName}"
+              th:text="${s.fullName}">Student</li>
+          </ul>
+        </div>
+      </div>
+      <div class="field service-date-field">
+        <label th:text="${#messages.msg(selectedService.dateLabelKey)}">Service date</label>
+        <input type="date" name="endDate" th:attr="required=${selectedService.residencyEndRequired} ? 'required' : null">
+      </div>
+      <div class="field service-notes-field">
+        <label th:text="#{services.form.details}">Service details</label>
+        <textarea name="details" rows="4" maxlength="4000" th:placeholder="#{services.form.details.placeholder}" required></textarea>
+      </div>
+        <button class="btn primary" type="submit" th:text="#{services.form.save}">Save service</button>
+    </form>
+  </section>
+
+  <section class="card dashboard-surface-card service-new-records-card">
+    <h2 class="services-service-title" th:text="#{services.detail.listTitle}">All saved entries</h2>
+    <div class="empty" th:if="${#lists.isEmpty(serviceRecords)}" th:text="#{services.records.empty}">No entries yet.</div>
+    <ul class="services-record-list" th:if="${!#lists.isEmpty(serviceRecords)}">
+      <li th:each="row : ${serviceRecords}">
+        <span class="service-record-main">
+          <a th:href="@{/students/{id}(id=${row.student.id})}" th:text="${row.student.fullName}">Student</a>
+          <span class="subtle service-record-details" th:text="${row.details}">Details</span>
+        </span>
+        <span class="subtle" th:text="${row.endDate != null ? @displayTime.format(row.endDate, 'yyyy-MM-dd') : @displayTime.format(row.updatedAt, 'yyyy-MM-dd HH:mm')}">2026-01-01</span>
+      </li>
+    </ul>
+  </section>
+</div>

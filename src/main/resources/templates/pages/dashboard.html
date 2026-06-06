@@ -1,0 +1,302 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <th:block th:if="${currentUserCanManageAgents}">
+    <div class="dashboard-page dashboard-page--admin">
+      <div class="card dashboard-card-animate dashboard-surface-card dashboard-residency-card dashboard-residency-card--top">
+        <div class="card-header">
+          <div>
+            <div style="font-weight:800" th:text="#{dashboard.residencyReminders.title}">Residency ending soon</div>
+            <div class="subtle" th:text="#{dashboard.residencyReminders.subtitle}">Ends in next two months</div>
+          </div>
+        </div>
+        <div class="empty" th:if="${#lists.isEmpty(dashboardResidencyEndingSoon)}" th:text="#{dashboard.residency.empty}">
+          No residency renewals ending soon.
+        </div>
+        <ul th:if="${!#lists.isEmpty(dashboardResidencyEndingSoon)}" class="dashboard-recent-list">
+          <li th:each="r : ${dashboardResidencyEndingSoon}">
+            <a class="table-student-name" th:href="@{/students/{id}(id=${r.student.id})}" th:text="${r.student.fullName}">Student</a>
+            <span class="subtle" th:text="${r.endDate != null ? @displayTime.format(r.endDate, 'yyyy-MM-dd') : ''}">—</span>
+          </li>
+        </ul>
+      </div>
+      <div class="dashboard-main-grid">
+        <div class="dashboard-top-row">
+          <div class="kpi kpi--students dashboard-card-animate">
+            <div class="kpi-top">
+              <div class="subtle" th:text="#{dashboard.kpi.studentsToday}">Students Today</div>
+              <span class="kpi-chip" th:text="#{dashboard.kpi.studentsChip}">Students</span>
+            </div>
+            <div class="kpi-stat">
+              <div class="num" th:text="${dashboardStudentsToday}">0</div>
+            </div>
+            <div class="kpi-chart kpi-chart--line" aria-hidden="true">
+              <svg class="kpi-line-svg" viewBox="0 0 160 52" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="dashKpiStudentsFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.45"/>
+                    <stop offset="55%" stop-color="#2563eb" stop-opacity="0.12"/>
+                    <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="dashKpiStudentsStroke" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#60a5fa"/>
+                    <stop offset="100%" stop-color="#38bdf8"/>
+                  </linearGradient>
+                  <filter id="dashKpiStudentsGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="1.2" result="b"/>
+                    <feMerge>
+                      <feMergeNode in="b"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path class="kpi-line-area" fill="url(#dashKpiStudentsFill)" d="M0,40 C12,38 22,42 34,30 C46,18 58,26 72,20 C86,14 98,22 112,14 C126,6 138,12 160,8 L160,52 L0,52 Z"/>
+                <path class="kpi-line-stroke" fill="none" stroke="url(#dashKpiStudentsStroke)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#dashKpiStudentsGlow)" d="M0,40 C12,38 22,42 34,30 C46,18 58,26 72,20 C86,14 98,22 112,14 C126,6 138,12 160,8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi kpi--applications dashboard-card-animate">
+            <div class="kpi-top">
+              <div class="subtle" th:text="#{dashboard.kpi.appsToday}">Applications Today</div>
+              <span class="kpi-chip" th:text="#{dashboard.kpi.appsChip}">Apps</span>
+            </div>
+            <div class="kpi-stat">
+              <div class="num" th:text="${dashboardApplicationsToday}">0</div>
+            </div>
+            <div class="kpi-chart kpi-chart--bars kpi-chart--apps-bars" aria-hidden="true">
+              <div class="kpi-bar" style="--kpi-bar-h:22%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:42%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:16%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:62%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:32%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:46%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:26%"></div>
+            </div>
+          </div>
+          <div class="card dashboard-card-animate dashboard-recent-app dashboard-surface-card">
+            <div class="card-header">
+              <div>
+                <div style="font-weight:800" th:text="#{dashboard.recentApp.title}">Recent Application</div>
+                <div class="subtle" th:text="#{dashboard.recentApp.subtitle}">Latest updates</div>
+              </div>
+              <a class="btn" th:href="@{/applications}" th:text="#{nav.applications}">Applications</a>
+            </div>
+            <div th:if="${#lists.isEmpty(recentApplications)}" class="empty" th:text="#{applications.empty}">No applications.</div>
+            <ul th:if="${!#lists.isEmpty(recentApplications)}" class="dashboard-recent-list">
+              <li th:each="a : ${recentApplications}">
+                <span class="tag" th:text="${a.applicationNumber}">IN-000001</span>
+                <a th:if="${a.student != null}" class="table-student-name" th:href="@{/students/{id}(id=${a.student.id})}" th:text="${a.student.fullName}">Student</a>
+                <span th:if="${a.student == null}">—</span>
+                <span class="subtle" th:text="${a.updatedAt != null ? @displayTime.format(a.updatedAt, 'yyyy-MM-dd HH:mm') : ''}">—</span>
+                <a class="btn btn--compact dashboard-recent-edit"
+                   th:href="@{/applications/{id}(id=${a.id})}"
+                   th:text="#{common.view}">View</a>
+              </li>
+            </ul>
+          </div>
+          <div class="card dashboard-card-animate dashboard-recent-students dashboard-surface-card">
+            <div class="card-header">
+              <div>
+                <div style="font-weight:800" th:text="#{dashboard.recentSt.title}">Recent Students</div>
+                <div class="subtle" th:text="#{dashboard.recentSt.subtitle}">Recently added</div>
+              </div>
+              <a class="btn" th:href="@{/students}" th:text="#{nav.students}">Students</a>
+            </div>
+            <div th:if="${#lists.isEmpty(recentStudents)}" class="empty" th:text="#{students.empty}">No students.</div>
+            <ul th:if="${!#lists.isEmpty(recentStudents)}" class="dashboard-recent-list">
+              <li th:each="s : ${recentStudents}">
+                <a class="table-student-name" th:href="@{/students/{id}(id=${s.id})}" th:text="${s.fullName}">Name</a>
+                <span class="subtle" th:text="${s.createdAt != null ? @displayTime.format(s.createdAt, 'yyyy-MM-dd HH:mm') : ''}">—</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dashboard-bottom-row">
+          <div class="card dashboard-card-animate dashboard-news-card dashboard-surface-card">
+            <div class="card-header">
+              <div>
+                <div style="font-weight:800" th:text="#{dashboard.news.title}">Latest News</div>
+                <div class="subtle" th:if="${#lists.isEmpty(dashboardNewsPosts)}" th:text="#{dashboard.news.subtle}">No items found</div>
+                <div class="subtle" th:if="${!#lists.isEmpty(dashboardNewsPosts)}" th:text="#{dashboard.news.subtitle}">Recent announcements</div>
+              </div>
+              <a class="btn" th:href="@{/news}" th:text="#{dashboard.news.viewAll}">View all</a>
+            </div>
+            <div class="empty" th:if="${#lists.isEmpty(dashboardNewsPosts)}" th:text="#{common.noItems}">No items found</div>
+            <ul th:if="${!#lists.isEmpty(dashboardNewsPosts)}" class="dashboard-recent-list dashboard-news-list">
+              <li th:each="p : ${dashboardNewsPosts}">
+                <a class="table-student-name" th:href="@{/news/{id}(id=${p.id})}" th:text="${p.title}">Title</a>
+                <span class="subtle" th:text="${p.createdAt != null ? @displayTime.format(p.createdAt, 'yyyy-MM-dd') : '—'}">—</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card dashboard-card-animate dashboard-quick-actions-card dashboard-surface-card">
+        <div class="card-header">
+          <div style="font-weight:800" th:text="#{dashboard.quick.title}">Quick Actions</div>
+        </div>
+        <div class="dashboard-quick-actions">
+          <a class="dashboard-quick-action action-student" th:href="@{/students/new}">
+            <span class="dashboard-quick-action-icon" aria-hidden="true">
+              <svg class="dashboard-quick-action-svg" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c0-3.2 3.1-5.5 7-5.5s7 2.3 7 5.5"></path><path d="M12 11v3"></path><path d="M10.5 13.5h3"></path></svg>
+            </span>
+            <span class="dashboard-quick-action-label" th:text="#{dashboard.quick.addStudent}">Add Student</span>
+          </a>
+          <a class="dashboard-quick-action action-universities" th:href="@{/universities}">
+            <span class="dashboard-quick-action-icon" aria-hidden="true">
+              <svg class="dashboard-quick-action-svg" viewBox="0 0 24 24"><path d="M3 9 12 4l9 5"></path><path d="M4 10h16"></path><path d="M6 10v8"></path><path d="M10 10v8"></path><path d="M14 10v8"></path><path d="M18 10v8"></path><path d="M3 20h18"></path></svg>
+            </span>
+            <span class="dashboard-quick-action-label" th:text="#{dashboard.quick.universities}">View Universities</span>
+          </a>
+          <a class="dashboard-quick-action action-agents" th:href="@{/agents}">
+            <span class="dashboard-quick-action-icon" aria-hidden="true">
+              <svg class="dashboard-quick-action-svg" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M4 20c0-2.8 2.2-5 5-5s5 2.2 5 5"></path><path d="M14 20c0-2 1.6-3.5 3.5-3.5"></path></svg>
+            </span>
+            <span class="dashboard-quick-action-label" th:text="#{dashboard.quick.agents}">View Agents</span>
+          </a>
+          <a class="dashboard-quick-action action-services" th:href="@{/services}">
+            <span class="dashboard-quick-action-icon" aria-hidden="true">
+              <svg class="dashboard-quick-action-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+            </span>
+            <span class="dashboard-quick-action-label" th:text="#{dashboard.quick.services}">Open Services</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </th:block>
+
+  <div th:unless="${currentUserCanManageAgents}" class="dashboard-page dashboard-page--agent-v2">
+    <div class="dashboard-agent-layout">
+      <div class="dashboard-agent-left-col">
+        <div class="dashboard-agent-kpi-row">
+          <div class="kpi kpi--students dashboard-card-animate">
+            <div class="kpi-top">
+              <div class="subtle" th:text="#{dashboard.kpi.studentsToday}">Students Today</div>
+              <span class="kpi-chip" th:text="#{dashboard.kpi.studentsChip}">Students</span>
+            </div>
+            <div class="kpi-stat">
+              <div class="num" th:text="${dashboardStudentsToday}">0</div>
+            </div>
+            <div class="kpi-chart kpi-chart--line" aria-hidden="true">
+              <svg class="kpi-line-svg" viewBox="0 0 160 52" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="dashKpiStudentsFillA" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.45"/>
+                    <stop offset="55%" stop-color="#2563eb" stop-opacity="0.12"/>
+                    <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="dashKpiStudentsStrokeA" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#60a5fa"/>
+                    <stop offset="100%" stop-color="#38bdf8"/>
+                  </linearGradient>
+                  <filter id="dashKpiStudentsGlowA" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="1.2" result="b"/>
+                    <feMerge>
+                      <feMergeNode in="b"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path class="kpi-line-area" fill="url(#dashKpiStudentsFillA)" d="M0,40 C12,38 22,42 34,30 C46,18 58,26 72,20 C86,14 98,22 112,14 C126,6 138,12 160,8 L160,52 L0,52 Z"/>
+                <path class="kpi-line-stroke" fill="none" stroke="url(#dashKpiStudentsStrokeA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#dashKpiStudentsGlowA)" d="M0,40 C12,38 22,42 34,30 C46,18 58,26 72,20 C86,14 98,22 112,14 C126,6 138,12 160,8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi kpi--applications dashboard-card-animate">
+            <div class="kpi-top">
+              <div class="subtle" th:text="#{dashboard.kpi.appsToday}">Applications Today</div>
+              <span class="kpi-chip" th:text="#{dashboard.kpi.appsChip}">Apps</span>
+            </div>
+            <div class="kpi-stat">
+              <div class="num" th:text="${dashboardApplicationsToday}">0</div>
+            </div>
+            <div class="kpi-chart kpi-chart--bars kpi-chart--apps-bars" aria-hidden="true">
+              <div class="kpi-bar" style="--kpi-bar-h:22%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:42%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:16%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:62%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:32%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:46%"></div>
+              <div class="kpi-bar" style="--kpi-bar-h:26%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card dashboard-card-animate dashboard-news-card dashboard-surface-card">
+          <div class="card-header">
+            <div>
+              <div style="font-weight:800" th:text="#{dashboard.news.title}">Latest News</div>
+              <div class="subtle" th:if="${#lists.isEmpty(dashboardNewsPosts)}" th:text="#{dashboard.news.subtle}">No items found</div>
+              <div class="subtle" th:if="${!#lists.isEmpty(dashboardNewsPosts)}" th:text="#{dashboard.news.subtitle}">Recent announcements</div>
+            </div>
+            <a class="btn" th:href="@{/news}" th:text="#{dashboard.news.viewAll}">View all</a>
+          </div>
+          <div class="empty" th:if="${#lists.isEmpty(dashboardNewsPosts)}" th:text="#{common.noItems}">No items found</div>
+          <ul th:if="${!#lists.isEmpty(dashboardNewsPosts)}" class="dashboard-recent-list dashboard-news-list">
+            <li th:each="p : ${dashboardNewsPosts}">
+              <a class="table-student-name" th:href="@{/news/{id}(id=${p.id})}" th:text="${p.title}">Title</a>
+              <span class="subtle" th:text="${p.createdAt != null ? @displayTime.format(p.createdAt, 'yyyy-MM-dd') : '—'}">—</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card dashboard-card-animate dashboard-quick-actions-card dashboard-surface-card dashboard-quick-actions-card--agent">
+          <div class="card-header">
+            <div style="font-weight:800" th:text="#{dashboard.quick.title}">Quick Actions</div>
+          </div>
+          <div class="dashboard-quick-actions dashboard-quick-actions--agent">
+            <a class="dashboard-quick-action action-student" th:href="@{/students/new}">
+              <span class="dashboard-quick-action-icon" aria-hidden="true">
+                <svg class="dashboard-quick-action-svg" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c0-3.2 3.1-5.5 7-5.5s7 2.3 7 5.5"></path><path d="M12 11v3"></path><path d="M10.5 13.5h3"></path></svg>
+              </span>
+              <span class="dashboard-quick-action-label" th:text="#{dashboard.quick.addStudent}">Add Student</span>
+            </a>
+            <a class="dashboard-quick-action action-universities" th:href="@{/universities}">
+              <span class="dashboard-quick-action-icon" aria-hidden="true">
+                <svg class="dashboard-quick-action-svg" viewBox="0 0 24 24"><path d="M3 9 12 4l9 5"></path><path d="M4 10h16"></path><path d="M6 10v8"></path><path d="M10 10v8"></path><path d="M14 10v8"></path><path d="M18 10v8"></path><path d="M3 20h18"></path></svg>
+              </span>
+              <span class="dashboard-quick-action-label" th:text="#{dashboard.quick.universities}">View Universities</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-agent-right-col">
+        <div class="card dashboard-card-animate dashboard-recent-app dashboard-surface-card dashboard-recent-card--agent-tall">
+          <div class="card-header">
+            <div>
+              <div style="font-weight:800" th:text="#{dashboard.recentApp.title}">Recent Application</div>
+              <div class="subtle" th:text="#{dashboard.recentApp.subtitle}">Latest updates</div>
+            </div>
+            <a class="btn" th:href="@{/applications}" th:text="#{nav.applications}">Applications</a>
+          </div>
+          <div th:if="${#lists.isEmpty(recentApplications)}" class="empty" th:text="#{applications.empty}">No applications.</div>
+          <ul th:if="${!#lists.isEmpty(recentApplications)}" class="dashboard-recent-list dashboard-recent-list--fill">
+            <li th:each="a : ${recentApplications}">
+              <span class="tag" th:text="${a.applicationNumber}">IN-000001</span>
+              <a th:if="${a.student != null}" class="table-student-name" th:href="@{/students/{id}(id=${a.student.id})}" th:text="${a.student.fullName}">Student</a>
+              <span th:if="${a.student == null}">—</span>
+              <span class="subtle" th:text="${a.updatedAt != null ? @displayTime.format(a.updatedAt, 'yyyy-MM-dd HH:mm') : ''}">—</span>
+              <a class="btn btn--compact dashboard-recent-edit"
+                 th:href="@{/applications/{id}(id=${a.id})}"
+                 th:text="#{common.view}">View</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card dashboard-card-animate dashboard-recent-students dashboard-surface-card dashboard-recent-card--agent-tall">
+          <div class="card-header">
+            <div>
+              <div style="font-weight:800" th:text="#{dashboard.recentSt.title}">Recent Students</div>
+              <div class="subtle" th:text="#{dashboard.recentSt.subtitle}">Recently added</div>
+            </div>
+            <a class="btn" th:href="@{/students}" th:text="#{nav.students}">Students</a>
+          </div>
+          <div th:if="${#lists.isEmpty(recentStudents)}" class="empty" th:text="#{students.empty}">No students.</div>
+          <ul th:if="${!#lists.isEmpty(recentStudents)}" class="dashboard-recent-list dashboard-recent-list--fill">
+            <li th:each="s : ${recentStudents}">
+              <a class="table-student-name" th:href="@{/students/{id}(id=${s.id})}" th:text="${s.fullName}">Name</a>
+              <span class="subtle" th:text="${s.createdAt != null ? @displayTime.format(s.createdAt, 'yyyy-MM-dd HH:mm') : ''}">—</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

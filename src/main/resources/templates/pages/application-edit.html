@@ -1,0 +1,93 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div class="card application-new-card" id="applicationEditPage"
+       th:attr="data-msg-program-required=#{applications.combobox.error.program},
+                data-msg-no-match=#{applications.form.noMatch}">
+    <div class="card-header application-new-header">
+      <div>
+        <div class="title" th:text="#{page.applicationsEdit.title}">Edit application</div>
+        <div class="subtle" th:text="#{applications.edit.subtitle}">Update program, type, semester, and notes.</div>
+      </div>
+      <a class="btn application-new-back-btn" th:href="@{/applications}" th:text="#{applications.new.back}">Back to list</a>
+    </div>
+
+    <div class="subtle uni-flash uni-flash--err" th:if="${applicationErrorKey}" th:text="#{__${applicationErrorKey}__}">Error</div>
+    <div class="subtle uni-flash uni-flash--err" id="applicationEditClientError" hidden></div>
+
+    <form id="applicationEditForm" th:action="@{|/applications/${studentApplication.id}|}" method="post"
+          class="profile-form crm-app-form application-new-form" style="max-width: 720px;">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <div class="field">
+        <label th:text="#{applications.col.number}">Number</label>
+        <input type="text" readonly class="profile-readonly" tabindex="-1"
+               th:value="${studentApplication.applicationNumber}">
+      </div>
+      <div class="field">
+        <label th:text="#{applications.col.student}">Student</label>
+        <input type="text" readonly class="profile-readonly" tabindex="-1"
+               th:value="${studentApplication.student != null ? studentApplication.student.fullName : '—'}">
+      </div>
+      <div class="field">
+        <label for="programComboInputEdit" th:text="#{nav.programs}">Program</label>
+        <div class="crm-combobox" data-combobox>
+          <input type="hidden" name="programId" id="programIdHidden"
+                 th:value="${studentApplication.department != null ? studentApplication.department.id : ''}">
+          <input type="text" id="programComboInputEdit" class="crm-combobox-input" autocomplete="off" spellcheck="false"
+                 role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="programComboListEdit"
+                 th:placeholder="#{applications.combobox.searchProgram}">
+          <ul class="crm-combobox-panel" id="programComboListEdit" role="listbox" hidden>
+            <li th:each="p : ${programs}" role="option" tabindex="-1" class="crm-combobox-option"
+                th:data-value="${p.id}"
+                th:data-label="${p.university != null ? p.university.name + ' — ' + p.name : p.name}"
+                th:text="${p.university != null ? p.university.name + ' — ' + p.name : p.name}">Program</li>
+          </ul>
+        </div>
+      </div>
+      <div class="field" th:if="${currentUserCanManageAgents}">
+        <label for="statusEdit" th:text="#{common.status}">Status</label>
+        <div class="programs-filter-select programs-filter-select--uni">
+          <select id="statusEdit" name="status" class="prog-uni-native" data-application-meta-select
+                  th:attr="data-placeholder=#{common.status}">
+            <option th:each="st : ${applicationStatuses}" th:value="${st}"
+                    th:text="${#strings.replace(st, '_', ' ')}"
+                    th:selected="${studentApplication.status != null && studentApplication.status.equals(st)}">NEW</option>
+          </select>
+        </div>
+      </div>
+      <div class="field" th:unless="${currentUserCanManageAgents}">
+        <label th:text="#{common.status}">Status</label>
+        <input type="text" readonly class="profile-readonly" tabindex="-1"
+               th:value="${studentApplication.status != null ? #strings.replace(studentApplication.status, '_', ' ') : '—'}">
+      </div>
+      <div class="field" th:unless="${currentUserCanManageAgents}">
+        <label for="typeEdit" th:text="#{applications.col.type}">Type</label>
+        <div class="programs-filter-select programs-filter-select--uni">
+          <select id="typeEdit" name="type" class="prog-uni-native" data-application-meta-select
+                  th:attr="data-placeholder=#{applications.col.type}">
+            <option th:each="k : ${applicationTypes}" th:value="${k}"
+                    th:text="${#strings.capitalize(#strings.toLowerCase(k))}"
+                    th:selected="${studentApplication.applicationType != null && studentApplication.applicationType.equals(k)}">New</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="applicationSemesterEdit" th:text="#{applications.filter.semester}">Semester</label>
+        <div class="programs-filter-select programs-filter-select--uni">
+          <select id="applicationSemesterEdit" name="semester" class="prog-uni-native" data-application-meta-select
+                  th:attr="data-placeholder=#{applications.filter.semester}">
+            <option th:each="sem : ${semesterOptions}" th:value="${sem}" th:text="${sem}"
+                    th:selected="${studentApplication.semester != null && studentApplication.semester.equals(sem)}">Fall 2026</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="applicationNotesEdit" th:text="#{applications.col.notes}">Notes</label>
+        <textarea id="applicationNotesEdit" name="notes" rows="4" maxlength="4000"
+                  th:placeholder="#{applications.notes.placeholder}"
+                  th:text="${studentApplication.notes}"></textarea>
+      </div>
+      <div class="profile-actions application-new-actions">
+        <button class="btn primary" type="submit" th:text="#{applications.edit.submit}">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>

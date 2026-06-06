@@ -1,0 +1,42 @@
+{
+  "screenshots": 23,
+  "total_unique_programs": 177,
+  "expected_from_portal": 165,
+  "gap": -12,
+  "by_degree": {
+    "Bachelor": 52,
+    "CombinedPhD": 14,
+    "Diploma": 36,
+    "Master": 58,
+    "PhD": 17
+  },
+  "availability": {
+    "available": 158,
+    "quota_full": 19
+  },
+  "per_image_row_counts": {
+    "Screenshot_2026-05-17_at_15.56.01-91df69fb-4c86-40c4-ad3d-de3928a2ba3f.png": 8,
+    "Screenshot_2026-05-17_at_15.56.07-a7a50683-5b67-4f4e-b691-aa7367948454.png": 9,
+    "Screenshot_2026-05-17_at_15.56.09-6d756c06-a4d2-4e5e-b466-5f879eb45437.png": 9,
+    "Screenshot_2026-05-17_at_15.56.14-e25ca4ba-76c9-41fb-b7a6-b9a4aa636d78.png": 9,
+    "Screenshot_2026-05-17_at_15.56.16-67c4e0db-41f3-4d3c-a875-f0b2b3bb7fdb.png": 9,
+    "Screenshot_2026-05-17_at_15.56.48-1a38ddfb-0bb4-48ea-9303-f126c7321c25.png": 9,
+    "Screenshot_2026-05-17_at_16.24.14-c35be246-c08f-4fa7-b5a4-a7e3d4813660.png": 9,
+    "Screenshot_2026-05-17_at_16.24.16-a55d3d16-15bb-4b7e-94dd-ad5158201e39.png": 9,
+    "Screenshot_2026-05-17_at_16.24.22-3ffd6f63-6845-42eb-b250-d779ab4d3d80.png": 10,
+    "Screenshot_2026-05-17_at_16.24.23-85c1c19a-5c42-4a41-bd7d-f67459d1d13b.png": 9,
+    "Screenshot_2026-05-17_at_16.24.27-4d75970c-abd6-441c-a161-276d9d2ba0d4.png": 9,
+    "Screenshot_2026-05-17_at_16.24.29-d2c2d4a5-403d-40de-80b8-e3ad93d02b95.png": 9,
+    "Screenshot_2026-05-17_at_16.24.33-be51d768-516a-4ad7-82fd-324152582717.png": 10,
+    "Screenshot_2026-05-17_at_16.24.34-251cb01f-255e-40e0-a149-3a1c7960eb75.png": 9,
+    "Screenshot_2026-05-17_at_16.24.38-39ceaeb8-1011-46e2-8c09-09a1aff42dc4.png": 9,
+    "Screenshot_2026-05-17_at_16.24.40-d623cd8e-0ca3-42bc-98eb-dd706d336252.png": 9,
+    "Screenshot_2026-05-17_at_16.24.44-c77f7fb9-bd74-407c-a0d7-356f70afc735.png": 9,
+    "Screenshot_2026-05-17_at_16.24.45-151d94c5-e737-422c-8223-a9c6b3533a8e.png": 8,
+    "Screenshot_2026-05-17_at_16.24.49-3d9398ac-9744-413c-b55f-b4a6566ae519.png": 8,
+    "Screenshot_2026-05-17_at_16.24.51-cf12a3e2-0c86-4fc0-b65c-198817228a34.png": 8,
+    "Screenshot_2026-05-17_at_16.24.54-2088fe07-0285-47b7-9948-d82a007174a1.png": 10,
+    "Screenshot_2026-05-17_at_16.24.56-1139a7fa-0373-43d9-9865-6aad9f2c8112.png": 8,
+    "Screenshot_2026-05-17_at_16.24.59-ae4fe5a9-2abe-4e35-87bd-1105e234e484.png": 5
+  }
+}

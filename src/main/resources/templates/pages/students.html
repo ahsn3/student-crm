@@ -1,0 +1,50 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="title" th:text="#{page.students.title}">Students</div>
+        <div class="subtle" th:text="#{students.title}">Students list</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap: wrap;">
+        <a class="btn primary" th:href="@{/students/new}" th:text="#{students.createPlain}">+ Add student</a>
+      </div>
+    </div>
+
+    <div class="subtle uni-flash uni-flash--ok" th:if="${studentSuccessKey}" th:text="#{__${studentSuccessKey}__}">Saved.</div>
+    <div class="subtle uni-flash uni-flash--err" th:if="${studentErrorKey}" th:text="#{__${studentErrorKey}__}">Error</div>
+
+    <div class="crm-scroll-area table-scroll-wrap">
+      <table class="table">
+        <thead>
+        <tr>
+          <th th:text="#{common.name}">Name</th>
+          <th th:text="#{common.nationality}">Nationality</th>
+          <th th:text="#{common.phone}">Phone</th>
+          <th th:text="#{students.col.app}">App.</th>
+          <th th:text="#{students.col.created}">Created At</th>
+          <th th:text="#{students.col.updated}">Updated At</th>
+          <th th:text="#{common.actions}">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(students)}">
+          <td colspan="7" class="empty" th:text="#{students.empty}">No students found.</td>
+        </tr>
+        <tr th:each="s : ${students}" class="crm-clickable-row" th:attr="data-href=@{/students/{id}(id=${s.id})}">
+          <td>
+            <span class="crm-row-primary table-student-name" th:text="${s.fullName}">Name</span>
+          </td>
+          <td th:text="${s.nationality}">—</td>
+          <td th:text="${s.phone}">—</td>
+          <td th:text="${applicationCountsByStudentId.get(s.id) != null ? applicationCountsByStudentId.get(s.id) : 0}">0</td>
+          <td th:text="${s.createdAt != null ? @displayTime.format(s.createdAt, 'yyyy-MM-dd HH:mm') : '—'}">—</td>
+          <td th:text="${s.updatedAt != null ? @displayTime.format(s.updatedAt, 'yyyy-MM-dd HH:mm') : '—'}">—</td>
+          <td>
+            <a class="tag info" th:href="@{/applications/new(studentId=${s.id})}" th:text="#{applications.short.create}">App</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

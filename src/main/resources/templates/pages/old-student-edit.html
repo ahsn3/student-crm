@@ -1,0 +1,102 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div class="card application-new-card" id="oldStudentEditPage"
+       th:attr="data-msg-no-match=#{applications.form.noMatch},
+                data-msg-name-required=#{oldStudents.flash.nameRequired},
+                data-msg-passport-required=#{oldStudents.flash.passportRequired},
+                data-msg-university-required=#{oldStudents.flash.universityRequired},
+                data-msg-department-required=#{oldStudents.flash.departmentRequired},
+                data-msg-nationality-required=#{oldStudents.flash.nationalityRequired}">
+    <div class="card-header application-new-header">
+      <div>
+        <div class="title" th:text="#{oldStudents.edit.title}">Edit old student</div>
+        <div class="subtle" th:text="${selectedOldStudentYear}">2020 2021</div>
+      </div>
+      <a class="btn application-new-back-btn"
+         th:href="@{/old-students/{y}(y=${#strings.replace(selectedOldStudentYear,' ','-')})}"
+         th:text="#{applications.new.back}">Back to list</a>
+    </div>
+
+    <div class="subtle uni-flash uni-flash--ok" th:if="${oldStudentSuccessKey}" th:text="#{__${oldStudentSuccessKey}__}">Saved.</div>
+    <div class="subtle uni-flash uni-flash--err" th:if="${oldStudentErrorKey}" th:text="#{__${oldStudentErrorKey}__}">Error</div>
+    <div class="subtle uni-flash uni-flash--err" id="oldStudentEditClientError" hidden></div>
+
+    <form id="oldStudentEditForm" class="profile-form crm-app-form application-new-form" style="max-width: 720px;"
+          method="post"
+          th:action="@{/old-students/{y}/edit/{idx}(y=${#strings.replace(selectedOldStudentYear,' ','-')}, idx=${editRowIndex})}">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+      <div class="field">
+        <label for="oldStudentEditName">
+          <span th:text="#{students.form.fullName}">Full name</span>
+          <span class="field-required" aria-hidden="true"> *</span>
+        </label>
+        <input id="oldStudentEditName" name="name" type="text" maxlength="200" th:value="${editRow['name']}">
+      </div>
+
+      <div class="field programs-filter-select programs-filter-select--uni">
+        <label for="oldStudentEditUniversityNative">
+          <span th:text="#{nav.universities}">University</span>
+          <span class="field-required" aria-hidden="true"> *</span>
+        </label>
+        <select id="oldStudentEditUniversityNative" name="university" class="prog-uni-native"
+                th:attr="data-placeholder=#{oldStudents.form.placeholderUniversity}">
+          <option th:each="u : ${oldStudentUniversityOptions}" th:value="${u}" th:text="${u}"
+                  th:selected="${u.equalsIgnoreCase(editRow['university'])}">University</option>
+        </select>
+      </div>
+
+      <div class="field programs-filter-select programs-filter-select--uni">
+        <label for="oldStudentEditDepartmentNative">
+          <span th:text="#{nav.programs}">Program</span>
+          <span class="field-required" aria-hidden="true"> *</span>
+        </label>
+        <select id="oldStudentEditDepartmentNative" name="department" class="prog-uni-native"
+                th:attr="data-placeholder=#{oldStudents.form.placeholderProgram}">
+          <option th:each="d : ${oldStudentDepartmentOptions}" th:value="${d}" th:text="${d}"
+                  th:selected="${d.equalsIgnoreCase(editRow['department'])}">Program</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="oldStudentEditPassport">
+          <span th:text="#{students.col.passport}">Passport</span>
+          <span class="field-required" aria-hidden="true"> *</span>
+        </label>
+        <input id="oldStudentEditPassport" name="passport" type="text" maxlength="80" th:value="${editRow['passport']}">
+      </div>
+
+      <div class="field">
+        <label for="oldStudentEditEmail" th:text="#{common.email}">Email</label>
+        <input id="oldStudentEditEmail" name="email" type="text" maxlength="200" th:value="${editRow['email']}">
+      </div>
+
+      <div class="field">
+        <label for="oldStudentEditPhone" th:text="#{common.phone}">Phone</label>
+        <input id="oldStudentEditPhone" name="phone" type="text" maxlength="80" th:value="${editRow['phone']}">
+      </div>
+
+      <div class="field">
+        <label for="oldStudentEditNationalityComboInput">
+          <span th:text="#{common.nationality}">Nationality</span>
+          <span class="field-required" aria-hidden="true"> *</span>
+        </label>
+        <div class="crm-combobox" data-combobox>
+          <input type="hidden" name="nationality" id="oldStudentEditNationalityHidden" th:value="${editRow['nationality']}">
+          <input type="text" id="oldStudentEditNationalityComboInput" class="crm-combobox-input crm-combobox-input--nat"
+                 autocomplete="off" spellcheck="false"
+                 role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="oldStudentEditNationalityComboList"
+                 th:placeholder="#{applications.combobox.searchNationality}"
+                 th:value="${editRow['nationality']}">
+          <ul class="crm-combobox-panel crm-combobox-panel--scroll" id="oldStudentEditNationalityComboList" role="listbox" hidden>
+            <li th:each="nat : ${nationalityOptions}" role="option" tabindex="-1" class="crm-combobox-option"
+                th:data-value="${nat}" th:data-label="${nat}" th:text="${nat}">Country</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="profile-actions application-new-actions">
+        <button class="btn primary" type="submit" th:text="#{common.save}">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

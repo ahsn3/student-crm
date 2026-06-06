@@ -1,0 +1,271 @@
+# Source: Istanbul Okan University International Student 2026-2027 Price List (study.okan.edu.tr)
+# Parsed by scripts/generate_okan_programs_sql.py — PhD block excluded (already seeded in V10).
+
+| FACULTY of MEDICINE (6 YEAR BACHELOR DEGREE PROGRAM) |
+| --- |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Medicine | ENGLISH | YEARLY | 22500USD | 21375USD |
+| Medicine | TURKISH | YEARLY | 19500USD | 18525USD |
+| FACULTY of DENTISTRY (5 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Dentistry | ENGLISH | YEARLY | 18000USD | 17100USD |
+| Dentistry | TURKISH | YEARLY | 15000USD | 14250USD |
+| FACULTY of PHARMACY (5 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Pharmacy | ENGLISH | YEARLY | 8000USD | 7600USD |
+| Pharmacy | TURKISH | YEARLY | 9000USD | 8550USD |
+| FACULTY of HEALTH SCIENCES (4 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Child Development | TURKISH | YEARLY | 4500USD | 4275USD |
+| Health Management | TURKISH | YEARLY | 4500USD | 4275USD |
+| Nursing | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Nursing | TURKISH | YEARLY | 4500USD | 4275USD |
+| Nutrition & Dietetics | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Nutrition & Dietetics | TURKISH | YEARLY | 4500USD | 4275USD |
+| Physiotherapy & Rehabilitation | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Physiotherapy & Rehabilitation | TURKISH | YEARLY | 4500USD | 4275USD |
+| FACULTY of ENGINEERING & NATURAL SCIENCES (4 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Automotive Engineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Civil Engineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Civil Engineering | TURKISH | YEARLY | 4500USD | 4275USD |
+| Computer Engineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Electrical & Electronic Engineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Genetics & Bioengineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Geomatics Engineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Industrial Engineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Mechanical Engineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Mechatronics Engineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Software Engineering | ENGLISH | YEARLY | 5000USD | 4750USD |
+| FACULTY of BUSINESS & ADMINISTRATIVE SCIENCES (4 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Business Administration | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Business Administration | TURKISH | YEARLY | 4500USD | 4275USD |
+| Economics & Finance | ENGLISH | YEARLY | 5000USD | 4750USD |
+| International Finance and Banking | TURKISH | YEARLY | 4500USD | 4275USD |
+| International Trade | ENGLISH | YEARLY | 5000USD | 4750USD |
+| International Trade | TURKISH | YEARLY | 4500USD | 4275USD |
+| Logistics Management | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Political Science and International Relations | TURKISH | YEARLY | 4500USD | 4275USD |
+| Political Science and International Relations | ENGLISH | YEARLY | 5000USD | 4750USD |
+| FACULTY OF APPLIED SCIENCES (4 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Aviation Management | TURKISH | YEARLY | 4500USD | 4275USD |
+| Flight Training (Pilotage) | ENGLISH | YEARLY | 8000USD + Flight School Fee | 7600USD + Flight School Fee |
+| Gastronomy & Cullinary Arts | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Gastronomy & Cullinary Arts | TURKISH | YEARLY | 4500USD | 4275USD |
+| Information Systems & Technologies | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Information Systems & Technologies | TURKISH | YEARLY | 4500USD | 4275USD |
+| New Media & Communication | TURKISH | YEARLY | 4500USD | 4275USD |
+| Public Relations & Advertising | TURKISH | YEARLY | 4500USD | 4275USD |
+| Sports Management | TURKISH | YEARLY | 4500USD | 4275USD |
+| FACULTY of ART DESIGN & ARCHITECTURE (4 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Architecture | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Architecture | TURKISH | YEARLY | 4500USD | 4275USD |
+| Cinema & Television | TURKISH | YEARLY | 4500USD | 4275USD |
+| Digital Game Design | TURKISH | YEARLY | 4500USD | 4275USD |
+| Interior Architecture & Environmental Design | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Interior Architecture & Environmental Design | TURKISH | YEARLY | 4500USD | 4275USD |
+| Textile & Fashion Design | TURKISH | YEARLY | 4500USD | 4275USD |
+| Visual Communication Design | TURKISH | YEARLY | 4500USD | 4275USD |
+| FACULTY of LAW (4 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Law | TURKISH | YEARLY | 4500USD | 4275USD |
+| FACULTY of HUMANITIES & SOCIAL SCIENCES (4 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Chinese Translation & Interpreting | CHINESE & TURKISH | YEARLY | 4500USD | 4275USD |
+| English Translation & Interpreting | ENGLISH & TURKISH | YEARLY | 5000USD | 4750USD |
+| Psychology | TURKISH | YEARLY | 4500USD | 4275USD |
+| Psychology | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Russian Translation & Interpreting | RUSSIAN & TURKISH | YEARLY | 4500USD | 4275USD |
+| FACULTY of EDUCATION (4 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| English Teaching | ENGLISH | YEARLY | 5000USD | 4750USD |
+| Pre-School Teaching | TURKISH | YEARLY | 4500USD | 4275USD |
+| Psychological Counseling & Guidance | TURKISH | YEARLY | 4500USD | 4275USD |
+| Special Education Teaching | TURKISH | YEARLY | 4500USD | 4275USD |
+| CONSERVATORY PROGRAMS (4 YEAR BACHELOR DEGREE PROGRAM) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Music | TURKISH | YEARLY | 4500USD | 4275USD |
+| Theater | TURKISH | YEARLY | 4500USD | 4275USD |
+| MASTER PROGRAMS (1.5 & 2 YEAR) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Anatomy (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Accounting & Auditing (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Accounting & Auditing (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Accounting & Auditing (Without Thesis) (Distance Learning) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Advanced Electronics & Communication Technology (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| Architecture (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| Architecture (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Architecture (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Artificial Intelligence Engineering (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| Artificial Intelligence Engineering (Without Thesis) | ENGLISH | WHOLE STUDY | 5000USD | 4750USD |
+| Automotive Mechatronics & Intelligent Vehicles (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| Banking (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Banking (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Banking (Without Thesis) (Distance Learning) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Banking & Finance (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Child Development & Education (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Child Development & Education (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Cinema & Television (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Cinema & Television (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Civil Engineering (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Clinical Psychology (With Thesis) | TURKISH | WHOLE STUDY | 28500USD | 27075USD |
+| Clinical Psychology (Without Thesis) | TURKISH | WHOLE STUDY | 23750USD | 22565USD |
+| Computer Engineering (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Computer Engineering (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Economy Law | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Economy Law | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Educational Administration & Supervision (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Educational Administration & Supervision (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Engineering Management (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Engineering Management (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Entrepreneurship (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Entrepreneurship (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Explosives Engineering (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Explosives Engineering (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Fashion Design (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Fashion Design (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Finance (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Finance (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Finance (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| Finance (Without Thesis) | ENGLISH | WHOLE STUDY | 5000USD | 4750USD |
+| Gastronomy (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| Gastronomy (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Gastronomy (Without Thesis) | ENGLISH | WHOLE STUDY | 5000USD | 4750USD |
+| Gastronomy (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Geomatics Engineering (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Geomatics Engineering (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Geotechnical Engineering (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Geotechnical Engineering (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Healthcare Management (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Healthcare Management (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Human Resources Management (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Human Resources Management (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Information Systems (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| Information Systems (Without Thesis) | ENGLISH | WHOLE STUDY | 5000USD | 4750USD |
+| Information Systems (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Information Systems (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Information Technology (IT) Law (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Information Technology (IT) Law (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Interior Architecture & Environmental Design (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Interior Architecture & Environmental Design (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| International Logistics (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| International Logistics (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| International Relations (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| International Relations (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| International Trade (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| International Trade (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| International Trade (Without Thesis) | ENGLISH | WHOLE STUDY | 5000USD | 4750USD |
+| International Trade (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Local Administrations (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Local Administrations (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Logistics Management (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Logistics Management (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Logistics Management (Without Thesis) (Distance Learning) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Marketing (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| Marketing (Without Thesis) | ENGLISH | WHOLE STUDY | 5000USD | 4750USD |
+| Marketing Communication (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| MBA – Business Administration (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| MBA – Business Administration (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| MBA – Business Administration (Without Thesis) | ENGLISH | WHOLE STUDY | 5000USD | 4750USD |
+| MBA – Business Administration (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| MBA – Business Administration (Without Thesis) (Distance Learning) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Music (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Music (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Nursing (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Nursing (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Nutrition & Dietetic (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Nutrition & Dietetic (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Occupational Health & Safety (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Occupational Health & Safety (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Painting (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Painting (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Physiotherapy & Rehabilitation (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Physiotherapy & Rehabilitation (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Power Electronics & Clean Energy Systems (With Thesis) | ENGLISH | WHOLE STUDY | 6000USD | 5700USD |
+| Pre-school Education (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Pre-school Education (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Private Law (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Private Law (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Psychology (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Psychology (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Public Law (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Public Law (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Quality Management in Healthcare (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Quality Management in Healthcare (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Real Estate Finance & Valuation (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Real Estate Finance & Valuation (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Real Estate Finance & Valuation (Without Thesis)(Distance Learning) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Sales & Marketing (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Sales & Marketing (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Social & Cultural Studies (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Social & Cultural Studies (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Sports Management (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Sports Management (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Sports Physiology (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Sports Physiology (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Tourism Management (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Tourism & Hospitality (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Tourism & Hospitality (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Translation Studies (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Translation Studies (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| Urban Renewal (With Thesis) | TURKISH | WHOLE STUDY | 4500USD | 4275USD |
+| Urban Renewal (Without Thesis) | TURKISH | WHOLE STUDY | 3500USD | 3325USD |
+| ASSOCIATE DEGREE PROGRAMS (2 YEAR) |
+| DEPARTMENT | LANGUAGE | TUITION PLAN | TUITION FEE (WITH INSTALLEMENT) | PAYMENT IN ADVANCE 5% DISCOUNT |
+| Accounting and Tax Practices | TURKISH | YEARLY | 2025USD | 1925USD |
+| Aircraft Technology | TURKISH | YEARLY | 2025USD | 1925USD |
+| Anesthesia | TURKISH | YEARLY | 2025USD | 1925USD |
+| Architectural Restoration | TURKISH | YEARLY | 2025USD | 1925USD |
+| Artificial Intelligence Operation | TURKISH | YEARLY | 2025USD | 1925USD |
+| Audiometry | TURKISH | YEARLY | 2025USD | 1925USD |
+| Banking and Insurance | TURKISH | YEARLY | 2025USD | 1925USD |
+| Business Administration | TURKISH | YEARLY | 2025USD | 1925USD |
+| Child Development | TURKISH | YEARLY | 2025USD | 1925USD |
+| Civil Air Transportation Management | TURKISH | YEARLY | 2025USD | 1925USD |
+| Civil Air Transportation Management | ENGLISH | YEARLY | 2025USD | 1925USD |
+| Civil Aviation Cabin Services | TURKISH | YEARLY | 2025USD | 1925USD |
+| Civil Aviation Cabin Services | ENGLISH | YEARLY | 2025USD | 1925USD |
+| Cloud Computing Operation | TURKISH | YEARLY | 2025USD | 1925USD |
+| Computer Aided Design (CAD) & Animation Program | TURKISH | YEARLY | 2025USD | 1925USD |
+| Computer Programming | TURKISH | YEARLY | 2025USD | 1925USD |
+| Construction Equipment Operations | TURKISH | YEARLY | 2025USD | 1925USD |
+| Construction Technology | TURKISH | YEARLY | 2025USD | 1925USD |
+| Control and Automation Technology | TURKISH | YEARLY | 2025USD | 1925USD |
+| Cooking | TURKISH | YEARLY | 2025USD | 1925USD |
+| Court Office Services | TURKISH | YEARLY | 2025USD | 1925USD |
+| Dialysis | TURKISH | YEARLY | 2025USD | 1925USD |
+| Digital Health Systems Technology | TURKISH | YEARLY | 2025USD | 1925USD |
+| Digital Transformation Electronics | TURKISH | YEARLY | 2025USD | 1925USD |
+| E-Commerce and Marketing | TURKISH | YEARLY | 2025USD | 1925USD |
+| Elderly Care Services | TURKISH | YEARLY | 2025USD | 1925USD |
+| Electricity | TURKISH | YEARLY | 2025USD | 1925USD |
+| Electroneurophysiology | TURKISH | YEARLY | 2025USD | 1925USD |
+| Electronic Communication Technology | TURKISH | YEARLY | 2025USD | 1925USD |
+| First Aid & Emergency | TURKISH | YEARLY | 2025USD | 1925USD |
+| Flight Operations Management | TURKISH | YEARLY | 2025USD | 1925USD |
+| Foreign Trade | TURKISH | YEARLY | 2025USD | 1925USD |
+| Foreign Trade | ENGLISH | YEARLY | 2025USD | 1925USD |
+| Graphic Design | TURKISH | YEARLY | 2025USD | 1925USD |
+| Heating, Ventilation & Air Conditioning (HVAC) Technology | TURKISH | YEARLY | 2025USD | 1925USD |
+| Human Resources Management | TURKISH | YEARLY | 2025USD | 1925USD |
+| Interior Design | TURKISH | YEARLY | 2025USD | 1925USD |
+| Logistics Management | TURKISH | YEARLY | 2025USD | 1925USD |
+| Machinery | TURKISH | YEARLY | 2025USD | 1925USD |
+| Mechatronics | TURKISH | YEARLY | 2025USD | 1925USD |
+| Medical Imaging Techniques | TURKISH | YEARLY | 2025USD | 1925USD |
+| Medical Laboratory Techniques | TURKISH | YEARLY | 2025USD | 1925USD |
+| Mobile Technologies | TURKISH | YEARLY | 2025USD | 1925USD |
+| Natural Gas and Installation Technology | TURKISH | YEARLY | 2025USD | 1925USD |
+| Occupational Health & Safety | TURKISH | YEARLY | 2025USD | 1925USD |
+| Occupational Health & Safety (Distance Learning) | TURKISH | YEARLY | 2025USD | 1925USD |
+| Operation Room Services | TURKISH | YEARLY | 2025USD | 1925USD |
+| Opticianry | TURKISH | YEARLY | 2025USD | 1925USD |
+| Oral & Dental Health | TURKISH | YEARLY | 2025USD | 1925USD |
+| Pathology Laboratory Techniques | TURKISH | YEARLY | 2025USD | 1925USD |
+| Radiotherapy | TURKISH | YEARLY | 2025USD | 1925USD |
+| Smart Infrastructure Technology | TURKISH | YEARLY | 2025USD | 1925USD |
+| Surveying & Cadastre | TURKISH | YEARLY | 2025USD | 1925USD |
+| Web Design and Programming | TURKISH | YEARLY | 2025USD | 1925USD |

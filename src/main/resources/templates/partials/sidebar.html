@@ -1,0 +1,167 @@
+<aside xmlns:th="http://www.thymeleaf.org" class="sidebar" id="sidebar" th:fragment="sidebar(activeNav)">
+  <div class="sidebar-inner">
+    <div class="brand">
+      <img class="brand-logo"
+           th:src="${sidebarBrandLogoUrl != null && !#strings.isEmpty(sidebarBrandLogoUrl) ? sidebarBrandLogoUrl : '/images/logo.jpg'}"
+           src="/images/logo.jpg"
+           alt="Brand logo"
+           width="68"
+           height="68"
+           loading="eager"
+           decoding="async"
+           fetchpriority="high"
+           onerror="this.onerror=null;this.src='/images/logo.jpg';">
+      <div class="brand-title" th:text="${sidebarBrandName}">Student CRM</div>
+      <div class="brand-subtitle" th:text="#{brand.subtitle}">Student CRM Platform</div>
+    </div>
+
+    <nav class="nav sidebar-nav">
+      <a th:href="@{/}" th:classappend="${activeNav}=='dashboard' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 11.5 12 4l9 7.5"></path>
+          <path d="M5 10.5V20h14v-9.5"></path>
+        </svg>
+        <span th:text="#{nav.dashboard}">Dashboard</span>
+      </a>
+      <a th:href="@{/programs}" th:classappend="${activeNav}=='programs' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 9.5 12 4l10 5.5"></path>
+          <path d="M2 9.5V11l10 5.5L22 11V9.5"></path>
+          <path d="M6 12v4.5c0 2 2.7 3.5 6 3.5s6-1.5 6-3.5V12"></path>
+        </svg>
+        <span th:text="#{nav.programs}">Programs</span>
+      </a>
+      <a th:href="@{/universities}" th:classappend="${activeNav}=='universities' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 9 12 4l9 5"></path>
+          <path d="M4 10h16"></path>
+          <path d="M6 10v8"></path>
+          <path d="M10 10v8"></path>
+          <path d="M14 10v8"></path>
+          <path d="M18 10v8"></path>
+          <path d="M3 20h18"></path>
+        </svg>
+        <span th:text="#{nav.universities}">Universities</span>
+      </a>
+      <a th:href="@{/scholarships}" th:classappend="${activeNav}=='scholarships' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 9 12 4l10 5-10 5L2 9z"></path>
+          <path d="M6 11v4c0 1.5 2.7 3 6 3s6-1.5 6-3v-4"></path>
+        </svg>
+        <span th:text="#{nav.scholarships}">Scholarships</span>
+      </a>
+      <a th:href="@{/students}" th:classappend="${activeNav}=='students' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.5"></circle>
+          <path d="M5 20c0-3.2 3.1-5.5 7-5.5s7 2.3 7 5.5"></path>
+        </svg>
+        <span th:text="#{nav.students}">Students</span>
+      </a>
+      <a th:if="${currentUserCanManageAgents}" th:href="@{/old-students}" th:classappend="${activeNav}=='oldStudents' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 6h16"></path>
+          <path d="M4 12h16"></path>
+          <path d="M4 18h16"></path>
+        </svg>
+        <span th:text="#{nav.oldStudents}">Old Students</span>
+      </a>
+      <a th:href="@{/applications}" th:classappend="${activeNav}=='applications' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 7h18v13H3z"></path>
+          <path d="M3 7h7l2 2h9"></path>
+        </svg>
+        <span th:text="#{nav.applications}">Applications</span>
+      </a>
+      <a th:if="${currentUserCanManageAgents}" th:href="@{/services}" th:classappend="${activeNav}=='services' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+          <path d="M8 5v14"></path>
+          <path d="M12 10h6"></path>
+          <path d="M12 14h4"></path>
+        </svg>
+        <span th:text="#{nav.services}">Services</span>
+      </a>
+      <a th:if="${currentUserCanManageAgents}" th:href="@{/agents}" th:classappend="${activeNav}=='agents' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M10 3h4v4h3a2 2 0 0 1 2 2v3h-4v4h-4v-4H7V9a2 2 0 0 1 2-2h1V3z"></path>
+          <path d="M7 12v5a2 2 0 0 0 2 2h5"></path>
+        </svg>
+        <span th:text="#{nav.agents}">Agents</span>
+      </a>
+      <a th:href="@{/news}" th:classappend="${activeNav}=='news' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 5h16v14H4z"></path>
+          <path d="M8 9h8"></path>
+          <path d="M8 13h8"></path>
+          <path d="M8 17h5"></path>
+        </svg>
+        <span th:text="#{nav.news}">News</span>
+      </a>
+      <a th:href="@{/complaints}" th:classappend="${activeNav}=='complaints' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 4v16"></path>
+          <path d="M6 5h11l-2 3 2 3H6"></path>
+        </svg>
+        <span th:text="#{nav.complaints}">Complaints</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <form id="logoutForm" th:action="@{/logout}" method="post" class="logout-form">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      </form>
+
+      <div class="sidebar-account" id="sidebarAccount">
+        <button type="button"
+                class="sidebar-account-trigger"
+                id="sidebarAccountTrigger"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-controls="sidebarAccountMenu">
+          <img th:if="${currentUserAvatarUrl != null && !#strings.isEmpty(currentUserAvatarUrl)}"
+               class="sidebar-account-avatar sidebar-account-avatar--photo"
+               th:src="@{${currentUserAvatarUrl}}"
+               width="36"
+               height="36"
+               alt=""
+               loading="eager"
+               decoding="sync"
+               fetchpriority="high">
+          <span th:unless="${currentUserAvatarUrl != null && !#strings.isEmpty(currentUserAvatarUrl)}"
+                class="sidebar-account-avatar"
+                aria-hidden="true"
+                th:text="${currentUserInitials}">U</span>
+          <span class="sidebar-account-meta">
+            <span class="sidebar-account-name" th:text="${currentUserDisplayName}">User</span>
+            <span class="sidebar-account-role" th:text="${currentUserRoleLabel}">Employee</span>
+          </span>
+          <svg class="sidebar-account-chevron" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 10l5 5 5-5"></path>
+          </svg>
+        </button>
+
+        <div class="sidebar-account-menu"
+             id="sidebarAccountMenu"
+             role="menu"
+             aria-labelledby="sidebarAccountTrigger"
+             aria-hidden="true">
+          <a th:href="@{/profile}" class="sidebar-account-menu-item" role="menuitem">
+            <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.5"></circle>
+              <path d="M5 20c0-3.2 3.1-5.5 7-5.5s7 2.3 7 5.5"></path>
+            </svg>
+            <span th:text="#{nav.account.editProfile}">Edit profile</span>
+          </a>
+          <button type="button" class="sidebar-account-menu-item sidebar-account-menu-item--logout" id="logoutOpenBtn" role="menuitem">
+            <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 4H5v16h4"></path>
+              <path d="M16 12H8"></path>
+              <path d="m13 9 3 3-3 3"></path>
+            </svg>
+            <span th:text="#{nav.logout}">Logout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

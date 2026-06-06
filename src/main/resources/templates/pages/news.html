@@ -1,0 +1,62 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="title" th:text="#{page.news.title}">News & Updates</div>
+        <div class="subtle" th:text="#{news.subtitle}">Announcements for agents and admins</div>
+      </div>
+      <button th:if="${currentUserCanManageAgents}" type="button" class="btn primary" id="openNewsCreateModal" th:text="#{news.create}">+ Add news</button>
+    </div>
+
+    <div class="subtle uni-flash uni-flash--ok" th:if="${newsSuccessKey}" th:text="#{__${newsSuccessKey}__}"></div>
+    <div class="subtle uni-flash uni-flash--err" th:if="${newsErrorKey}" th:text="#{__${newsErrorKey}__}"></div>
+
+    <div th:if="${#lists.isEmpty(newsPosts)}" class="empty" th:text="#{common.noItems}">No items found.</div>
+
+    <div class="crm-scroll-area" th:if="${!#lists.isEmpty(newsPosts)}">
+      <table class="table">
+        <thead>
+        <tr>
+          <th th:text="#{common.title}">Title</th>
+          <th th:text="#{news.col.author}">Author</th>
+          <th th:text="#{students.col.created}">Created</th>
+          <th th:text="#{common.actions}">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${newsPosts}" class="crm-clickable-row" th:attr="data-href=@{/news/{id}(id=${p.id})}">
+          <td><span class="crm-row-primary" th:text="${p.title}">Title</span></td>
+          <td th:text="${p.author != null ? (p.author.displayName != null ? p.author.displayName : p.author.email) : '—'}">Author</td>
+          <td th:text="${p.createdAt != null ? @displayTime.format(p.createdAt, 'yyyy-MM-dd HH:mm') : '—'}">—</td>
+          <td><span class="btn-view-pill" th:text="#{common.view}">View</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div th:if="${currentUserCanManageAgents}" id="newsCreateModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="newsCreateModalTitle">
+    <div class="modal-backdrop" data-close-news-modal tabindex="-1"></div>
+    <div class="modal-dialog">
+      <div class="modal-dialog-header">
+        <h2 id="newsCreateModalTitle" class="modal-dialog-title" th:text="#{news.create}">Add news</h2>
+        <button type="button" class="modal-close" data-close-news-modal th:attr="aria-label=#{common.close}">×</button>
+      </div>
+      <form th:action="@{/news}" method="post" class="modal-form modal-form--stack">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <div class="field">
+          <label th:text="#{common.title}">Title</label>
+          <input name="title" required maxlength="500">
+        </div>
+        <div class="field">
+          <label th:text="#{news.body}">Body</label>
+          <textarea name="body" rows="5" maxlength="8000"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn" data-close-news-modal th:text="#{common.cancel}">Cancel</button>
+          <button type="submit" class="btn primary" th:text="#{common.save}">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

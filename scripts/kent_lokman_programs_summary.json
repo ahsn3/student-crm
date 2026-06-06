@@ -1,0 +1,37 @@
+{
+  "screenshots": 13,
+  "total_unique_programs": 103,
+  "by_university": {
+    "Kent University": 70,
+    "Lokman Hekim University": 33
+  },
+  "availability_by_university": {
+    "Kent University": {
+      "available": 70,
+      "quota_full": 0
+    },
+    "Lokman Hekim University": {
+      "available": 33,
+      "quota_full": 0
+    }
+  },
+  "expected_from_portal": {
+    "Kent University": 83,
+    "Lokman Hekim University": 38
+  },
+  "per_image_row_counts": {
+    "Screenshot_2026-05-17_at_15.57.24-1bba0b4e-b9f1-4e09-9191-5cce1ff95082.png": 8,
+    "Screenshot_2026-05-17_at_15.57.27-cce850b5-e6b2-4559-8abd-f5e8ed01e10d.png": 8,
+    "Screenshot_2026-05-17_at_15.57.31-bf8aea98-09ce-4a39-9cd5-3d9138fce6c7.png": 9,
+    "Screenshot_2026-05-17_at_15.57.34-ed44c490-55a9-4ceb-b9f2-6f93643341a4.png": 10,
+    "Screenshot_2026-05-17_at_15.59.27-4415184b-5a72-43e9-862d-d4fd6deff102.png": 8,
+    "Screenshot_2026-05-17_at_15.59.33-6f81fb84-b5e6-467d-8ec3-a2168f19425e.png": 8,
+    "Screenshot_2026-05-17_at_15.59.38-9e8c23f9-8eba-49bd-a551-4ac92134a5dc.png": 9,
+    "Screenshot_2026-05-17_at_15.59.39-dbe7fb09-08eb-4710-b128-600c982fe00a.png": 8,
+    "Screenshot_2026-05-17_at_15.59.44-863a5f08-b717-4b45-a8d2-3fc534a5b331.png": 8,
+    "Screenshot_2026-05-17_at_15.59.46-19f5def3-c5d6-4f1f-afd9-a55c71dd6352.png": 9,
+    "Screenshot_2026-05-17_at_15.59.50-90a3d110-6a72-4243-b927-6d54ce3c45cd.png": 10,
+    "Screenshot_2026-05-17_at_15.59.52-f8558d98-8b31-41af-9471-0d6e343e4c5c.png": 8,
+    "Screenshot_2026-05-17_at_15.59.55-7901129c-4b14-41a7-80b4-fb516b05a75d.png": 2
+  }
+}

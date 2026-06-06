@@ -1,0 +1,179 @@
+ATILIM|Business Administration|English|PhD|20500|20500||4
+ZAIM|Islamic Economics And Law|Arabic|PhD|12000|12000||4
+ZAIM|Urbanism And Urban Transformation|Turkish|PhD|12000|12000||4
+AYDIN|Graphic Design Art Qualification|Turkish|CombinedPhD|15000|15000|14250|5
+ZAIM|Computer Science And Engineering|Turkish|PhD|12000|12000||4
+ATILIM|Mechanical Engineering|English|PhD|22000|22000||4
+AYDIN|Computer Engineering|Turkish|CombinedPhD|15000|15000|14250|5
+ATILIM|Private Law|Turkish|PhD|20500|20500||4
+ISTINYE|Neuroscience|Turkish|CombinedPhD|12500|12500||5
+ISTINYE|Molecular Oncology|Turkish|CombinedPhD|12500|12500||5
+ISTINYE|Pharmacutical Chemistry|English|CombinedPhD|12500|12500||5
+AYDIN|English Language And Literature|English|CombinedPhD|20000|20000|19000|5
+ZAIM|Philosophy And Religious Studies|Turkish|PhD|12000|12000||4
+ATILIM|Modeling and Design of Engineering Systems|English|PhD|22000|22000||4
+ATILIM|Mathematics|English|PhD|22000|22000||4
+ZAIM|Islamic Economics And Finance|English|PhD|12000|12000||4
+AYDIN|Accounting And Auditing|Turkish|CombinedPhD|15000|15000|14250|5
+ISTINYE|Midwifery|Turkish|CombinedPhD|12500|12500||5
+USKUDAR|Visual Communication Design|Turkish|PhD|7800|7800|7020|4
+ZAIM|Food Engineering|Turkish|PhD|12000|12000||4
+USKUDAR|Nursing|Turkish|PhD|9000|9000|8100|4
+AYDIN|Mechanical Engineering|English|CombinedPhD|20000|20000|19000|5
+ZAIM|Business Administration|Turkish|PhD|12000|12000||4
+ISTINYE|Speech And Language Therapy|Turkish|CombinedPhD|12500|12500||5
+AYDIN|Architecture|Turkish|CombinedPhD|15000|15000|14250|5
+USKUDAR|Occupational Health And Safety|Turkish|PhD|7800|7800|7020|4
+AYDIN|Business Management|English|CombinedPhD|20000|20000|19000|5
+LOKMAN|Restorative Dentistry|Turkish|PhD|12000|12000||4
+AYDIN|English Language Teaching|English|CombinedPhD|20000|20000|19000|5
+ISTINYE|Nutrition And Dietetics|Turkish|CombinedPhD|12500|12500||5
+ISTINYE|Physiotherapy And Rehabilitation|Turkish|CombinedPhD|12500|12500||5
+ZAIM|Social Work|Turkish|PhD|12000|12000||4
+USKUDAR|Physiology|Turkish|PhD|9000|9000|8100|4
+AYDIN|Political Science And International Relations|English|CombinedPhD|20000|20000|19000|5
+AYDIN|Public Law|Turkish|CombinedPhD|15000|15000|14250|5
+AYDIN|Private Law|Turkish|CombinedPhD|15000|15000|14250|5
+AYDIN|Nutrition And Dietetics|Turkish|CombinedPhD|15000|15000|14250|5
+ISTINYE|Medical Biology And Genetics|Turkish|CombinedPhD|12500|12500||5
+AYDIN|Occupational Health And Safety|Turkish|CombinedPhD|15000|15000|14250|5
+ZAIM|Private Law|Turkish|PhD|12000|12000||4
+ZAIM|Islamic Sciences|Turkish|PhD|12000|12000||4
+ATILIM|Electrical And Computer Engineering|English|PhD|22000|22000||4
+ATILIM|Public Law|Turkish|PhD|20500|20500||4
+AYDIN|Turkish Language And Literature|Turkish|CombinedPhD|15000|15000|14250|5
+ISTINYE|Histology And Embryology|Turkish|CombinedPhD|12500|12500||5
+ZAIM|Family Counseling And Education|Turkish|PhD|12000|12000||4
+ISTINYE|Business Administration|Turkish|CombinedPhD|12500|12500||5
+ATILIM|Business Administration|Turkish|PhD|20500|20500||4
+ZAIM|Clinical Psychology|Turkish|PhD|16000|16000||4
+AYDIN|Public Relations And Publicity|Turkish|CombinedPhD|15000|15000|14250|5
+ZAIM|Political Science And International Relations|Turkish|PhD|12000|12000||4
+USKUDAR|Speech And Language Therapy|Turkish|PhD|9000|9000|8100|4
+ISTINYE|Stem Cell And Tissue Engineering|Turkish|CombinedPhD|12500|12500||5
+AYDIN|Physical Education And Sports|Turkish|CombinedPhD|15000|15000|14250|5
+ISTINYE|Obstetrics And Gynecology|Turkish|CombinedPhD|12500|12500||5
+AYDIN|Clinical Psychology|Turkish|CombinedPhD|15000|15000|14250|5
+ZAIM|Psychology|Turkish|PhD|12000|12000||4
+LOKMAN|Prosthetic Dentistry|Turkish|PhD|12000|12000||4
+AYDIN|Applied Psychology|Turkish|CombinedPhD|15000|15000|14250|5
+ZAIM|Public Law|Turkish|PhD|12000|12000||4
+ATILIM|Architecture|Turkish|PhD|16500|16500||4
+AYDIN|Child Development|Turkish|CombinedPhD|15000|15000|14250|5
+AYDIN|Food Engineering|Turkish|CombinedPhD|15000|15000|14250|5
+ZAIM|Sociology|Turkish|PhD|12000|12000||4
+ZAIM|Education Management|Turkish|PhD|12000|12000||4
+LOKMAN|Physiotherapy And Rehabilitation|Turkish|PhD|12000|12000||4
+AYDIN|Civil Engineering|Turkish|CombinedPhD|15000|15000|14250|5
+USKUDAR|Medical Genetics|Turkish|PhD|9000|9000|8100|4
+ATILIM|Software Engineering|English|PhD|22000|22000||4
+ISTINYE|Health Management|Turkish|CombinedPhD|12500|12500||5
+ISTINYE|Communications Sciences|Turkish|CombinedPhD|12500|12500||5
+AYDIN|Electrical And Electronic Engineering|English|CombinedPhD|20000|20000|19000|5
+AYDIN|Mechanical Engineering|Turkish|CombinedPhD|15000|15000|14250|5
+USKUDAR|New Media And Communication|Turkish|PhD|7800|7800|7020|4
+ATILIM|Chemistry|English|PhD|22000|22000||4
+ZAIM|History And Civilization Studies|Turkish|PhD|12000|12000||4
+ATILIM|Political Economy|Turkish|PhD|20500|20500||4
+ZAIM|Internal Medicine Nursing|Turkish|PhD|12000|12000||4
+ZAIM|Islamic Economics And Finance|Turkish|PhD|12000|12000||4
+AYDIN|Medical Microbiology|Turkish|CombinedPhD|15000|15000|14250|5
+ISTINYE|Physics|English|CombinedPhD|12500|12500||5
+AYDIN|Television And Cinema|Turkish|CombinedPhD|15000|15000|14250|5
+ATILIM|Civil Engineering|English|PhD|22000|22000||4
+BILGI|Public Law|Turkish|PhD|18000|18000||4
+AYDIN|Food Safety|Turkish|CombinedPhD|15000|15000|14250|5
+ZAIM|Political Science And International Relations|English|PhD|12000|12000||4
+ZAIM|Business Administration|English|PhD|12000|12000||4
+AYDIN|Preschool Education|Turkish|CombinedPhD|15000|15000|14250|5
+AYDIN|Business Management|Turkish|CombinedPhD|15000|15000|14250|5
+ATILIM|Political Science And Public Administration|Turkish|PhD|20500|20500||4
+ISTINYE|Chemistry|English|CombinedPhD|12500|12500||5
+ZAIM|Islamic Sciences|Arabic|PhD|12000|12000||4
+USKUDAR|The Though, History, And Literature Of Islamic Civilization|Turkish|PhD|13300|13300|11970|4
+BILGI|Private Law|Turkish|PhD|18000|18000||4
+AYDIN|Physiotherapy And Rehabilitation|Turkish|CombinedPhD|15000|15000|14250|5
+USKUDAR|Psychology|Turkish|PhD|19100|19100|17190|4
+AYDIN|Audiology|Turkish|CombinedPhD|15000|15000|14250|5
+NEU|Software Engineering|English|PhD|1510|1510||4
+NEU|Preschool Education|English|PhD|1510|1510||4
+NEU|Surgical Nursing|Turkish|PhD|1510|1510||4
+USKUDAR|Clinical Anatomy|Turkish|PhD|9000|9000|8100|4
+NEU|General Psychology|Turkish|PhD|1510|1510||4
+NEU|Business Administration|English|PhD|1510|1510||4
+NEU|Periodontology|Turkish|PhD|2377|2377||4
+NEU|Private Law|Turkish|PhD|1510|1510||4
+NEU|Civil Engineering|English|PhD|1510|1510||4
+OKAN|Land Planning and Management|Turkish|PhD|7000|7000|6650|4
+OKAN|Health Management|Turkish|PhD|7000|7000|6650|4
+NEU|Zoo Techniques|Turkish|PhD|2377|2377||4
+NEU|Music|Turkish|PhD|1510|1510||4
+USKUDAR|International Relations|Turkish|PhD|7800|7800|7020|4
+OKAN|Applied Psychology|Turkish|PhD|7000|7000|6650|4
+NEU|Marine Law|Turkish|PhD|1510|1510||4
+NEU|Toxicology|English|PhD|2377|2377||4
+OKAN|Business Administration|Turkish|PhD|7000|7000|6650|4
+NEU|Pharmacognosy|Turkish|PhD|2377|2377||4
+NEU|Nursing|English|PhD|1510|1510||4
+NEU|Computer Education And Instructional Technologies|English|PhD|1510|1510||4
+NEU|Phytotherapy|English|PhD|2377|2377||4
+NEU|Obstetrics And Gynecologic Nursing|Turkish|PhD|1510|1510||4
+NEU|Medical Biochemistry|English|PhD|1510|1510||4
+NEU|International Law|English|PhD|1510|1510||4
+OKAN|Banking|Turkish|PhD|7000|7000|6650|4
+NEU|Food Hygiene And Technology|English|PhD|2377|2377||4
+NEU|General Psychology|English|PhD|1510|1510||4
+NEU|Histology And Embryology|Turkish|PhD|2377|2377||4
+NEU|Computer Engineering|Turkish|PhD|1510|1510||4
+NEU|Pharmaceutical Chimistry|English|PhD|2377|2377||4
+USKUDAR|Neuroscience|Turkish|PhD|9000|9000|8100|4
+NISANTASI|Political Science And International Relations|English|PhD|6000|6000||4
+NEU|Restorative Dentistry|Turkish|PhD|2377|2377||4
+NEU|Endodontics|Turkish|PhD|2377|2377||4
+OKAN|Educational Administration, Supervision And Planning|Turkish|PhD|7000|7000|6650|4
+NEU|Physical Education And Sports|Turkish|PhD|1510|1510||4
+NEU|English Language Teaching|English|PhD|1510|1510||4
+NEU|Department of Surgery|English|PhD|2377|2377||4
+OKAN|Private Law|Turkish|PhD|7000|7000|6650|4
+OKAN|Computer Engineering|Turkish|PhD|7000|7000|6650|4
+NEU|Environmental Education|Turkish|PhD|1510|1510||4
+NEU|Petrol And Natural Gas Engineering|English|PhD|1510|1510||4
+NEU|Public Law|Turkish|PhD|1510|1510||4
+NEU|Mathematics|English|PhD|1510|1510||4
+NEU|Educational Programs And Instruction|Turkish|PhD|1510|1510||4
+NEU|Innovation And Knowledge Management|English|PhD|1510|1510||4
+NEU|Physics Engineering|English|PhD|1510|1510||4
+NEU|Prosthodontics|Turkish|PhD|2377|2377||4
+OKAN|Architecture|Turkish|PhD|7000|7000|6650|4
+NEU|Interior Architecture|English|PhD|1510|1510||4
+NISANTASI|Finance And Banking|Turkish|PhD|6000|6000||4
+NEU|History Teaching|Turkish|PhD|1510|1510||4
+NEU|Marine Law|English|PhD|1510|1510||4
+NEU|Toxicology|Turkish|PhD|2377|2377||4
+NEU|Educational Programs And Instruction|English|PhD|1510|1510||4
+OKAN|Mechatronics Engineering|English|PhD|9000|9000|8550|4
+TOPKAPI|Management Information Systems|Turkish|PhD|5000|5000||4
+NEU|Pharmaceutical Botany|English|PhD|2377|2377||4
+NEU|Medical Microbiology And Clinical Microbiology|English|PhD|2377|2377||4
+TOPKAPI|Architecture|Turkish|PhD|5000|5000||4
+NEU|Nutrition And Dietetics|Turkish|PhD|1510|1510||4
+OKAN|Music|Turkish|PhD|7000|7000|6650|4
+NEU|Folklore Education|Turkish|PhD|1510|1510||4
+NEU|Special Education|English|PhD|1510|1510||4
+NEU|Preschool Education|Turkish|PhD|1510|1510||4
+OKAN|Orthodontics|Turkish|PhD|15000|15000|14250|4
+OKAN|Nutrition And Dietetics|Turkish|PhD|7000|7000|6650|4
+NEU|Educational Administration, Supervision And Planning|Turkish|PhD|1510|1510||4
+NEU|Nursing|Turkish|PhD|1510|1510||4
+OKAN|Public Law|Turkish|PhD|7000|7000|6650|4
+NEU|Orthodontics|Turkish|PhD|2377|2377||4
+NEU|Physiotherapy And Rehabilitation|Turkish|PhD|1510|1510||4
+NEU|Special Education|Turkish|PhD|1510|1510||4
+NEU|Computer Engineering|English|PhD|1510|1510||4
+NEU|Mechanical Engineering|English|PhD|1510|1510||4
+NEU|Pedodontics|Turkish|PhD|2377|2377||4
+NEU|Computer Education And Instructional Technologies|Turkish|PhD|1510|1510||4
+NEU|Oral And Maxillofacial Surgery|Turkish|PhD|2377|2377||4
+NEU|Obstetrics And Gynecology|English|PhD|2377|2377||4
+NEU|Oral And Maxillofacial Radiology|Turkish|PhD|2377|2377||4
+NEU|Medical Biology And Genetics|English|PhD|2377|2377||4
