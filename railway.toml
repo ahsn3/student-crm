@@ -3,7 +3,7 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-healthcheckPath = "/health"
-healthcheckTimeout = 1800
+# No HTTP healthcheck — first boot runs 53 Flyway migrations (~4900 programs)
+# and the app cannot serve /health until that finishes (15–30+ min).
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 5

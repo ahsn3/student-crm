@@ -8,5 +8,10 @@ spring:
     enabled: ${SPRING_FLYWAY_ENABLED:true}
     validate-on-migrate: false
     repair-on-migrate: false
-    connect-retries: 2
-    lock-retry-count: 5
+    connect-retries: 10
+    lock-retry-count: 20
+
+logging:
+  level:
+    org.flywaydb: INFO
+    org.flywaydb.core.internal.command.DbMigrate: INFO

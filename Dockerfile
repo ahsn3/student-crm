@@ -12,7 +12,7 @@ RUN apt-get update \
 WORKDIR /app
 ENV PORT=8080
 ENV SPRING_PROFILES_ACTIVE=prod
-ENV JAVA_OPTS="-Xms256m -Xmx768m -XX:+UseG1GC -Djava.awt.headless=true"
+ENV JAVA_OPTS="-Xms256m -Xmx1024m -XX:+UseG1GC -Djava.awt.headless=true"
 COPY --from=build /app/target/*.jar /app/app.jar
 EXPOSE 8080
 CMD ["sh", "-lc", "java $JAVA_OPTS -Dserver.port=${PORT:-8080} -jar /app/app.jar"]
