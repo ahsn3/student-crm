@@ -2,7 +2,7 @@
   <div class="sidebar-inner">
     <div class="brand">
       <img class="brand-logo"
-           th:src="${sidebarBrandLogoUrl != null && !#strings.isEmpty(sidebarBrandLogoUrl) ? sidebarBrandLogoUrl : '/images/logo.png?v=1'}"
+           th:src="${sidebarBrandLogoUrl != null && !#strings.isEmpty(sidebarBrandLogoUrl) ? sidebarBrandLogoUrl : '/images/logo.png?v=2'}"
            src="/images/logo.png"
            th:alt="${metaSiteName}"
            alt="Student CRM"
@@ -11,7 +11,7 @@
            loading="eager"
            decoding="async"
            fetchpriority="high"
-           onerror="this.onerror=null;this.src='/images/logo.png?v=1';">
+           onerror="this.onerror=null;this.src='/images/logo.png?v=2';">
       <div class="brand-title" th:text="${sidebarBrandName}">Student CRM</div>
       <div class="brand-subtitle" th:text="#{brand.subtitle}">Student CRM Platform</div>
     </div>

@@ -101,6 +101,7 @@ public class SecurityConfig {
                         "/css/**",
                         "/js/**",
                         "/images/**",
+                        "/brand/**",
                         "/favicon.ico",
                         "/login",
                         "/signup",

@@ -5,13 +5,13 @@
       th:attr="data-rama-theme-eligible=${ramaThemeEligible},data-no-match=#{common.noResults}">
 <head>
   <meta charset="utf-8">
+  <th:block th:replace="~{partials/brand-head :: brandHead}"></th:block>
   <meta th:if="${_csrf != null}" name="csrf-token" th:content="${_csrf.token}">
   <meta th:if="${_csrf != null}" name="csrf-header" th:content="${_csrf.headerName}">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <th:block th:replace="~{partials/theme-head :: themeHead}"></th:block>
   <title th:text="|${pageTitle} • ${metaSiteName}|">Student CRM</title>
   <th:block th:replace="~{partials/social-meta :: socialMeta}"></th:block>
-  <th:block th:replace="~{partials/brand-head :: brandHead}"></th:block>
   <link th:if="${currentUserHasAvatar and currentUserId != null}"
         rel="preload"
         as="image"

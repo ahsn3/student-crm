@@ -5,11 +5,11 @@
       th:attr="data-no-match=#{common.noResults}">
 <head>
   <meta charset="utf-8">
+  <th:block th:replace="~{partials/brand-head :: brandHead}"></th:block>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <th:block th:replace="~{partials/theme-head :: themeHead}"></th:block>
   <title th:text="|${pageTitle} • ${metaSiteName}|">Sign up • Student CRM</title>
   <th:block th:replace="~{partials/social-meta :: socialMeta}"></th:block>
-  <th:block th:replace="~{partials/brand-head :: brandHead}"></th:block>
   <link rel="stylesheet" th:href="@{/css/app.css(v=132)}">
 </head>
 <body class="auth-body">
@@ -38,7 +38,7 @@
     <div class="card-header auth-header">
       <div>
         <div class="auth-brand">
-          <img th:src="@{/images/logo.png(v=1)}" th:alt="${metaSiteName}" class="auth-logo" width="56" height="56" loading="eager" decoding="async" fetchpriority="high">
+          <img th:src="@{/images/logo.png(v=2)}" th:alt="${metaSiteName}" class="auth-logo" width="56" height="56" loading="eager" decoding="async" fetchpriority="high">
           <div>
             <div class="auth-name" th:text="${metaSiteName}">Student CRM</div>
             <div class="subtle" th:text="#{brand.subtitle}">Student CRM Platform</div>

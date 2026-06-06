@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FaviconController {
   private static final Resource FAVICON =
-      new ClassPathResource("static" + BrandSupport.FAVICON_ICO_PATH);
+      new ClassPathResource("static/brand/favicon.ico");
 
-  @GetMapping("/favicon.ico")
+  @GetMapping({"/favicon.ico", "/brand/favicon.ico"})
   ResponseEntity<Resource> favicon() {
     return ResponseEntity.ok()
         .contentType(MediaType.parseMediaType("image/x-icon"))
