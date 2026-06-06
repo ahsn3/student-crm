@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class FaviconController {
-  private static final Resource LOGO = new ClassPathResource("static/images/logo.svg");
+  private static final Resource FAVICON =
+      new ClassPathResource("static" + BrandSupport.FAVICON_ICO_PATH);
 
   @GetMapping("/favicon.ico")
   ResponseEntity<Resource> favicon() {
     return ResponseEntity.ok()
-        .contentType(MediaType.parseMediaType("image/svg+xml"))
+        .contentType(MediaType.parseMediaType("image/x-icon"))
         .cacheControl(CacheControl.noCache())
-        .body(LOGO);
+        .body(FAVICON);
   }
 }

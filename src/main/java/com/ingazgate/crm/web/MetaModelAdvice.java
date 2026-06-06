@@ -66,7 +66,7 @@ public class MetaModelAdvice {
 
   @ModelAttribute("metaImageUrl")
   String metaImageUrl(HttpServletRequest request) {
-    String logoPath = BrandSupport.logoUrl();
+    String logoPath = BrandSupport.appleTouchUrl();
     String normalized = normalizeSiteUrl(siteUrl);
     if (!normalized.isEmpty()) {
       return normalized + logoPath;

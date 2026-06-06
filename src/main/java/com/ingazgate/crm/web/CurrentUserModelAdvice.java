@@ -154,12 +154,12 @@ public class CurrentUserModelAdvice {
   String sidebarBrandLogoUrl() {
     AppUser user = currentUser();
     if (user == null || authUsers.canManageAgents(user)) {
-      return BrandSupport.LOGO_PATH;
+      return BrandSupport.logoUrl();
     }
     if (trimToNull(user.getLogoUrl()) != null) {
       return "/users/" + user.getId() + "/avatar";
     }
-    return BrandSupport.LOGO_PATH;
+    return BrandSupport.logoUrl();
   }
 
   private AppUser currentUser() {
