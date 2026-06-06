@@ -86,11 +86,15 @@ public class LeadService {
       LeadStatus status,
       LeadType leadType,
       String search) {
-    Employee employee = employeeAccessService.requireLinkedEmployee(user);
     PageRequest pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
     String q = StringUtils.hasText(search) ? search.trim() : null;
-    Page<Lead> result =
-        leadRepository.findMyLeads(employee.getId(), status, leadType, q, pageable);
+    Page<Lead> result;
+    if (employeeAccessService.isAdmin(user)) {
+      result = leadRepository.findAllLeads(status, leadType, q, pageable);
+    } else {
+      Employee employee = employeeAccessService.requireLinkedEmployee(user);
+      result = leadRepository.findMyLeads(employee.getId(), status, leadType, q, pageable);
+    }
     List<LeadResponse> items = result.getContent().stream().map(leadMapper::toResponse).toList();
     return new LeadPageResponse(
         items,
@@ -105,6 +109,9 @@ public class LeadService {
 
   @Transactional(readOnly = true)
   public LeadDetailResponse getMyLeadDetail(AppUser user, UUID id) {
+    if (employeeAccessService.isAdmin(user)) {
+      return getLeadDetail(id);
+    }
     Employee employee = employeeAccessService.requireLinkedEmployee(user);
     Lead lead = requireLeadForEmployee(id, employee.getId());
     return buildDetailResponse(lead);
@@ -174,9 +181,19 @@ public class LeadService {
 
   @Transactional
   public LeadResponse updateMyLead(AppUser user, UUID id, LeadUpdateRequest request) {
-    Employee employee = employeeAccessService.requireLinkedEmployee(user);
-    Lead lead = requireLeadForEmployee(id, employee.getId());
-    applyUpdate(lead, request, employee);
+    Lead lead;
+    Employee actor = null;
+    if (employeeAccessService.isAdmin(user)) {
+      lead =
+          leadRepository
+              .findByIdWithEmployee(id)
+              .orElseThrow(() -> new ResourceNotFoundException("Lead not found: " + id));
+      actor = employeeAccessService.findLinkedEmployee(user).orElse(null);
+    } else {
+      actor = employeeAccessService.requireLinkedEmployee(user);
+      lead = requireLeadForEmployee(id, actor.getId());
+    }
+    applyUpdate(lead, request, actor);
     return leadMapper.toResponse(leadRepository.save(lead));
   }
 

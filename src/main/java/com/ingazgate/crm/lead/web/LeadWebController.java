@@ -7,6 +7,7 @@ import com.ingazgate.crm.lead.entity.LeadStatus;
 import com.ingazgate.crm.lead.entity.LeadType;
 import com.ingazgate.crm.lead.service.LeadNoteService;
 import com.ingazgate.crm.lead.service.LeadService;
+import com.ingazgate.crm.lead.service.EmployeeAccessService;
 import com.ingazgate.crm.user.AppUser;
 import com.ingazgate.crm.web.AuthUsers;
 import java.security.Principal;
@@ -23,12 +24,17 @@ public class LeadWebController {
   private final LeadService leadService;
   private final LeadNoteService leadNoteService;
   private final AuthUsers authUsers;
+  private final EmployeeAccessService employeeAccessService;
 
   public LeadWebController(
-      LeadService leadService, LeadNoteService leadNoteService, AuthUsers authUsers) {
+      LeadService leadService,
+      LeadNoteService leadNoteService,
+      AuthUsers authUsers,
+      EmployeeAccessService employeeAccessService) {
     this.leadService = leadService;
     this.leadNoteService = leadNoteService;
     this.authUsers = authUsers;
+    this.employeeAccessService = employeeAccessService;
   }
 
   @GetMapping("/my-leads")
@@ -40,12 +46,14 @@ public class LeadWebController {
       @RequestParam(required = false) LeadType leadType,
       @RequestParam(required = false) String search) {
     AppUser user = authUsers.requireCurrentUser(principal);
+    boolean viewAllLeads = employeeAccessService.isAdmin(user);
     LeadPageResponse leads = leadService.getMyLeads(user, page, 20, status, leadType, search);
 
-    model.addAttribute("pageTitleKey", "page.myLeads.title");
+    model.addAttribute("pageTitleKey", viewAllLeads ? "page.leads.title" : "page.myLeads.title");
     model.addAttribute("activeNav", "myLeads");
     model.addAttribute("contentTemplate", "pages/my-leads");
     model.addAttribute("leadsPage", leads);
+    model.addAttribute("viewAllLeads", viewAllLeads);
     model.addAttribute("statusFilter", status);
     model.addAttribute("leadTypeFilter", leadType);
     model.addAttribute("searchQuery", search);
@@ -63,6 +71,7 @@ public class LeadWebController {
     model.addAttribute("activeNav", "myLeads");
     model.addAttribute("contentTemplate", "pages/lead-detail");
     model.addAttribute("detail", detail);
+    model.addAttribute("viewAllLeads", employeeAccessService.isAdmin(user));
     model.addAttribute("leadStatuses", LeadStatus.values());
     model.addAttribute("leadTypes", LeadType.values());
     return "layout/shell";

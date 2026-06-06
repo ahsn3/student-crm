@@ -6,6 +6,7 @@ import com.ingazgate.crm.lead.entity.Employee;
 import com.ingazgate.crm.lead.entity.Lead;
 import com.ingazgate.crm.lead.entity.LeadNote;
 import com.ingazgate.crm.lead.exception.AccessDeniedLeadException;
+import com.ingazgate.crm.lead.exception.LeadApiException;
 import com.ingazgate.crm.lead.exception.ResourceNotFoundException;
 import com.ingazgate.crm.lead.mapper.LeadMapper;
 import com.ingazgate.crm.lead.repository.LeadNoteRepository;
@@ -14,6 +15,7 @@ import com.ingazgate.crm.user.AppUser;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,9 +47,8 @@ public class LeadNoteService {
 
   @Transactional
   public LeadNoteResponse addNote(AppUser user, UUID leadId, LeadNoteRequest request) {
-    Employee employee = employeeAccessService.requireLinkedEmployee(user);
     Lead lead = requireLead(leadId);
-    assertCanAccessLead(lead, employee, user);
+    Employee employee = resolveNoteAuthor(user, lead);
 
     LeadNote note = new LeadNote();
     note.setId(UUID.randomUUID());
@@ -56,6 +57,21 @@ public class LeadNoteService {
     note.setNote(request.note().trim());
     note.setCreatedAt(OffsetDateTime.now());
     return leadMapper.toNoteResponse(leadNoteRepository.save(note));
+  }
+
+  private Employee resolveNoteAuthor(AppUser user, Lead lead) {
+    if (employeeAccessService.isAdmin(user)) {
+      Employee author =
+          employeeAccessService.findLinkedEmployee(user).orElse(lead.getAssignedEmployee());
+      if (author == null) {
+        throw new LeadApiException(
+            HttpStatus.BAD_REQUEST, "Cannot add note until this lead is assigned to an employee");
+      }
+      return author;
+    }
+    Employee employee = employeeAccessService.requireLinkedEmployee(user);
+    assertCanAccessLead(lead, employee, user);
+    return employee;
   }
 
   private Lead requireLead(UUID leadId) {

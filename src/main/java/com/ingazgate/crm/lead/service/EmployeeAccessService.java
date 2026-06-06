@@ -15,16 +15,20 @@ public class EmployeeAccessService {
   }
 
   public Employee requireLinkedEmployee(AppUser user) {
-    if (user == null || user.getEmail() == null) {
-      throw new AccessDeniedLeadException("User account is not linked to a sales employee profile");
-    }
-    return employeeRepository
-        .findByEmailIgnoreCase(user.getEmail().trim())
+    return findLinkedEmployee(user)
         .orElseThrow(
             () ->
                 new AccessDeniedLeadException(
-                    "No sales employee profile found for " + user.getEmail()
+                    "No sales employee profile found for "
+                        + (user != null ? user.getEmail() : "unknown")
                         + ". Ask admin to create an employee with the same email."));
+  }
+
+  public java.util.Optional<Employee> findLinkedEmployee(AppUser user) {
+    if (user == null || user.getEmail() == null) {
+      return java.util.Optional.empty();
+    }
+    return employeeRepository.findByEmailIgnoreCase(user.getEmail().trim());
   }
 
   public boolean isAdmin(AppUser user) {

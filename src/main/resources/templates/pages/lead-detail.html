@@ -7,6 +7,10 @@
           <span th:text="${lead.leadType()}">TYPE</span>
           ·
           <span class="tag info" th:text="${lead.status()}">STATUS</span>
+          <span th:if="${viewAllLeads and lead.assignedEmployee() != null}">
+            · <span th:text="#{leads.col.assignedTo}">Assigned to</span>:
+            <strong th:text="${lead.assignedEmployee().name()}">Employee</strong>
+          </span>
         </div>
       </div>
       <a class="btn" th:href="@{/my-leads}" th:text="#{leads.backToList}">Back to my leads</a>

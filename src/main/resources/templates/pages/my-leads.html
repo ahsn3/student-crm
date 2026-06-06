@@ -2,8 +2,8 @@
   <div class="card">
     <div class="card-header">
       <div>
-        <div class="title" th:text="#{page.myLeads.title}">My Leads</div>
-        <div class="subtle" th:text="#{leads.my.subtitle}">Leads assigned to you</div>
+        <div class="title" th:text="${viewAllLeads} ? #{page.leads.title} : #{page.myLeads.title}">Leads</div>
+        <div class="subtle" th:text="${viewAllLeads} ? #{leads.all.subtitle} : #{leads.my.subtitle}">Leads list</div>
       </div>
     </div>
 
@@ -37,6 +37,7 @@
         <tr>
           <th th:text="#{leads.col.student}">Student</th>
           <th th:text="#{leads.col.type}">Type</th>
+          <th th:if="${viewAllLeads}" th:text="#{leads.col.assignedTo}">Assigned to</th>
           <th th:text="#{common.phone}">Phone</th>
           <th th:text="#{leads.col.targetUniversity}">Target University</th>
           <th th:text="#{leads.col.status}">Status</th>
@@ -45,12 +46,15 @@
         </thead>
         <tbody>
         <tr th:if="${#lists.isEmpty(leadsPage.items())}">
-          <td colspan="6" class="empty" th:text="#{leads.my.empty}">No leads assigned to you yet.</td>
+          <td th:colspan="${viewAllLeads} ? 7 : 6" class="empty"
+              th:text="${viewAllLeads} ? #{leads.all.empty} : #{leads.my.empty}">No leads yet.</td>
         </tr>
         <tr th:each="lead : ${leadsPage.items()}" class="crm-clickable-row"
             th:attr="data-href=@{/my-leads/{id}(id=${lead.id()})}">
           <td><span class="crm-row-primary" th:text="${lead.studentName()}">Name</span></td>
           <td th:text="${lead.leadType()}">TYPE</td>
+          <td th:if="${viewAllLeads}"
+              th:text="${lead.assignedEmployee() != null ? lead.assignedEmployee().name() : '—'}">—</td>
           <td th:text="${lead.phone() != null ? lead.phone() : '—'}">—</td>
           <td th:text="${lead.targetUniversity() != null ? lead.targetUniversity() : '—'}">—</td>
           <td><span class="tag info" th:text="${lead.status()}">NEW</span></td>

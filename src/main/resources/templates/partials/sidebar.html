@@ -70,7 +70,7 @@
           <path d="M4 12h10v8H4z"></path>
           <path d="M16 12h4v8h-4z"></path>
         </svg>
-        <span th:text="#{nav.myLeads}">My Leads</span>
+        <span th:text="#{nav.leads}">Leads</span>
       </a>
       <a th:if="${currentUserCanManageAgents}" th:href="@{/services}" th:classappend="${activeNav}=='services' ? 'active' : ''">
         <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">

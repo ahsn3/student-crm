@@ -58,6 +58,38 @@ public interface LeadRepository extends JpaRepository<Lead, UUID> {
       @Param("search") String search,
       Pageable pageable);
 
+  @Query(
+      value =
+          """
+          SELECT l FROM Lead l LEFT JOIN FETCH l.assignedEmployee
+          WHERE (:status IS NULL OR l.status = :status)
+          AND (:leadType IS NULL OR l.leadType = :leadType)
+          AND (
+            :search IS NULL OR :search = '' OR
+            LOWER(l.studentName) LIKE LOWER(CONCAT('%', :search, '%')) OR
+            LOWER(COALESCE(l.phone, '')) LIKE LOWER(CONCAT('%', :search, '%')) OR
+            LOWER(COALESCE(l.email, '')) LIKE LOWER(CONCAT('%', :search, '%'))
+          )
+          ORDER BY l.createdAt DESC
+          """,
+      countQuery =
+          """
+          SELECT COUNT(l) FROM Lead l
+          WHERE (:status IS NULL OR l.status = :status)
+          AND (:leadType IS NULL OR l.leadType = :leadType)
+          AND (
+            :search IS NULL OR :search = '' OR
+            LOWER(l.studentName) LIKE LOWER(CONCAT('%', :search, '%')) OR
+            LOWER(COALESCE(l.phone, '')) LIKE LOWER(CONCAT('%', :search, '%')) OR
+            LOWER(COALESCE(l.email, '')) LIKE LOWER(CONCAT('%', :search, '%'))
+          )
+          """)
+  Page<Lead> findAllLeads(
+      @Param("status") LeadStatus status,
+      @Param("leadType") LeadType leadType,
+      @Param("search") String search,
+      Pageable pageable);
+
   long countByStatus(LeadStatus status);
 
   long countByLeadType(LeadType leadType);
