@@ -6063,20 +6063,16 @@ button.btn-view-pill:hover{
   background: linear-gradient(175deg, rgba(99, 102, 241, 0.55), rgba(79, 70, 229, 0.82));
 }
 
-/* Lead detail page */
-html:has(.lead-detail-page),
-body.lead-detail-page{
-  overflow-x: visible;
-}
-.main:has(.lead-detail-page),
-.main.lead-detail-page{
-  overflow-x: visible;
+/* Lead detail page — page-lead-detail on body/main only; layout lives on .lead-detail-page inner wrap */
+.main.page-lead-detail{
+  min-width: 0;
 }
 .lead-detail-page{
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
   padding-bottom: 32px;
+  min-width: 0;
 }
 .lead-detail-header{
   margin-bottom: 18px;

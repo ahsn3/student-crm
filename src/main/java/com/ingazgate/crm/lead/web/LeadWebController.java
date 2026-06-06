@@ -74,7 +74,7 @@ public class LeadWebController {
 
     model.addAttribute("pageTitle", detail.lead().studentName());
     model.addAttribute("activeNav", "myLeads");
-    model.addAttribute("bodyPageClass", "lead-detail-page");
+    model.addAttribute("bodyPageClass", "page-lead-detail");
     model.addAttribute("contentTemplate", "pages/lead-detail");
     model.addAttribute("detail", detail);
     model.addAttribute("saved", saved != null);
