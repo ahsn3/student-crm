@@ -103,7 +103,7 @@ public interface StudentApplicationRepository extends JpaRepository<StudentAppli
   @Query(
       "select count(a) from StudentApplication a join a.ownerUser ow "
           + "where a.createdAt >= :since "
-          + "and upper(coalesce(ow.role, '')) <> 'AGENT')")
+          + "and upper(coalesce(ow.role, '')) <> 'AGENT'")
   long countIngazgateApplicationsCreatedSince(@Param("since") OffsetDateTime since);
 
   @Query(

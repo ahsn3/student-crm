@@ -47,7 +47,7 @@ public interface StudentRepository extends JpaRepository<Student, UUID> {
 
   @Query(
       "select count(s) from Student s join s.ownerUser o where s.createdAt >= :since "
-          + "and upper(coalesce(o.role, '')) <> 'AGENT')")
+          + "and upper(coalesce(o.role, '')) <> 'AGENT'")
   long countIngazgateWorkspaceStudentsCreatedSince(@Param("since") OffsetDateTime since);
 
   @Query(
