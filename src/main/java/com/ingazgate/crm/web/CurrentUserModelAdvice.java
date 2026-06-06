@@ -137,7 +137,7 @@ public class CurrentUserModelAdvice {
   String sidebarBrandName() {
     AppUser user = currentUser();
     if (user == null || authUsers.canManageAgents(user)) {
-      return siteName == null || siteName.isBlank() ? "Student CRM" : siteName.trim();
+      return BrandSupport.displayName(siteName);
     }
     String office = trimToNull(user.getOfficeName());
     if (office != null) {
@@ -154,12 +154,12 @@ public class CurrentUserModelAdvice {
   String sidebarBrandLogoUrl() {
     AppUser user = currentUser();
     if (user == null || authUsers.canManageAgents(user)) {
-      return "/images/logo.svg";
+      return BrandSupport.LOGO_PATH;
     }
     if (trimToNull(user.getLogoUrl()) != null) {
       return "/users/" + user.getId() + "/avatar";
     }
-    return "/images/logo.svg";
+    return BrandSupport.LOGO_PATH;
   }
 
   private AppUser currentUser() {

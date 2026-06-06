@@ -54,7 +54,6 @@ public class ProgramPdfService {
   private static final String FONT_LATIN = "/fonts/NotoSans-Regular.ttf";
   private static final String FONT_ARABIC = "/fonts/NotoSansArabic-Regular.ttf";
   private static final String[] BRANDING_LOGO_PATHS = {
-    "/static/images/logo.png",
     "/static/images/logo.svg",
   };
 

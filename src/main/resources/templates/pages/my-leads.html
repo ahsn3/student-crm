@@ -1,4 +1,4 @@
-<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content" id="myLeadsPage">
   <div class="card">
     <div class="card-header">
       <div>
@@ -7,29 +7,40 @@
       </div>
     </div>
 
-    <form class="lead-filters" method="get" th:action="@{/my-leads}">
-      <div class="field">
-        <label for="search" th:text="#{common.search}">Search</label>
-        <input id="search" name="search" type="search" th:value="${searchQuery}" placeholder="Name, phone, email">
-      </div>
-      <div class="field">
-        <label for="status" th:text="#{leads.filter.status}">Status</label>
-        <select id="status" name="status">
-          <option value="" th:text="#{common.all}">All</option>
-          <option th:each="s : ${leadStatuses}" th:value="${s}" th:text="${s}"
-                  th:selected="${statusFilter == s}"></option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="leadType" th:text="#{leads.filter.type}">Type</label>
-        <select id="leadType" name="leadType">
-          <option value="" th:text="#{common.all}">All</option>
-          <option th:each="t : ${leadTypes}" th:value="${t}" th:text="${t}"
-                  th:selected="${leadTypeFilter == t}"></option>
-        </select>
-      </div>
-      <button class="btn primary" type="submit" th:text="#{common.filter}">Filter</button>
-    </form>
+    <div class="leads-filters-bar">
+      <form class="filters crm-app-form" method="get" th:action="@{/my-leads}">
+        <div class="field leads-filter-search">
+          <label for="search" th:text="#{common.search}">Search</label>
+          <input id="search" name="search" type="search" th:value="${searchQuery}" placeholder="Name, phone, email">
+        </div>
+        <div class="field programs-filter-select programs-filter-select--uni">
+          <label for="status" th:text="#{leads.filter.status}">Status</label>
+          <select id="status" name="status" class="prog-uni-native"
+                  th:attr="data-placeholder=#{common.all}">
+            <option value="" th:text="#{common.all}">All</option>
+            <option th:each="s : ${leadStatuses}"
+                    th:value="${s.name()}"
+                    th:selected="${statusFilter == s}"
+                    th:text="${#messages.msgOrNull('lead.status.' + s.name()) ?: s.name()}">Status</option>
+          </select>
+        </div>
+        <div class="field programs-filter-select programs-filter-select--uni">
+          <label for="leadType" th:text="#{leads.filter.type}">Lead type</label>
+          <select id="leadType" name="leadType" class="prog-uni-native"
+                  th:attr="data-placeholder=#{common.all}">
+            <option value="" th:text="#{common.all}">All</option>
+            <option th:each="t : ${leadTypes}"
+                    th:value="${t.name()}"
+                    th:selected="${leadTypeFilter == t}"
+                    th:text="${#messages.msgOrNull('lead.type.' + t.name()) ?: t.name()}">Type</option>
+          </select>
+        </div>
+        <div class="field leads-filter-actions">
+          <label class="leads-filter-actions-label" aria-hidden="true">&nbsp;</label>
+          <button class="btn primary btn--filter-apply" type="submit" th:text="#{common.filter}">Filter</button>
+        </div>
+      </form>
+    </div>
 
     <div class="crm-scroll-area table-scroll-wrap">
       <table class="table">
@@ -52,12 +63,15 @@
         <tr th:each="lead : ${leadsPage.items()}" class="crm-clickable-row"
             th:attr="data-href=@{/my-leads/{id}(id=${lead.id()})}">
           <td><span class="crm-row-primary" th:text="${lead.studentName()}">Name</span></td>
-          <td th:text="${lead.leadType()}">TYPE</td>
+          <td th:text="${#messages.msgOrNull('lead.type.' + lead.leadType().name()) ?: lead.leadType()}">TYPE</td>
           <td th:if="${viewAllLeads}"
               th:text="${lead.assignedEmployee() != null ? lead.assignedEmployee().name() : '—'}">—</td>
           <td th:text="${lead.phone() != null ? lead.phone() : '—'}">—</td>
           <td th:text="${lead.targetUniversity() != null ? lead.targetUniversity() : '—'}">—</td>
-          <td><span class="tag info" th:text="${lead.status()}">NEW</span></td>
+          <td>
+            <span class="tag info"
+                  th:text="${#messages.msgOrNull('lead.status.' + lead.status().name()) ?: lead.status()}">NEW</span>
+          </td>
           <td th:text="${lead.createdAt() != null ? @displayTime.format(lead.createdAt(), 'yyyy-MM-dd HH:mm') : '—'}">—</td>
         </tr>
         </tbody>

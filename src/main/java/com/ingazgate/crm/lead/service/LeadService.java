@@ -268,6 +268,9 @@ public class LeadService {
     if (request.degreeLevel() != null) {
       lead.setDegreeLevel(trimToNull(request.degreeLevel()));
     }
+    if (request.source() != null) {
+      lead.setSource(trimToNull(request.source()));
+    }
     if (request.notes() != null) {
       lead.setNotes(trimToNull(request.notes()));
     }

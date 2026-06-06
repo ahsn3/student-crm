@@ -1593,6 +1593,14 @@
     document.querySelectorAll(".applications-filters-card").forEach((card) => {
       initIngazgatePageSelects(card, { noResultsText: noMatchDefault });
     });
+    const leadsPage = document.getElementById("myLeadsPage");
+    if (leadsPage) {
+      initIngazgatePageSelects(leadsPage, { noResultsText: noMatchDefault });
+    }
+    const leadDetailPage = document.querySelector(".lead-detail-page");
+    if (leadDetailPage) {
+      initIngazgatePageSelects(leadDetailPage, { noResultsText: noMatchDefault });
+    }
     const editPage = document.getElementById("applicationEditPage");
     if (editPage) {
       const noMatch = editPage.dataset.msgNoMatch || noMatchDefault;

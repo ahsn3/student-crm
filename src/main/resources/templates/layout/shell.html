@@ -10,24 +10,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <th:block th:replace="~{partials/theme-head :: themeHead}"></th:block>
   <title th:text="|${pageTitle} • ${metaSiteName}|">Student CRM</title>
-  <meta name="description" th:content="${metaDescription}">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" th:content="${metaSiteName}">
-  <meta property="og:title" th:content="|${pageTitle} • ${metaSiteName}|">
-  <meta property="og:description" th:content="${metaDescription}">
-  <meta property="og:url" th:content="${metaUrl}">
-  <meta property="og:image" th:content="${metaImageUrl}">
-  <meta property="og:image:alt" th:content="|${metaSiteName} logo|">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" th:content="|${pageTitle} • ${metaSiteName}|">
-  <meta name="twitter:description" th:content="${metaDescription}">
-  <meta name="twitter:image" th:content="${metaImageUrl}">
-  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+  <th:block th:replace="~{partials/social-meta :: socialMeta}"></th:block>
+  <th:block th:replace="~{partials/brand-head :: brandHead}"></th:block>
   <link th:if="${currentUserHasAvatar and currentUserId != null}"
         rel="preload"
         as="image"
         th:href="@{/users/{id}/avatar(id=${currentUserId})}">
-  <link rel="stylesheet" th:href="@{/css/app.css(v=182)}">
+  <link rel="stylesheet" th:href="@{/css/app.css(v=184)}">
 </head>
 <body th:classappend="${bodyPageClass}">
 <script>

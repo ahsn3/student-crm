@@ -63,14 +63,22 @@ public class LeadWebController {
   }
 
   @GetMapping("/my-leads/{id}")
-  String myLeadDetail(@PathVariable UUID id, Model model, Principal principal) {
+  String myLeadDetail(
+      @PathVariable UUID id,
+      Model model,
+      Principal principal,
+      @RequestParam(required = false) String saved,
+      @RequestParam(required = false) String noteSaved) {
     AppUser user = authUsers.requireCurrentUser(principal);
     LeadDetailResponse detail = leadService.getMyLeadDetail(user, id);
 
     model.addAttribute("pageTitle", detail.lead().studentName());
     model.addAttribute("activeNav", "myLeads");
+    model.addAttribute("bodyPageClass", "lead-detail-page");
     model.addAttribute("contentTemplate", "pages/lead-detail");
     model.addAttribute("detail", detail);
+    model.addAttribute("saved", saved != null);
+    model.addAttribute("noteAdded", noteSaved != null);
     model.addAttribute("viewAllLeads", employeeAccessService.isAdmin(user));
     model.addAttribute("leadStatuses", LeadStatus.values());
     model.addAttribute("leadTypes", LeadType.values());
@@ -81,28 +89,35 @@ public class LeadWebController {
   String updateLead(
       @PathVariable UUID id,
       Principal principal,
-      @RequestParam(required = false) LeadStatus status,
+      @RequestParam(required = false) LeadType leadType,
       @RequestParam(required = false) String studentName,
       @RequestParam(required = false) String phone,
       @RequestParam(required = false) String email,
       @RequestParam(required = false) String nationality,
+      @RequestParam(required = false) String currentUniversity,
       @RequestParam(required = false) String targetUniversity,
+      @RequestParam(required = false) String currentMajor,
       @RequestParam(required = false) String desiredMajor,
-      @RequestParam(required = false) String notes) {
+      @RequestParam(required = false) String studyYear,
+      @RequestParam(required = false) String degreeLevel,
+      @RequestParam(required = false) String source,
+      @RequestParam(required = false) String notes,
+      @RequestParam(required = false) LeadStatus status) {
     AppUser user = authUsers.requireCurrentUser(principal);
     LeadUpdateRequest request =
         new LeadUpdateRequest(
-            null,
+            leadType,
             studentName,
             phone,
             email,
             nationality,
-            null,
+            currentUniversity,
             targetUniversity,
-            null,
+            currentMajor,
             desiredMajor,
-            null,
-            null,
+            studyYear,
+            degreeLevel,
+            source,
             notes,
             status);
     leadService.updateMyLead(user, id, request);

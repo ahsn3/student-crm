@@ -27,7 +27,7 @@ public class MetaModelAdvice {
 
   @ModelAttribute("metaSiteName")
   String metaSiteName() {
-    return siteName == null || siteName.isBlank() ? "Student CRM" : siteName.trim();
+    return BrandSupport.displayName(siteName);
   }
 
   @ModelAttribute("metaDescription")
@@ -53,10 +53,10 @@ public class MetaModelAdvice {
   String metaImageUrl(HttpServletRequest request) {
     String normalized = normalizeSiteUrl(siteUrl);
     if (!normalized.isEmpty()) {
-      return normalized + "/images/logo.svg";
+      return normalized + BrandSupport.LOGO_PATH;
     }
     return ServletUriComponentsBuilder.fromContextPath(request)
-        .path("/images/logo.svg")
+        .path(BrandSupport.LOGO_PATH)
         .build()
         .toUriString();
   }

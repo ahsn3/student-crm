@@ -17,5 +17,6 @@ public record LeadUpdateRequest(
     @Size(max = 255) String desiredMajor,
     @Size(max = 40) String studyYear,
     @Size(max = 80) String degreeLevel,
+    @Size(max = 120) String source,
     @Size(max = 4000) String notes,
     LeadStatus status) {}
