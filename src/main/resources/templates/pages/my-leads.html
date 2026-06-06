@@ -11,7 +11,7 @@
       <form class="filters crm-app-form" method="get" th:action="@{/my-leads}">
         <div class="field leads-filter-search">
           <label for="search" th:text="#{common.search}">Search</label>
-          <input id="search" name="search" type="search" th:value="${searchQuery}" placeholder="Name, phone, email">
+          <input id="search" name="search" type="search" th:value="${searchQuery}" th:placeholder="#{leads.searchPlaceholder}">
         </div>
         <div class="field programs-filter-select programs-filter-select--uni">
           <label for="status" th:text="#{leads.filter.status}">Status</label>
@@ -83,7 +83,7 @@
          th:href="@{/my-leads(page=${leadsPage.page() - 1}, status=${statusFilter}, leadType=${leadTypeFilter}, search=${searchQuery})}"
          th:text="#{common.previous}">Previous</a>
       <span class="subtle"
-            th:text="|Page ${leadsPage.page() + 1} / ${leadsPage.totalPages()} • ${leadsPage.totalElements()} leads|">Page</span>
+            th:text="#{leads.pagination(${leadsPage.page() + 1}, ${leadsPage.totalPages()}, ${leadsPage.totalElements()})}">Page</span>
       <a class="btn" th:if="${leadsPage.page() + 1 < leadsPage.totalPages()}"
          th:href="@{/my-leads(page=${leadsPage.page() + 1}, status=${statusFilter}, leadType=${leadTypeFilter}, search=${searchQuery})}"
          th:text="#{common.next}">Next</a>

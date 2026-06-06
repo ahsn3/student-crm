@@ -64,7 +64,7 @@
     <div th:if="${saved}" class="lead-detail-alert lead-detail-alert--success" th:text="#{lead.detail.saved}">Saved.</div>
     <div th:if="${noteAdded}" class="lead-detail-alert lead-detail-alert--success" th:text="#{lead.detail.noteAdded}">Note added.</div>
 
-    <nav class="lead-detail-tabs" role="tablist" aria-label="Lead sections">
+    <nav class="lead-detail-tabs" role="tablist" th:attr="aria-label=#{lead.detail.tabsLabel}">
       <button type="button" class="lead-detail-tab is-active" role="tab" aria-selected="true" data-lead-tab="details" th:text="#{lead.detail.tab.details}">Details</button>
       <button type="button" class="lead-detail-tab" role="tab" aria-selected="false" data-lead-tab="activity" th:text="#{lead.detail.tab.activity}">Notes &amp; activity</button>
       <button type="button" class="lead-detail-tab" role="tab" aria-selected="false" data-lead-tab="history" th:text="#{lead.detail.tab.history}">History</button>
@@ -136,7 +136,7 @@
                 </label>
                 <label class="lead-detail-field">
                   <span th:text="#{lead.detail.source}">Source</span>
-                  <input type="text" name="source" th:value="${lead.source()}" placeholder="WhatsApp, Instagram…"/>
+                  <input type="text" name="source" th:value="${lead.source()}" th:placeholder="#{lead.detail.sourcePlaceholder}"/>
                 </label>
                 <label class="lead-detail-field">
                   <span th:text="#{lead.detail.leadType}">Inquiry type</span>
@@ -177,11 +177,11 @@
                 </label>
                 <label class="lead-detail-field">
                   <span th:text="#{lead.detail.studyYear}">Study year</span>
-                  <input type="text" name="studyYear" th:value="${lead.studyYear()}" placeholder="1, 2, 3…"/>
+                  <input type="text" name="studyYear" th:value="${lead.studyYear()}" th:placeholder="#{lead.detail.studyYearPlaceholder}"/>
                 </label>
                 <label class="lead-detail-field">
                   <span th:text="#{lead.detail.degreeLevel}">Degree level</span>
-                  <input type="text" name="degreeLevel" th:value="${lead.degreeLevel()}" placeholder="Bachelor, Master…"/>
+                  <input type="text" name="degreeLevel" th:value="${lead.degreeLevel()}" th:placeholder="#{lead.detail.degreeLevelPlaceholder}"/>
                 </label>
               </div>
             </div>
@@ -243,7 +243,7 @@
                 <div class="lead-detail-timeline-dot"></div>
                 <div class="lead-detail-timeline-body">
                   <header class="lead-detail-timeline-head">
-                    <strong th:text="${n.employee() != null ? n.employee().name() : 'Team'}">Author</strong>
+                    <strong th:text="${n.employee() != null ? n.employee().name() : #{lead.detail.noteAuthorFallback}}">Author</strong>
                     <time th:text="${#temporals.format(n.createdAt(), 'dd MMM yyyy HH:mm')}">Date</time>
                   </header>
                   <p th:text="${n.note()}">Note text</p>

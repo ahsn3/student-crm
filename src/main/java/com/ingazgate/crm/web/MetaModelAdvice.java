@@ -1,7 +1,11 @@
 package com.ingazgate.crm.web;
 
 import jakarta.servlet.http.HttpServletRequest;
+import java.util.Locale;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
+import org.springframework.context.NoSuchMessageException;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,6 +13,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @ControllerAdvice
 public class MetaModelAdvice {
+  private final MessageSource messageSource;
+
   @Value("${app.meta.site-url:}")
   private String siteUrl;
 
@@ -17,6 +23,10 @@ public class MetaModelAdvice {
 
   @Value("${app.meta.description:Student CRM helps education agencies manage students, applications, universities, and documents in one place.}")
   private String description;
+
+  public MetaModelAdvice(MessageSource messageSource) {
+    this.messageSource = messageSource;
+  }
 
   @ModelAttribute
   void shellLayoutDefaults(Model model) {
@@ -27,12 +37,17 @@ public class MetaModelAdvice {
 
   @ModelAttribute("metaSiteName")
   String metaSiteName() {
-    return BrandSupport.displayName(siteName);
+    return resolveBrandName();
   }
 
   @ModelAttribute("metaDescription")
   String metaDescription() {
-    return description;
+    Locale locale = LocaleContextHolder.getLocale();
+    try {
+      return messageSource.getMessage("brand.metaDescription", null, locale);
+    } catch (NoSuchMessageException ex) {
+      return description;
+    }
   }
 
   @ModelAttribute("metaUrl")
@@ -51,14 +66,30 @@ public class MetaModelAdvice {
 
   @ModelAttribute("metaImageUrl")
   String metaImageUrl(HttpServletRequest request) {
+    String logoPath = BrandSupport.logoUrl();
     String normalized = normalizeSiteUrl(siteUrl);
     if (!normalized.isEmpty()) {
-      return normalized + BrandSupport.LOGO_PATH;
+      return normalized + logoPath;
     }
-    return ServletUriComponentsBuilder.fromContextPath(request)
-        .path(BrandSupport.LOGO_PATH)
-        .build()
-        .toUriString();
+    return ServletUriComponentsBuilder.fromContextPath(request).path(logoPath).build().toUriString();
+  }
+
+  @ModelAttribute("metaBrandLogoUrl")
+  String metaBrandLogoUrl(HttpServletRequest request) {
+    return metaImageUrl(request);
+  }
+
+  private String resolveBrandName() {
+    String configured = BrandSupport.displayName(siteName);
+    if (!configured.equals(BrandSupport.DEFAULT_NAME)) {
+      return configured;
+    }
+    Locale locale = LocaleContextHolder.getLocale();
+    try {
+      return messageSource.getMessage("brand.name", null, locale);
+    } catch (NoSuchMessageException ex) {
+      return configured;
+    }
   }
 
   private String normalizeSiteUrl(String value) {
@@ -72,4 +103,3 @@ public class MetaModelAdvice {
     return trimmed;
   }
 }
-

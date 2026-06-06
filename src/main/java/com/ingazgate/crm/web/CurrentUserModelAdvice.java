@@ -137,7 +137,7 @@ public class CurrentUserModelAdvice {
   String sidebarBrandName() {
     AppUser user = currentUser();
     if (user == null || authUsers.canManageAgents(user)) {
-      return BrandSupport.displayName(siteName);
+      return resolveBrandName();
     }
     String office = trimToNull(user.getOfficeName());
     if (office != null) {
@@ -172,6 +172,19 @@ public class CurrentUserModelAdvice {
     }
     String trimmed = value.trim();
     return trimmed.isEmpty() ? null : trimmed;
+  }
+
+  private String resolveBrandName() {
+    String configured = BrandSupport.displayName(siteName);
+    if (!configured.equals(BrandSupport.DEFAULT_NAME)) {
+      return configured;
+    }
+    Locale locale = LocaleContextHolder.getLocale();
+    try {
+      return messageSource.getMessage("brand.name", null, locale);
+    } catch (NoSuchMessageException ex) {
+      return configured;
+    }
   }
 }
 

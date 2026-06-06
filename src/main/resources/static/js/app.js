@@ -1589,7 +1589,8 @@
   window.initApplicationMetaSelects = initApplicationMetaSelects;
 
   document.addEventListener("DOMContentLoaded", () => {
-    const noMatchDefault = "No matches";
+    const noMatchDefault =
+      document.documentElement.getAttribute("data-no-match") || "No matches";
     document.querySelectorAll(".applications-filters-card").forEach((card) => {
       initIngazgatePageSelects(card, { noResultsText: noMatchDefault });
     });

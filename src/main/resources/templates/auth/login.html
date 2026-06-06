@@ -1,7 +1,8 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" data-rama-theme-eligible="false"
       th:lang="${#locale.language}"
-      dir="ltr">
+      th:dir="${#locale.language == 'ar' ? 'rtl' : 'ltr'}"
+      th:attr="data-no-match=#{common.noResults}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -37,7 +38,7 @@
     <div class="card-header auth-header">
       <div>
         <div class="auth-brand">
-          <img th:src="@{/images/logo.svg(v=2)}" th:alt="${metaSiteName}" class="auth-logo" width="56" height="56" loading="eager" decoding="async" fetchpriority="high">
+          <img th:src="@{/images/logo.svg(v=3)}" th:alt="${metaSiteName}" class="auth-logo" width="56" height="56" loading="eager" decoding="async" fetchpriority="high">
           <div>
             <div class="auth-name" th:text="${metaSiteName}">Student CRM</div>
             <div class="subtle" th:text="#{brand.subtitle}">Student CRM Platform</div>

@@ -1,6 +1,8 @@
 <th:block xmlns:th="http://www.thymeleaf.org" th:fragment="brandHead">
-  <link rel="icon" type="image/svg+xml" th:href="@{/images/logo.svg(v=2)}">
-  <link rel="shortcut icon" type="image/svg+xml" th:href="@{/images/logo.svg(v=2)}">
-  <link rel="apple-touch-icon" th:href="@{/images/logo.svg(v=2)}">
+  <link rel="icon" type="image/svg+xml" th:href="@{/images/logo.svg(v=3)}">
+  <link rel="shortcut icon" type="image/svg+xml" th:href="@{/images/logo.svg(v=3)}">
+  <link rel="apple-touch-icon" th:href="@{/images/logo.svg(v=3)}">
+  <link rel="image_src" th:href="${metaBrandLogoUrl}">
   <meta name="application-name" th:content="${metaSiteName}">
+  <meta itemprop="image" th:content="${metaBrandLogoUrl}">
 </th:block>
