@@ -1,0 +1,12 @@
+package com.ingazgate.crm.lead.entity;
+
+public enum LeadType {
+  REGISTRATION,
+  UNIVERSITY_TRANSFER,
+  MASTER_APPLICATION,
+  PHD_APPLICATION,
+  SCHOLARSHIP,
+  RESIDENCE_PERMIT,
+  EQUIVALENCY,
+  GENERAL_INQUIRY
+}

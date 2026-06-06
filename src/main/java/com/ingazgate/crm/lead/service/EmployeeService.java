@@ -50,6 +50,7 @@ public class EmployeeService {
     employee.setEmail(email);
     employee.setTelegramChatId(request.telegramChatId());
     employee.setTelegramUsername(normalizeUsername(request.telegramUsername()));
+    employee.setDepartment(request.department());
     employee.setActive(request.active() == null || request.active());
     employee.setCreatedAt(OffsetDateTime.now());
 
@@ -68,6 +69,7 @@ public class EmployeeService {
     employee.setEmail(email);
     employee.setTelegramChatId(request.telegramChatId());
     employee.setTelegramUsername(normalizeUsername(request.telegramUsername()));
+    employee.setDepartment(request.department());
     if (request.active() != null) {
       employee.setActive(request.active());
     }

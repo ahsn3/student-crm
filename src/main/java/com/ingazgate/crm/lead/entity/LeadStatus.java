@@ -2,9 +2,11 @@ package com.ingazgate.crm.lead.entity;
 
 public enum LeadStatus {
   NEW,
-  ASSIGNED,
   CONTACTED,
-  QUALIFIED,
-  WON,
-  LOST
+  IN_PROGRESS,
+  DOCUMENTS_PENDING,
+  APPLICATION_SUBMITTED,
+  ACCEPTED,
+  REJECTED,
+  CLOSED
 }

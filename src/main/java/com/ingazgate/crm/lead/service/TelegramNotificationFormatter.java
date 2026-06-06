@@ -1,7 +1,7 @@
 package com.ingazgate.crm.lead.service;
 
 import com.ingazgate.crm.lead.entity.Lead;
-import com.ingazgate.crm.lead.entity.LeadStatus;
+import com.ingazgate.crm.lead.entity.LeadType;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -24,11 +24,15 @@ public class TelegramNotificationFormatter {
   public String formatNewLead(Lead lead, OffsetDateTime assignedAt) {
     StringBuilder sb = new StringBuilder();
     sb.append("🚨 NEW LEAD\n\n");
-    sb.append("Name: ").append(safe(lead.getName())).append('\n');
+    sb.append("Type: ").append(formatType(lead.getLeadType())).append('\n');
+    sb.append("Name: ").append(safe(lead.getStudentName())).append('\n');
     sb.append("Phone: ").append(safe(lead.getPhone())).append('\n');
-    sb.append("Company: ").append(safe(lead.getCompany())).append("\n\n");
-    sb.append("Requested Service:\n");
-    sb.append(safe(lead.getServiceRequested())).append("\n\n");
+    sb.append("Email: ").append(safe(lead.getEmail())).append('\n');
+    sb.append("Nationality: ").append(safe(lead.getNationality())).append("\n\n");
+    sb.append("Target University:\n");
+    sb.append(safe(lead.getTargetUniversity())).append("\n\n");
+    sb.append("Desired Major:\n");
+    sb.append(safe(lead.getDesiredMajor())).append("\n\n");
     sb.append("Notes:\n");
     sb.append(safe(lead.getNotes())).append("\n\n");
 
@@ -42,6 +46,13 @@ public class TelegramNotificationFormatter {
     sb.append(when.atZoneSameInstant(displayZone).format(DISPLAY_FMT));
 
     return sb.toString();
+  }
+
+  private static String formatType(LeadType type) {
+    if (type == null) {
+      return "—";
+    }
+    return type.name().replace('_', ' ');
   }
 
   private static String safe(String value) {

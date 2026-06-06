@@ -1,14 +1,13 @@
 package com.ingazgate.crm.lead.dto;
 
+import com.ingazgate.crm.lead.entity.LeadStatus;
 import com.ingazgate.crm.lead.entity.LeadType;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public record LeadRequest(
-    @NotNull LeadType leadType,
-    @NotBlank @Size(max = 120) String studentName,
+public record LeadUpdateRequest(
+    LeadType leadType,
+    @Size(max = 120) String studentName,
     @Size(max = 40) String phone,
     @Email @Size(max = 255) String email,
     @Size(max = 120) String nationality,
@@ -19,4 +18,4 @@ public record LeadRequest(
     @Size(max = 40) String studyYear,
     @Size(max = 80) String degreeLevel,
     @Size(max = 4000) String notes,
-    @Size(max = 120) String source) {}
+    LeadStatus status) {}

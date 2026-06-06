@@ -64,6 +64,14 @@
         </svg>
         <span th:text="#{nav.applications}">Applications</span>
       </a>
+      <a th:href="@{/my-leads}" th:classappend="${activeNav}=='myLeads' ? 'active' : ''">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 4h16v4H4z"></path>
+          <path d="M4 12h10v8H4z"></path>
+          <path d="M16 12h4v8h-4z"></path>
+        </svg>
+        <span th:text="#{nav.myLeads}">My Leads</span>
+      </a>
       <a th:if="${currentUserCanManageAgents}" th:href="@{/services}" th:classappend="${activeNav}=='services' ? 'active' : ''">
         <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
           <rect x="3" y="5" width="18" height="14" rx="2"></rect>

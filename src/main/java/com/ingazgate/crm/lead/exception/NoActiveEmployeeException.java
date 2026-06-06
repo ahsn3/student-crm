@@ -6,4 +6,8 @@ public class NoActiveEmployeeException extends LeadApiException {
   public NoActiveEmployeeException() {
     super(HttpStatus.CONFLICT, "No active employees available for lead assignment");
   }
+
+  public NoActiveEmployeeException(String message) {
+    super(HttpStatus.CONFLICT, message);
+  }
 }

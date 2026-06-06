@@ -1,6 +1,7 @@
 package com.ingazgate.crm.lead.service;
 
 import com.ingazgate.crm.lead.entity.Employee;
+import com.ingazgate.crm.lead.entity.EmployeeDepartment;
 import com.ingazgate.crm.lead.entity.Lead;
 import com.ingazgate.crm.lead.entity.LeadAssignmentHistory;
 import com.ingazgate.crm.lead.exception.NoActiveEmployeeException;
@@ -29,10 +30,16 @@ public class AssignmentService {
 
   @Transactional
   public Employee assignLead(Lead lead) {
+    EmployeeDepartment department = LeadDepartmentRouter.departmentFor(lead.getLeadType());
     Employee employee =
-        employeeRepository.findActiveForRoundRobin(PageRequest.of(0, 1)).stream()
+        employeeRepository
+            .findActiveForRoundRobinByDepartment(department, PageRequest.of(0, 1))
+            .stream()
             .findFirst()
-            .orElseThrow(NoActiveEmployeeException::new);
+            .orElseThrow(
+                () ->
+                    new NoActiveEmployeeException(
+                        "No active employees in " + department + " department"));
 
     OffsetDateTime assignedAt = OffsetDateTime.now();
     employee.setLastAssignedAt(assignedAt);
@@ -46,10 +53,11 @@ public class AssignmentService {
     historyRepository.save(history);
 
     log.info(
-        "Assigned lead {} to employee {} ({})",
+        "Assigned lead {} ({}) to employee {} in department {}",
         lead.getId(),
-        employee.getId(),
-        employee.getName());
+        lead.getLeadType(),
+        employee.getName(),
+        department);
 
     return employee;
   }

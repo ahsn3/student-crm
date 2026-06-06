@@ -23,17 +23,36 @@ import lombok.Setter;
 public class Lead {
   @Id private UUID id;
 
-  @Column(nullable = false)
-  private String name;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "lead_type", nullable = false)
+  private LeadType leadType = LeadType.GENERAL_INQUIRY;
+
+  @Column(name = "student_name", nullable = false)
+  private String studentName;
 
   private String phone;
 
   private String email;
 
-  private String company;
+  private String nationality;
 
-  @Column(name = "service_requested")
-  private String serviceRequested;
+  @Column(name = "current_university")
+  private String currentUniversity;
+
+  @Column(name = "target_university")
+  private String targetUniversity;
+
+  @Column(name = "current_major")
+  private String currentMajor;
+
+  @Column(name = "desired_major")
+  private String desiredMajor;
+
+  @Column(name = "study_year")
+  private String studyYear;
+
+  @Column(name = "degree_level")
+  private String degreeLevel;
 
   private String notes;
 
@@ -42,6 +61,12 @@ public class Lead {
   private LeadStatus status = LeadStatus.NEW;
 
   private String source;
+
+  /** Legacy columns kept for older rows. */
+  private String company;
+
+  @Column(name = "service_requested")
+  private String serviceRequested;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "assigned_employee_id")

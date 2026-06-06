@@ -122,7 +122,7 @@ public class SecurityConfig {
                         "/departments/*/update",
                         "/departments/*/delete")
                     .hasRole("ADMIN")
-                    .requestMatchers("/api/employees/**", "/api/test-telegram", "/api/test-lead")
+                    .requestMatchers("/api/employees/**", "/api/test-telegram", "/api/test-lead", "/api/reports/**")
                     .hasRole("ADMIN")
                     .anyRequest()
                     .authenticated())

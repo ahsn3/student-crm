@@ -1,22 +1,34 @@
 package com.ingazgate.crm.lead.service;
 
 import com.ingazgate.crm.lead.dto.LeadAssignmentHistoryResponse;
+import com.ingazgate.crm.lead.dto.LeadDetailResponse;
+import com.ingazgate.crm.lead.dto.LeadPageResponse;
 import com.ingazgate.crm.lead.dto.LeadRequest;
 import com.ingazgate.crm.lead.dto.LeadResponse;
+import com.ingazgate.crm.lead.dto.LeadStatusHistoryResponse;
+import com.ingazgate.crm.lead.dto.LeadUpdateRequest;
 import com.ingazgate.crm.lead.entity.Employee;
 import com.ingazgate.crm.lead.entity.Lead;
 import com.ingazgate.crm.lead.entity.LeadStatus;
+import com.ingazgate.crm.lead.entity.LeadStatusHistory;
+import com.ingazgate.crm.lead.entity.LeadType;
+import com.ingazgate.crm.lead.exception.AccessDeniedLeadException;
 import com.ingazgate.crm.lead.exception.ResourceNotFoundException;
 import com.ingazgate.crm.lead.exception.TelegramDeliveryException;
 import com.ingazgate.crm.lead.mapper.LeadMapper;
 import com.ingazgate.crm.lead.repository.LeadAssignmentHistoryRepository;
 import com.ingazgate.crm.lead.repository.LeadRepository;
+import com.ingazgate.crm.lead.repository.LeadStatusHistoryRepository;
 import com.ingazgate.crm.lead.telegram.TelegramService;
+import com.ingazgate.crm.user.AppUser;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -26,25 +38,34 @@ public class LeadService {
   private static final Logger log = LoggerFactory.getLogger(LeadService.class);
 
   private final LeadRepository leadRepository;
-  private final LeadAssignmentHistoryRepository historyRepository;
+  private final LeadAssignmentHistoryRepository assignmentHistoryRepository;
+  private final LeadStatusHistoryRepository statusHistoryRepository;
   private final AssignmentService assignmentService;
   private final TelegramService telegramService;
   private final TelegramNotificationFormatter notificationFormatter;
   private final LeadMapper leadMapper;
+  private final EmployeeAccessService employeeAccessService;
+  private final LeadNoteService leadNoteService;
 
   public LeadService(
       LeadRepository leadRepository,
-      LeadAssignmentHistoryRepository historyRepository,
+      LeadAssignmentHistoryRepository assignmentHistoryRepository,
+      LeadStatusHistoryRepository statusHistoryRepository,
       AssignmentService assignmentService,
       TelegramService telegramService,
       TelegramNotificationFormatter notificationFormatter,
-      LeadMapper leadMapper) {
+      LeadMapper leadMapper,
+      EmployeeAccessService employeeAccessService,
+      LeadNoteService leadNoteService) {
     this.leadRepository = leadRepository;
-    this.historyRepository = historyRepository;
+    this.assignmentHistoryRepository = assignmentHistoryRepository;
+    this.statusHistoryRepository = statusHistoryRepository;
     this.assignmentService = assignmentService;
     this.telegramService = telegramService;
     this.notificationFormatter = notificationFormatter;
     this.leadMapper = leadMapper;
+    this.employeeAccessService = employeeAccessService;
+    this.leadNoteService = leadNoteService;
   }
 
   @Transactional(readOnly = true)
@@ -58,10 +79,59 @@ public class LeadService {
   }
 
   @Transactional(readOnly = true)
+  public LeadPageResponse getMyLeads(
+      AppUser user,
+      int page,
+      int size,
+      LeadStatus status,
+      LeadType leadType,
+      String search) {
+    Employee employee = employeeAccessService.requireLinkedEmployee(user);
+    PageRequest pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
+    String q = StringUtils.hasText(search) ? search.trim() : null;
+    Page<Lead> result =
+        leadRepository.findMyLeads(employee.getId(), status, leadType, q, pageable);
+    List<LeadResponse> items = result.getContent().stream().map(leadMapper::toResponse).toList();
+    return new LeadPageResponse(
+        items,
+        result.getNumber(),
+        result.getSize(),
+        result.getTotalElements(),
+        result.getTotalPages(),
+        status,
+        leadType,
+        q);
+  }
+
+  @Transactional(readOnly = true)
+  public LeadDetailResponse getMyLeadDetail(AppUser user, UUID id) {
+    Employee employee = employeeAccessService.requireLinkedEmployee(user);
+    Lead lead = requireLeadForEmployee(id, employee.getId());
+    return buildDetailResponse(lead);
+  }
+
+  @Transactional(readOnly = true)
+  public LeadDetailResponse getLeadDetail(UUID id) {
+    Lead lead =
+        leadRepository
+            .findByIdWithEmployee(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Lead not found: " + id));
+    return buildDetailResponse(lead);
+  }
+
+  @Transactional(readOnly = true)
   public List<LeadAssignmentHistoryResponse> getAssignmentHistory(UUID leadId) {
     requireLead(leadId);
-    return historyRepository.findByLeadIdOrderByAssignedAtDesc(leadId).stream()
+    return assignmentHistoryRepository.findByLeadIdOrderByAssignedAtDesc(leadId).stream()
         .map(leadMapper::toHistoryResponse)
+        .toList();
+  }
+
+  @Transactional(readOnly = true)
+  public List<LeadStatusHistoryResponse> getStatusHistory(UUID leadId) {
+    requireLead(leadId);
+    return statusHistoryRepository.findByLeadIdOrderByChangedAtDesc(leadId).stream()
+        .map(leadMapper::toStatusHistoryResponse)
         .toList();
   }
 
@@ -69,20 +139,14 @@ public class LeadService {
   public LeadResponse createLead(LeadRequest request) {
     Lead lead = new Lead();
     lead.setId(UUID.randomUUID());
-    lead.setName(request.name().trim());
-    lead.setPhone(trimToNull(request.phone()));
-    lead.setEmail(trimToNull(request.email()));
-    lead.setCompany(trimToNull(request.company()));
-    lead.setServiceRequested(trimToNull(request.serviceRequested()));
-    lead.setNotes(trimToNull(request.notes()));
-    lead.setSource(trimToNull(request.source()));
+    applyRequest(lead, request);
     lead.setStatus(LeadStatus.NEW);
     lead.setCreatedAt(OffsetDateTime.now());
     lead = leadRepository.save(lead);
 
     Employee employee = assignmentService.assignLead(lead);
     lead.setAssignedEmployee(employee);
-    lead.setStatus(LeadStatus.ASSIGNED);
+    changeStatus(lead, LeadStatus.IN_PROGRESS, null);
     lead = leadRepository.save(lead);
 
     notifyEmployee(lead, employee.getLastAssignedAt());
@@ -93,13 +157,112 @@ public class LeadService {
   public LeadResponse createSampleLead() {
     return createLead(
         new LeadRequest(
+            LeadType.REGISTRATION,
             "Ahmed Hassan",
             "+20123456789",
             "ahmed@example.com",
-            "ABC Company",
-            "CRM Development",
-            "Interested in automation and lead management.",
+            "Egyptian",
+            null,
+            "Istanbul University",
+            null,
+            "Computer Engineering",
+            "2",
+            "Bachelor",
+            "Interested in university registration in Istanbul.",
             "test-api"));
+  }
+
+  @Transactional
+  public LeadResponse updateMyLead(AppUser user, UUID id, LeadUpdateRequest request) {
+    Employee employee = employeeAccessService.requireLinkedEmployee(user);
+    Lead lead = requireLeadForEmployee(id, employee.getId());
+    applyUpdate(lead, request, employee);
+    return leadMapper.toResponse(leadRepository.save(lead));
+  }
+
+  private LeadDetailResponse buildDetailResponse(Lead lead) {
+    UUID leadId = lead.getId();
+    return new LeadDetailResponse(
+        leadMapper.toResponse(lead),
+        assignmentHistoryRepository.findByLeadIdOrderByAssignedAtDesc(leadId).stream()
+            .map(leadMapper::toHistoryResponse)
+            .toList(),
+        leadNoteService.listNotes(leadId),
+        statusHistoryRepository.findByLeadIdOrderByChangedAtDesc(leadId).stream()
+            .map(leadMapper::toStatusHistoryResponse)
+            .toList());
+  }
+
+  private void applyRequest(Lead lead, LeadRequest request) {
+    lead.setLeadType(request.leadType());
+    lead.setStudentName(request.studentName().trim());
+    lead.setPhone(trimToNull(request.phone()));
+    lead.setEmail(trimToNull(request.email()));
+    lead.setNationality(trimToNull(request.nationality()));
+    lead.setCurrentUniversity(trimToNull(request.currentUniversity()));
+    lead.setTargetUniversity(trimToNull(request.targetUniversity()));
+    lead.setCurrentMajor(trimToNull(request.currentMajor()));
+    lead.setDesiredMajor(trimToNull(request.desiredMajor()));
+    lead.setStudyYear(trimToNull(request.studyYear()));
+    lead.setDegreeLevel(trimToNull(request.degreeLevel()));
+    lead.setNotes(trimToNull(request.notes()));
+    lead.setSource(trimToNull(request.source()));
+  }
+
+  private void applyUpdate(Lead lead, LeadUpdateRequest request, Employee employee) {
+    if (request.leadType() != null) {
+      lead.setLeadType(request.leadType());
+    }
+    if (StringUtils.hasText(request.studentName())) {
+      lead.setStudentName(request.studentName().trim());
+    }
+    if (request.phone() != null) {
+      lead.setPhone(trimToNull(request.phone()));
+    }
+    if (request.email() != null) {
+      lead.setEmail(trimToNull(request.email()));
+    }
+    if (request.nationality() != null) {
+      lead.setNationality(trimToNull(request.nationality()));
+    }
+    if (request.currentUniversity() != null) {
+      lead.setCurrentUniversity(trimToNull(request.currentUniversity()));
+    }
+    if (request.targetUniversity() != null) {
+      lead.setTargetUniversity(trimToNull(request.targetUniversity()));
+    }
+    if (request.currentMajor() != null) {
+      lead.setCurrentMajor(trimToNull(request.currentMajor()));
+    }
+    if (request.desiredMajor() != null) {
+      lead.setDesiredMajor(trimToNull(request.desiredMajor()));
+    }
+    if (request.studyYear() != null) {
+      lead.setStudyYear(trimToNull(request.studyYear()));
+    }
+    if (request.degreeLevel() != null) {
+      lead.setDegreeLevel(trimToNull(request.degreeLevel()));
+    }
+    if (request.notes() != null) {
+      lead.setNotes(trimToNull(request.notes()));
+    }
+    if (request.status() != null && request.status() != lead.getStatus()) {
+      changeStatus(lead, request.status(), employee);
+    }
+  }
+
+  private void changeStatus(Lead lead, LeadStatus newStatus, Employee actor) {
+    LeadStatus oldStatus = lead.getStatus();
+    lead.setStatus(newStatus);
+
+    LeadStatusHistory history = new LeadStatusHistory();
+    history.setId(UUID.randomUUID());
+    history.setLead(lead);
+    history.setEmployee(actor);
+    history.setOldStatus(oldStatus);
+    history.setNewStatus(newStatus);
+    history.setChangedAt(OffsetDateTime.now());
+    statusHistoryRepository.save(history);
   }
 
   private void notifyEmployee(Lead lead, OffsetDateTime assignedAt) {
@@ -124,6 +287,18 @@ public class LeadService {
     return leadRepository
         .findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("Lead not found: " + id));
+  }
+
+  private Lead requireLeadForEmployee(UUID leadId, UUID employeeId) {
+    Lead lead =
+        leadRepository
+            .findByIdWithEmployee(leadId)
+            .orElseThrow(() -> new ResourceNotFoundException("Lead not found: " + leadId));
+    if (lead.getAssignedEmployee() == null
+        || !employeeId.equals(lead.getAssignedEmployee().getId())) {
+      throw new AccessDeniedLeadException("This lead is not assigned to you");
+    }
+    return lead;
   }
 
   private static String trimToNull(String value) {
