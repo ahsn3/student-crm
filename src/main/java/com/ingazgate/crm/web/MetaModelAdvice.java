@@ -53,10 +53,10 @@ public class MetaModelAdvice {
   String metaImageUrl(HttpServletRequest request) {
     String normalized = normalizeSiteUrl(siteUrl);
     if (!normalized.isEmpty()) {
-      return normalized + "/images/logo.jpg";
+      return normalized + "/images/logo.svg";
     }
     return ServletUriComponentsBuilder.fromContextPath(request)
-        .path("/images/logo.jpg")
+        .path("/images/logo.svg")
         .build()
         .toUriString();
   }

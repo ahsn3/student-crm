@@ -8,7 +8,7 @@
   <th:block th:replace="~{partials/theme-head :: themeHead}"></th:block>
   <title th:text="|${pageTitle} • ${metaSiteName}|">Sign up • Student CRM</title>
   <th:block th:replace="~{partials/social-meta :: socialMeta}"></th:block>
-  <link rel="icon" type="image/jpeg" href="/images/logo.jpg">
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
   <link rel="stylesheet" th:href="@{/css/app.css(v=132)}">
 </head>
 <body class="auth-body">
@@ -37,7 +37,7 @@
     <div class="card-header auth-header">
       <div>
         <div class="auth-brand">
-          <img src="/images/logo.jpg" alt="Logo" class="auth-logo" width="56" height="56" loading="eager" decoding="async" fetchpriority="high">
+          <img src="/images/logo.svg" alt="Logo" class="auth-logo" width="56" height="56" loading="eager" decoding="async" fetchpriority="high">
           <div>
             <div class="auth-name" th:text="${metaSiteName}">Student CRM</div>
             <div class="subtle" th:text="#{brand.subtitle}">Student CRM Platform</div>

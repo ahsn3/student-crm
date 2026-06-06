@@ -54,10 +54,8 @@ public class ProgramPdfService {
   private static final String FONT_LATIN = "/fonts/NotoSans-Regular.ttf";
   private static final String FONT_ARABIC = "/fonts/NotoSansArabic-Regular.ttf";
   private static final String[] BRANDING_LOGO_PATHS = {
-    "/static/images/logo.jpg",
     "/static/images/logo.png",
-    "/images/logo.jpg",
-    "/images/icon.JPG",
+    "/static/images/logo.svg",
   };
 
   private static final float PAGE_W = PDRectangle.A4.getWidth();
