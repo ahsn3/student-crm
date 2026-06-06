@@ -13,6 +13,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", uses = EmployeeMapper.class)
 public interface LeadMapper {
+  @Mapping(target = "assignedEmployee", source = "assignedEmployee")
+  @Mapping(target = "studentId", source = "student.id")
+  @Mapping(target = "applicationId", source = "application.id")
   LeadResponse toResponse(Lead lead);
 
   @Mapping(target = "leadId", source = "lead.id")

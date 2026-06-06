@@ -8,6 +8,7 @@ import com.ingazgate.crm.asset.University;
 import com.ingazgate.crm.asset.UniversityRepository;
 import com.ingazgate.crm.feedback.NewsPost;
 import com.ingazgate.crm.feedback.NewsPostRepository;
+import com.ingazgate.crm.lead.repository.LeadRepository;
 import com.ingazgate.crm.student.ApplicationChatService;
 import com.ingazgate.crm.student.StudentApplication;
 import com.ingazgate.crm.student.StudentApplicationRepository;
@@ -56,6 +57,7 @@ public class PageController {
   private final ApplicationChatService applicationChatService;
   private final NewsPostRepository newsPostRepository;
   private final ObjectMapper objectMapper;
+  private final LeadRepository leadRepository;
 
   public PageController(
       UniversityRepository universityRepository,
@@ -70,7 +72,8 @@ public class PageController {
       UniversitiesCatalogService universitiesCatalog,
       ApplicationChatService applicationChatService,
       NewsPostRepository newsPostRepository,
-      ObjectMapper objectMapper) {
+      ObjectMapper objectMapper,
+      LeadRepository leadRepository) {
     this.universityRepository = universityRepository;
     this.departmentRepository = departmentRepository;
     this.studentRepository = studentRepository;
@@ -84,6 +87,7 @@ public class PageController {
     this.applicationChatService = applicationChatService;
     this.newsPostRepository = newsPostRepository;
     this.objectMapper = objectMapper;
+    this.leadRepository = leadRepository;
   }
 
   @GetMapping("/")
@@ -96,9 +100,7 @@ public class PageController {
     model.addAttribute("activeNav", "dashboard");
     model.addAttribute("contentTemplate", "pages/dashboard");
     if (authUsers.canManageAgents(user)) {
-      model.addAttribute(
-          "dashboardStudentsToday",
-          studentRepository.countNonAgentWorkspaceStudentsCreatedSince(dayStart));
+      model.addAttribute("dashboardStudentsToday", leadRepository.countSince(dayStart));
       model.addAttribute(
           "dashboardApplicationsToday",
           studentApplicationRepository.countNonAgentApplicationsCreatedSince(dayStart));
@@ -109,9 +111,7 @@ public class PageController {
           "recentApplications",
           studentApplicationRepository.findRecentAll(PageRequest.of(0, 5)));
     } else {
-      model.addAttribute(
-          "dashboardStudentsToday",
-          studentRepository.countByOwnerUser_IdAndCreatedAtGreaterThanEqual(ownerId, dayStart));
+      model.addAttribute("dashboardStudentsToday", leadRepository.countSince(dayStart));
       model.addAttribute(
           "dashboardApplicationsToday",
           studentApplicationRepository.countByOwnerUser_IdAndCreatedAtGreaterThanEqual(

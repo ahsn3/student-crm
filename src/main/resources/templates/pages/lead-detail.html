@@ -13,7 +13,13 @@
           </span>
         </div>
       </div>
-      <a class="btn" th:href="@{/my-leads}" th:text="#{leads.backToList}">Back to my leads</a>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" th:href="@{/my-leads}" th:text="#{leads.backToList}">Back to leads</a>
+        <a th:if="${lead.studentId() != null}" class="btn primary"
+           th:href="@{/students/{id}(id=${lead.studentId()})}" th:text="#{leads.openStudent}">Open student</a>
+        <a th:if="${lead.applicationId() != null}" class="btn primary"
+           th:href="@{/applications/{id}(id=${lead.applicationId()})}" th:text="#{leads.openApplication}">Open application</a>
+      </div>
     </div>
 
     <div class="subtle uni-flash uni-flash--ok" th:if="${param.saved}" th:text="#{leads.saved}">Saved.</div>

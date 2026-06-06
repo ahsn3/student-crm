@@ -22,4 +22,6 @@ public record LeadResponse(
     LeadStatus status,
     String source,
     EmployeeResponse assignedEmployee,
+    UUID studentId,
+    UUID applicationId,
     OffsetDateTime createdAt) {}

@@ -72,6 +72,14 @@ public class Lead {
   @JoinColumn(name = "assigned_employee_id")
   private Employee assignedEmployee;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "student_id")
+  private com.ingazgate.crm.student.Student student;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "application_id")
+  private com.ingazgate.crm.student.StudentApplication application;
+
   @Column(name = "created_at", nullable = false)
   private OffsetDateTime createdAt;
 }

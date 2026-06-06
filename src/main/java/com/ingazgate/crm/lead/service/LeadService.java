@@ -46,6 +46,7 @@ public class LeadService {
   private final LeadMapper leadMapper;
   private final EmployeeAccessService employeeAccessService;
   private final LeadNoteService leadNoteService;
+  private final LeadStudentSyncService leadStudentSyncService;
 
   public LeadService(
       LeadRepository leadRepository,
@@ -56,7 +57,8 @@ public class LeadService {
       TelegramNotificationFormatter notificationFormatter,
       LeadMapper leadMapper,
       EmployeeAccessService employeeAccessService,
-      LeadNoteService leadNoteService) {
+      LeadNoteService leadNoteService,
+      LeadStudentSyncService leadStudentSyncService) {
     this.leadRepository = leadRepository;
     this.assignmentHistoryRepository = assignmentHistoryRepository;
     this.statusHistoryRepository = statusHistoryRepository;
@@ -66,6 +68,7 @@ public class LeadService {
     this.leadMapper = leadMapper;
     this.employeeAccessService = employeeAccessService;
     this.leadNoteService = leadNoteService;
+    this.leadStudentSyncService = leadStudentSyncService;
   }
 
   @Transactional(readOnly = true)
@@ -151,6 +154,9 @@ public class LeadService {
     lead.setCreatedAt(OffsetDateTime.now());
     lead = leadRepository.save(lead);
 
+    leadStudentSyncService.syncFromLead(lead);
+    lead = leadRepository.save(lead);
+
     Employee employee = assignmentService.assignLead(lead);
     lead.setAssignedEmployee(employee);
     changeStatus(lead, LeadStatus.IN_PROGRESS, null);
@@ -194,6 +200,8 @@ public class LeadService {
       lead = requireLeadForEmployee(id, actor.getId());
     }
     applyUpdate(lead, request, actor);
+    lead = leadRepository.save(lead);
+    leadStudentSyncService.syncLeadUpdate(lead);
     return leadMapper.toResponse(leadRepository.save(lead));
   }
 

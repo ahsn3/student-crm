@@ -18,10 +18,15 @@ public interface LeadRepository extends JpaRepository<Lead, UUID> {
 
   @Query(
       """
-      SELECT l FROM Lead l LEFT JOIN FETCH l.assignedEmployee
+      SELECT l FROM Lead l
+      LEFT JOIN FETCH l.assignedEmployee
+      LEFT JOIN FETCH l.student
+      LEFT JOIN FETCH l.application
       WHERE l.id = :id
       """)
   Optional<Lead> findByIdWithEmployee(@Param("id") UUID id);
+
+  List<Lead> findByStudentIsNull();
 
   @Query(
       value =
